@@ -4,14 +4,18 @@
 
 ## Назначение проекта
 
-Учебный C++-проект для курса по количественному анализу и алгоритмической торговле.
-Сейчас это «Hello World!» с полной инфраструктурой: CMake, unit-тесты (GoogleTest),
-бенчмарки (Google Benchmark), документация (Doxygen) и CI/CD (GitHub Actions).
+Итоговый C++-проект для курса по количественному анализу и алгоритмической торговле.
+
+**Тема проекта ещё не утверждена.** Сейчас репозиторий — только настройка инфраструктуры:
+CMake, unit-тесты (GoogleTest), бенчмарки (Google Benchmark), документация (Doxygen)
+и CI/CD (GitHub Actions). Расчёт опционов по Блэку–Шоулзу (`quant::callPrice`,
+`quant::putPrice`) — временный пример кода, который будет заменён после выбора темы.
+Не развивай его дальше без явного запроса.
 
 ## Структура
 
-- `include/hello/` — публичные заголовки (`.hpp`).
-- `src/` — реализация библиотеки `hello` и точка входа `main.cpp`.
+- `include/quant/` — публичные заголовки (`.hpp`).
+- `src/` — реализация библиотеки `black_scholes` и точка входа `main.cpp` (утилита `bs_app`).
 - `tests/` — unit-тесты на GoogleTest, по файлу `test_<модуль>.cpp`.
 - `bench/` — бенчмарки на Google Benchmark, по файлу `bench_<модуль>.cpp`.
 - `docs/Doxyfile` — конфигурация Doxygen.
@@ -28,7 +32,7 @@ cmake --build build -j
 ctest --test-dir build --output-on-failure
 
 # Бенчмарки
-./build/bench/hello_bench
+./build/bench/bs_bench
 
 # Документация
 doxygen docs/Doxyfile
@@ -38,7 +42,7 @@ doxygen docs/Doxyfile
 
 - Стандарт C++20, без расширений компилятора.
 - Код компилируется без предупреждений с `-Wall -Wextra -Wpedantic`.
-- Весь код библиотеки — в пространстве имён `hello`.
+- Весь код библиотеки — в пространстве имён `quant`.
 - Заголовки начинаются с `#pragma once`.
 - Именование: `snake_case` для файлов, `camelCase` для функций, `PascalCase` для типов.
 - Отступ 4 пробела, строки до 100 символов.

@@ -17,14 +17,14 @@ jobs:
         run: cmake --build build -j
 
       - name: Run app
-        run: ./build/hello_app
+        run: ./build/bs_app
 
       - name: Test
         run: ctest --test-dir build --output-on-failure
 
       - name: Benchmark
         run: |
-          ./build/bench/hello_bench | tee bench.txt
+          ./build/bench/bs_bench | tee bench.txt
           {
             echo '### Benchmark results'
             echo '```'

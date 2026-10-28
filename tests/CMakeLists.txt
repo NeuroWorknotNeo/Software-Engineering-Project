@@ -11,8 +11,8 @@ if(NOT GTest_FOUND)
   FetchContent_MakeAvailable(googletest)
 endif()
 
-add_executable(hello_tests test_hello.cpp)
-target_link_libraries(hello_tests PRIVATE hello GTest::gtest_main)
+add_executable(bs_tests test_black_scholes.cpp)
+target_link_libraries(bs_tests PRIVATE black_scholes GTest::gtest_main)
 
 include(GoogleTest)
-gtest_discover_tests(hello_tests)
+gtest_discover_tests(bs_tests)

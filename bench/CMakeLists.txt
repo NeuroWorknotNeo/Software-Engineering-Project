@@ -11,5 +11,5 @@ if(NOT benchmark_FOUND)
   FetchContent_MakeAvailable(googlebenchmark)
 endif()
 
-add_executable(hello_bench bench_hello.cpp)
-target_link_libraries(hello_bench PRIVATE hello benchmark::benchmark)
+add_executable(bs_bench bench_black_scholes.cpp)
+target_link_libraries(bs_bench PRIVATE black_scholes benchmark::benchmark)
