@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['тесты_0',['Тесты',['../index.html#autotoc_md4',1,'']]]
+  ['бенчмарки_0',['Бенчмарки',['../index.html#autotoc_md5',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hello_2ecpp_0',['hello.cpp',['../hello_8cpp.html',1,'']]],
-  ['hello_2ehpp_1',['hello.hpp',['../hello_8hpp.html',1,'']]]
+  ['black_5fscholes_2ecpp_0',['black_scholes.cpp',['../black__scholes_8cpp.html',1,'']]],
+  ['black_5fscholes_2ehpp_1',['black_scholes.hpp',['../black__scholes_8hpp.html',1,'']]]
 ];

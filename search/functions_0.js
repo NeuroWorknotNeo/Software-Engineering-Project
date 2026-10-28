@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['greeting_0',['greeting',['../namespacehello.html#acf1def42d1c750c919e39f3566071969',1,'hello']]]
+  ['callprice_0',['callPrice',['../namespacequant.html#a2a5c85edf4c3d5876425543a7f30008e',1,'quant']]]
 ];

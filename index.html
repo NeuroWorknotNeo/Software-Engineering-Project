@@ -23,7 +23,7 @@
   <td id="projectalign">
    <div id="projectname">Software-Engineering-Project
    </div>
-   <div id="projectbrief">Шаблон C++-проекта: CMake, тесты, бенчмарки, Doxygen, CI/CD</div>
+   <div id="projectbrief">Тема не утверждена: настройка инфраструктуры (пример — формула Блэка–Шоулза)</div>
   </td>
  </tr>
  </tbody>
@@ -74,16 +74,30 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/ci.yml"><img src="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/ci.yml/badge.svg" alt="CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/docs.yml"><img src="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/docs.yml/badge.svg" alt="Docs" style="pointer-events: none;" class="inline"/></a></p>
-<p>Заготовка C++-проекта для курса «Программная инженерия и C++ для количественного анализа и алгоритмической торговли». Пока программа просто печатает <code>Hello World!</code>, но вокруг неё уже настроена вся инфраструктура: сборка через CMake, unit-тесты, бенчмарки, документация и CI/CD.</p>
+<p>Итоговый проект курса «Программная инженерия и C++ для количественного анализа и алгоритмической торговли».</p>
+<blockquote class="doxtable">
+<p>&zwj;[!NOTE] <b>Тема итогового проекта ещё не утверждена.</b> Сейчас репозиторий — только настройка инфраструктуры: сборка через CMake, unit-тесты, бенчмарки, документация и CI/CD. Расчёт опционов по Блэку–Шоулзу — временный пример кода, чтобы инфраструктуре было что собирать, тестировать и измерять. После утверждения темы он будет заменён. </p>
+</blockquote>
 <p><b>Документация:</b> <a href="https://neuroworknotneo.github.io/Software-Engineering-Project/">https://neuroworknotneo.github.io/Software-Engineering-Project/</a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Что делает программа</h1>
-<p><code>hello_app</code> выводит в stdout строку <code>Hello World!</code>. Строку формирует функция <code><a class="el" href="namespacehello.html#acf1def42d1c750c919e39f3566071969" title="Возвращает приветствие.">hello::greeting()</a></code> из библиотеки <code>hello</code> — её же проверяют тесты и измеряет бенчмарк.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
+<p><code>bs_app</code> считает справедливые цены европейских опционов Call и Put по формуле Блэка–Шоулза:</p>
+<ul>
+<li>C = S·N(d1) − K·e^(−rT)·N(d2)</li>
+<li>P = K·e^(−rT)·N(−d2) − S·N(−d1)</li>
+<li>d1 = (ln(S/K) + (r + σ²/2)·T) / (σ·√T), d2 = d1 − σ·√T</li>
+</ul>
+<p>где S — цена базового актива, K — страйк, r — безрисковая ставка, σ — волатильность, T — время до экспирации в годах, N — функция распределения стандартного нормального закона.</p>
+<div class="fragment"><div class="line">./build/bs_app                       # пример: S=100 K=100 r=0.05 sigma=0.2 T=1</div>
+<div class="line">./build/bs_app 42 40 0.1 0.2 0.5     # свои параметры: S K r sigma T</div>
+</div><!-- fragment --><div class="fragment"><div class="line">S=42.0000 K=40.0000 r=0.1000 sigma=0.2000 T=0.5000</div>
+<div class="line">Call: 4.7594</div>
+<div class="line">Put:  0.8086</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Структура проекта</h1>
 <div class="fragment"><div class="line">.</div>
-<div class="line">├── include/hello/      # публичные заголовки библиотеки</div>
-<div class="line">├── src/                # исходный код библиотеки и main.cpp</div>
+<div class="line">├── include/quant/      # публичные заголовки библиотеки</div>
+<div class="line">├── src/                # реализация библиотеки и main.cpp</div>
 <div class="line">├── tests/              # unit-тесты (GoogleTest)</div>
 <div class="line">├── bench/              # бенчмарки (Google Benchmark)</div>
 <div class="line">├── docs/Doxyfile       # конфигурация Doxygen</div>
@@ -96,13 +110,14 @@ $(function() {
 <p>Нужны CMake ≥ 3.20 и компилятор с поддержкой C++20 (GCC ≥ 10 или Clang ≥ 12). GoogleTest и Google Benchmark берутся из системы, если установлены, иначе CMake скачает их сам.</p>
 <div class="fragment"><div class="line">cmake -S . -B build -DCMAKE_BUILD_TYPE=Release</div>
 <div class="line">cmake --build build -j</div>
-<div class="line">./build/hello_app</div>
+<div class="line">./build/bs_app</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Тесты</h1>
 <div class="fragment"><div class="line">ctest --test-dir build --output-on-failure</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><p>Тесты сверяют цены с эталонными значениями (в том числе с примером из учебника Hull), проверяют паритет Put–Call и обработку некорректных параметров.</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
 Бенчмарки</h1>
-<div class="fragment"><div class="line">./build/bench/hello_bench</div>
+<div class="fragment"><div class="line">./build/bench/bs_bench</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
 Документация</h1>
 <div class="fragment"><div class="line">doxygen docs/Doxyfile   # результат в docs/html/index.html</div>

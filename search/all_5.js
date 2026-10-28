@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['project_0',['Software-Engineering-Project',['../index.html',1,'']]]
+  ['normalcdf_0',['normalCdf',['../namespacequant.html#a2f6bf8b6aa4a7c133bc712196bace7cb',1,'quant']]]
 ];
