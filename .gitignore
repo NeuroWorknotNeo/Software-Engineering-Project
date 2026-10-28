@@ -1,0 +1,5 @@
+build/
+docs/html/
+docs/latex/
+.vscode/
+.idea/

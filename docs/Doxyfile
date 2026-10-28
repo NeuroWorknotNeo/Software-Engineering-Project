@@ -1,0 +1,17 @@
+# Минимальная конфигурация Doxygen; остальные параметры — по умолчанию.
+# Запуск из корня репозитория: doxygen docs/Doxyfile
+PROJECT_NAME           = "Software-Engineering-Project"
+PROJECT_BRIEF          = "Шаблон C++-проекта: CMake, тесты, бенчмарки, Doxygen, CI/CD"
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = English
+INPUT                  = README.md include src
+FILE_PATTERNS          = *.hpp *.cpp *.md
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+EXTRACT_ALL            = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+HTML_OUTPUT            = html
+WARN_IF_UNDOCUMENTED   = YES
+QUIET                  = YES
+HAVE_DOT               = NO
