@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maturity_0',['maturity',['../structquant_1_1OptionParams.html#afe399f71358f6742caa35f34a3a32661',1,'quant::OptionParams']]]
+  ['rate_0',['rate',['../structquant_1_1OptionParams.html#ace112c700b1a2a77ec668871613e1586',1,'quant::OptionParams']]]
 ];

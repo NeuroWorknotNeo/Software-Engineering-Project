@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rate_0',['rate',['../structquant_1_1OptionParams.html#ace112c700b1a2a77ec668871613e1586',1,'quant::OptionParams']]]
+  ['spot_0',['spot',['../structquant_1_1OptionParams.html#a6f058ffc685c768d51bf328da6dd644c',1,'quant::OptionParams']]],
+  ['strike_1',['strike',['../structquant_1_1OptionParams.html#aa73c17e938ac44f3006835c9aa6af348',1,'quant::OptionParams']]]
 ];
