@@ -1,6 +1,6 @@
 # Архитектура
 
-Статус: черновик v0.1 (16.11.2026). Требования — в [REQUIREMENTS.md](REQUIREMENTS.md).
+Статус: v0.2 (19.11.2026). Реализованы модули `data` и `stats`. Требования — в [REQUIREMENTS.md](REQUIREMENTS.md).
 
 ## 1. Общая схема
 
@@ -10,7 +10,7 @@
 
 ```mermaid
 flowchart LR
-    MOEX[(MOEX ISS)] -->|scripts/download_prices.py| CSV[prices.csv]
+    MOEX[(MOEX ISS)] -->|scripts/download_prices.py| CSV[data/prices.csv]
     CSV --> D[data<br/>чтение, выравнивание,<br/>сплиты, проверки]
     D --> S[stats<br/>доходности, μ, Σ]
     S --> O[optim<br/>GMV, max Sharpe,<br/>граница]
@@ -29,11 +29,11 @@ flowchart LR
 
 | Модуль | Ответственность | Основные типы | Требования |
 |---|---|---|---|
-| `data` | Чтение CSV, выравнивание календаря, заполнение пропусков, сплиты, поиск аномалий | `PriceTable`, `CsvPriceReader`, `SplitAdjuster`, `DataValidator` | FR-2…FR-5 |
-| `stats` | Доходности, средние, оценки ковариации | `ReturnMatrix`, `CovarianceEstimator` (интерфейс), `SampleCovariance`, `LedoitWolfCovariance` | FR-6…FR-8 |
+| `data` | Чтение CSV, заполнение пропусков, сплиты, поиск аномалий | `PriceTable`, `Split`, `PriceAnomaly`; функции `readPriceCsv`, `forwardFill`, `readSplitsCsv`, `applySplits`, `findAnomalies` | FR-2…FR-5 |
+| `stats` | Доходности, средние, оценки ковариации | `ReturnMatrix`, `CovarianceEstimator` (интерфейс), `SampleCovariance`, `LedoitWolfCovariance`; функции `simpleReturns`, `meanReturns`, `ledoitWolf`, `makeCovarianceEstimator` | FR-6…FR-8 |
 | `optim` | Аналитические решения, QP-решатель, эффективная граница | `MarketModel` (μ, Σ), `Portfolio`, `AnalyticOptimizer`, `QpSolver` (интерфейс), `ActiveSetSolver`, `ProjectedGradientSolver`, `FrontierBuilder` | FR-9…FR-15 |
 | `backtest` | Скользящее окно, ребалансировка, метрики | `Backtester`, `AllocationStrategy` (интерфейс), `GmvStrategy`, `MaxSharpeStrategy`, `EqualWeightStrategy`, `PerformanceMetrics` | FR-16…FR-19 |
-| `io` / `app` | Разбор параметров, запись CSV, сводка в stdout, коды возврата | `CliOptions`, `ResultWriter`, `main` | FR-20, FR-21, NFR-8 |
+| `io` / `app` | Разбор параметров, запись CSV, сводка в stdout, коды возврата | `CliOptions`, `ResultWriter`, утилита `mpt` (`src/main.cpp`) | FR-20, FR-21, NFR-8 |
 | `scripts/` (Python) | Загрузка данных с MOEX, графики | `download_prices.py`, `plot_frontier.py`, `plot_backtest.py` | FR-1, FR-22 |
 
 ## 3. Диаграмма классов (ядро)
@@ -176,9 +176,9 @@ sequenceDiagram
 
 ```
 include/quant/{data,stats,optim,backtest,io}/   заголовки
-src/{data,stats,optim,backtest,io}/             реализация
-src/main.cpp                                    консольная утилита
-tests/                                          unit-тесты (GoogleTest)
+src/{data,stats,optim,backtest,io}/             реализация библиотеки mpt_core
+src/main.cpp                                    консольная утилита mpt
+tests/, tests/data/                             unit-тесты (GoogleTest) и тестовые CSV
 bench/                                          бенчмарки (Google Benchmark)
 data/prices.csv, data/splits.csv                данные для воспроизводимого запуска
 scripts/                                        Python: загрузка данных, графики
@@ -189,12 +189,18 @@ Dockerfile
 
 ## 7. Трассировка требований
 
-Заполняется по мере реализации: требование → модуль → тест.
+Заполняется по мере реализации: требование → модуль → тест. ✅ — реализовано и покрыто тестами.
 
 | Требование | Модуль | Тест |
 |---|---|---|
-| FR-2…FR-5 | `data` | `test_data.cpp` |
-| FR-6…FR-8 | `stats` | `test_stats.cpp` |
+| FR-1 ✅ | `scripts/download_prices.py` | проверен на имитации ответов ISS; реальная выгрузка — вручную |
+| FR-2 ✅ | `data` | `ReadPriceCsv.*` в `test_data.cpp` |
+| FR-3 ✅ | `data` | `ForwardFill.*` |
+| FR-4 ✅ | `data` | `Splits.*` |
+| FR-5 ✅ | `data` | `Anomalies.DetectsUnadjustedSplit` |
+| FR-6 ✅ | `stats` | `Returns.*`, `Covariance.SampleMatchesNumpy` в `test_stats.cpp` |
+| FR-7 ✅ | `stats` | `Covariance.LedoitWolfMatchesSklearn`, `Covariance.LedoitWolfIsWellConditioned…` |
+| FR-8 ✅ | `stats` | `Covariance.FactoryByName` |
 | FR-9…FR-11 | `optim` | `test_analytic.cpp` |
 | FR-12…FR-14 | `optim` | `test_qp.cpp` |
 | FR-16…FR-18 | `backtest` | `test_backtest.cpp` |

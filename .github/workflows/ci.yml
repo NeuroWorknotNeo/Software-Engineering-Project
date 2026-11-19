@@ -17,14 +17,16 @@ jobs:
         run: cmake --build build -j
 
       - name: Run app
-        run: ./build/bs_app
+        run: |
+          ./build/mpt --help
+          ./build/mpt stats --prices tests/data/prices_ok.csv --cov ledoit-wolf
 
       - name: Test
         run: ctest --test-dir build --output-on-failure
 
       - name: Benchmark
         run: |
-          ./build/bench/bs_bench | tee bench.txt
+          ./build/bench/mpt_bench | tee bench.txt
           {
             echo '### Benchmark results'
             echo '```'

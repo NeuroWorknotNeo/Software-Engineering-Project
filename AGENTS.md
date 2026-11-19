@@ -11,17 +11,17 @@
 архитектура — `docs/ARCHITECTURE.md`. При реализации
 сверяйся с ними и обновляй матрицу трассировки в `docs/ARCHITECTURE.md`.
 
-Расчёт опционов по Блэку–Шоулзу (`quant::callPrice`, `quant::putPrice`) — временный
-пример кода из настройки инфраструктуры; он будет удалён при реализации проекта.
-Не развивай его дальше.
-
 ## Структура
 
-- `include/quant/` — публичные заголовки (`.hpp`).
-- `src/` — реализация библиотеки `black_scholes` и точка входа `main.cpp` (утилита `bs_app`).
-- `tests/` — unit-тесты на GoogleTest, по файлу `test_<модуль>.cpp`.
+- `include/quant/<модуль>/` — публичные заголовки (`.hpp`); модули: `data`, `stats`,
+  далее `optim`, `backtest`, `io` (см. `docs/ARCHITECTURE.md`).
+- `src/<модуль>/` — реализация библиотеки `mpt_core`; `src/main.cpp` — утилита `mpt`.
+- `tests/` — unit-тесты на GoogleTest, по файлу `test_<модуль>.cpp`; тестовые CSV — в `tests/data/`.
 - `bench/` — бенчмарки на Google Benchmark, по файлу `bench_<модуль>.cpp`.
-- `docs/Doxyfile` — конфигурация Doxygen.
+- `scripts/` — Python-скрипты (загрузка данных с MOEX, графики), только стандартная библиотека
+  для загрузки.
+- `data/` — цены (`prices.csv`) и сплиты (`splits.csv`).
+- `docs/` — требования, архитектура, `Doxyfile`.
 - `.github/workflows/` — CI (`ci.yml`) и публикация документации (`docs.yml`).
 
 ## Команды
@@ -34,8 +34,11 @@ cmake --build build -j
 # Тесты
 ctest --test-dir build --output-on-failure
 
+# Запуск
+./build/mpt stats --prices data/prices.csv --splits data/splits.csv
+
 # Бенчмарки
-./build/bench/bs_bench
+./build/bench/mpt_bench
 
 # Документация
 doxygen docs/Doxyfile
@@ -57,5 +60,8 @@ doxygen docs/Doxyfile
 - Перед завершением задачи собери проект и запусти тесты — всё должно проходить.
 - Не меняй CI/CD (`.github/workflows/`) без явного запроса.
 - Не удаляй и не отключай существующие тесты, чтобы «починить» сборку.
-- Не добавляй новые внешние зависимости без согласования.
+- Не добавляй новые внешние зависимости без согласования (сейчас: Eigen 3, GoogleTest,
+  Google Benchmark).
+- Математические модули (`stats`, `optim`) не работают с файлами и консолью; ввод-вывод —
+  только в `data`, `io` и `main.cpp`.
 - Не коммить артефакты сборки (`build/`, `docs/html/`).

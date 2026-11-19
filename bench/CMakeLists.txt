@@ -11,5 +11,5 @@ if(NOT benchmark_FOUND)
   FetchContent_MakeAvailable(googlebenchmark)
 endif()
 
-add_executable(bs_bench bench_black_scholes.cpp)
-target_link_libraries(bs_bench PRIVATE black_scholes benchmark::benchmark)
+add_executable(mpt_bench bench_covariance.cpp)
+target_link_libraries(mpt_bench PRIVATE mpt_core benchmark::benchmark)

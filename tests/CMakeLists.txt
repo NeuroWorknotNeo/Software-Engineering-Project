@@ -11,8 +11,10 @@ if(NOT GTest_FOUND)
   FetchContent_MakeAvailable(googletest)
 endif()
 
-add_executable(bs_tests test_black_scholes.cpp)
-target_link_libraries(bs_tests PRIVATE black_scholes GTest::gtest_main)
+add_executable(mpt_tests test_data.cpp test_stats.cpp)
+target_link_libraries(mpt_tests PRIVATE mpt_core GTest::gtest_main)
+target_compile_definitions(mpt_tests PRIVATE
+  MPT_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")
 
 include(GoogleTest)
-gtest_discover_tests(bs_tests)
+gtest_discover_tests(mpt_tests)
