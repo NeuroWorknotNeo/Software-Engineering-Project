@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['optionparams_0',['OptionParams',['../structquant_1_1OptionParams.html',1,'quant']]]
+  ['5_20архитектурные_20решения_0',['5. Архитектурные решения',['../md_docs_2ARCHITECTURE.html#autotoc_md26',1,'']]],
+  ['5_20ограничения_20модели_20сознательно_20не_20делаем_1',['5. Ограничения модели (сознательно не делаем)',['../md_docs_2REQUIREMENTS.html#autotoc_md20',1,'']]],
+  ['5_20параллельность_20бэктеста_20c_2',['ADR-5. Параллельность бэктеста (C)',['../md_docs_2ARCHITECTURE.html#autotoc_md31',1,'']]]
 ];

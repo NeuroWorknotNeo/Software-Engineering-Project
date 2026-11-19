@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['putprice_0',['putPrice',['../namespacequant.html#a2de8584b3bc6eddc805cea5e3541a9df',1,'quant']]]
+  ['ledoitwolf_0',['ledoitWolf',['../namespacequant.html#a00f3deecb650ebaa9c313fd34e3a0173',1,'quant']]]
 ];

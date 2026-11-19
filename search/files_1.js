@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]]
+  ['covariance_2ecpp_0',['covariance.cpp',['../covariance_8cpp.html',1,'']]],
+  ['covariance_2ehpp_1',['covariance.hpp',['../covariance_8hpp.html',1,'']]]
 ];

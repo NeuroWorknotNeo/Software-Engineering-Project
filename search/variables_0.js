@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maturity_0',['maturity',['../structquant_1_1OptionParams.html#afe399f71358f6742caa35f34a3a32661',1,'quant::OptionParams']]]
+  ['covariance_0',['covariance',['../structquant_1_1LedoitWolfResult.html#a11b051c2e190eaf8e864c12fdde5b62c',1,'quant::LedoitWolfResult']]]
 ];

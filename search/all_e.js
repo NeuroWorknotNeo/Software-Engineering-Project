@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['сборка_0',['Сборка',['../index.html#autotoc_md3',1,'']]],
-  ['структура_20проекта_1',['Структура проекта',['../index.html#autotoc_md2',1,'']]]
+  ['ktradingdaysperyear_0',['kTradingDaysPerYear',['../namespacequant.html#a3f0a90b213ab7a48bacb375837ecc248',1,'quant']]]
 ];

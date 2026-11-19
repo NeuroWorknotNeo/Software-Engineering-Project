@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['black_5fscholes_2ecpp_0',['black_scholes.cpp',['../black__scholes_8cpp.html',1,'']]],
-  ['black_5fscholes_2ehpp_1',['black_scholes.hpp',['../black__scholes_8hpp.html',1,'']]]
+  ['0_0',['Оптимизация без коротких продаж (веса ≥ 0)',['../md_docs_2REQUIREMENTS.html#autotoc_md16',1,'']]]
 ];

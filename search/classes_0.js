@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['optionparams_0',['OptionParams',['../structquant_1_1OptionParams.html',1,'quant']]]
+  ['covarianceestimator_0',['CovarianceEstimator',['../classquant_1_1CovarianceEstimator.html',1,'quant']]]
 ];

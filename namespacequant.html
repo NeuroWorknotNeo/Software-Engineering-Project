@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Software-Engineering-Project: quant Namespace Reference</title>
+<title>Markowitz Portfolio Optimizer: quant Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,9 +26,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Software-Engineering-Project
+   <div id="projectname">Markowitz Portfolio Optimizer
    </div>
-   <div id="projectbrief">Тема не утверждена: настройка инфраструктуры (пример — формула Блэка–Шоулза)</div>
+   <div id="projectbrief">Оптимизатор портфеля по Марковицу: эффективная граница и бэктест</div>
   </td>
  </tr>
  </tbody>
@@ -95,108 +95,367 @@ $(function(){initNavTree('namespacequant.html','',''); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:OptionParams" id="r_OptionParams"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1OptionParams.html">OptionParams</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Параметры европейского опциона.  <a href="structquant_1_1OptionParams.html#details">More...</a><br /></td></tr>
+<tr class="memitem:PriceTable" id="r_PriceTable"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1PriceTable.html">PriceTable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Дневные цены закрытия нескольких бумаг на общем календаре.  <a href="structquant_1_1PriceTable.html#details">More...</a><br /></td></tr>
+<tr class="memitem:Split" id="r_Split"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1Split.html">Split</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сплит бумаги: с даты <code class="param">date</code> одна старая акция превращается в <code class="param">ratio</code> новых.  <a href="structquant_1_1Split.html#details">More...</a><br /></td></tr>
+<tr class="memitem:PriceAnomaly" id="r_PriceAnomaly"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1PriceAnomaly.html">PriceAnomaly</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Подозрительное изменение цены за один торговый день.  <a href="structquant_1_1PriceAnomaly.html#details">More...</a><br /></td></tr>
+<tr class="memitem:CovarianceEstimator" id="r_CovarianceEstimator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1CovarianceEstimator.html">CovarianceEstimator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Интерфейс оценки ковариационной матрицы (паттерн Strategy).  <a href="classquant_1_1CovarianceEstimator.html#details">More...</a><br /></td></tr>
+<tr class="memitem:SampleCovariance" id="r_SampleCovariance"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1SampleCovariance.html">SampleCovariance</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Несмещённая выборочная ковариация (делитель T − 1).  <a href="classquant_1_1SampleCovariance.html#details">More...</a><br /></td></tr>
+<tr class="memitem:LedoitWolfResult" id="r_LedoitWolfResult"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1LedoitWolfResult.html">LedoitWolfResult</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Результат оценки Ledoit–Wolf.  <a href="structquant_1_1LedoitWolfResult.html#details">More...</a><br /></td></tr>
+<tr class="memitem:LedoitWolfCovariance" id="r_LedoitWolfCovariance"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1LedoitWolfCovariance.html">LedoitWolfCovariance</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через <a class="el" href="#a00f3deecb650ebaa9c313fd34e3a0173" title="Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.">ledoitWolf()</a>.  <a href="classquant_1_1LedoitWolfCovariance.html#details">More...</a><br /></td></tr>
+<tr class="memitem:ReturnMatrix" id="r_ReturnMatrix"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1ReturnMatrix.html">ReturnMatrix</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Дневные доходности бумаг.  <a href="structquant_1_1ReturnMatrix.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2f6bf8b6aa4a7c133bc712196bace7cb" id="r_a2f6bf8b6aa4a7c133bc712196bace7cb"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f6bf8b6aa4a7c133bc712196bace7cb">normalCdf</a> (double x)</td></tr>
-<tr class="memdesc:a2f6bf8b6aa4a7c133bc712196bace7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция распределения стандартного нормального закона N(x).  <br /></td></tr>
-<tr class="memitem:a2a5c85edf4c3d5876425543a7f30008e" id="r_a2a5c85edf4c3d5876425543a7f30008e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a5c85edf4c3d5876425543a7f30008e">callPrice</a> (const <a class="el" href="structquant_1_1OptionParams.html">OptionParams</a> &amp;p)</td></tr>
-<tr class="memdesc:a2a5c85edf4c3d5876425543a7f30008e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Цена европейского опциона Call.  <br /></td></tr>
-<tr class="memitem:a2de8584b3bc6eddc805cea5e3541a9df" id="r_a2de8584b3bc6eddc805cea5e3541a9df"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2de8584b3bc6eddc805cea5e3541a9df">putPrice</a> (const <a class="el" href="structquant_1_1OptionParams.html">OptionParams</a> &amp;p)</td></tr>
-<tr class="memdesc:a2de8584b3bc6eddc805cea5e3541a9df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Цена европейского опциона Put.  <br /></td></tr>
+<tr class="memitem:a2d25720bd7ae9d0024b233e63b8e3ca5" id="r_a2d25720bd7ae9d0024b233e63b8e3ca5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structquant_1_1PriceTable.html">PriceTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d25720bd7ae9d0024b233e63b8e3ca5">readPriceCsv</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a2d25720bd7ae9d0024b233e63b8e3ca5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает цены из CSV в широком формате <span class="tt">date,TICKER1,TICKER2,...</span>.  <br /></td></tr>
+<tr class="memitem:a93d08f7624525f54c26899d179bd2a97" id="r_a93d08f7624525f54c26899d179bd2a97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93d08f7624525f54c26899d179bd2a97">forwardFill</a> (<a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;table)</td></tr>
+<tr class="memdesc:a93d08f7624525f54c26899d179bd2a97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заполняет пропуски последней известной ценой (forward fill).  <br /></td></tr>
+<tr class="memitem:a27a2137ce6dc2ebcf6ee723479809c29" id="r_a27a2137ce6dc2ebcf6ee723479809c29"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structquant_1_1Split.html">Split</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27a2137ce6dc2ebcf6ee723479809c29">readSplitsCsv</a> (const std::string &amp;path)</td></tr>
+<tr class="memdesc:a27a2137ce6dc2ebcf6ee723479809c29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает список сплитов из CSV <span class="tt">date,ticker,ratio</span>.  <br /></td></tr>
+<tr class="memitem:a52e05d2fb9aca4d1010425c87ef1c31a" id="r_a52e05d2fb9aca4d1010425c87ef1c31a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52e05d2fb9aca4d1010425c87ef1c31a">applySplits</a> (<a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;table, const std::vector&lt; <a class="el" href="structquant_1_1Split.html">Split</a> &gt; &amp;splits)</td></tr>
+<tr class="memdesc:a52e05d2fb9aca4d1010425c87ef1c31a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Пересчитывает цены до даты сплита: делит их на ratio.  <br /></td></tr>
+<tr class="memitem:a8658696e4887ade47ec304e8d56524e5" id="r_a8658696e4887ade47ec304e8d56524e5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structquant_1_1PriceAnomaly.html">PriceAnomaly</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8658696e4887ade47ec304e8d56524e5">findAnomalies</a> (const <a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;table, double threshold)</td></tr>
+<tr class="memdesc:a8658696e4887ade47ec304e8d56524e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Находит дневные изменения цены, по модулю превышающие порог.  <br /></td></tr>
+<tr class="memitem:a00f3deecb650ebaa9c313fd34e3a0173" id="r_a00f3deecb650ebaa9c313fd34e3a0173"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structquant_1_1LedoitWolfResult.html">LedoitWolfResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00f3deecb650ebaa9c313fd34e3a0173">ledoitWolf</a> (const Eigen::MatrixXd &amp;returns)</td></tr>
+<tr class="memdesc:a00f3deecb650ebaa9c313fd34e3a0173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.  <br /></td></tr>
+<tr class="memitem:a40788442686c56a94e0ced58f74e2be9" id="r_a40788442686c56a94e0ced58f74e2be9"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classquant_1_1CovarianceEstimator.html">CovarianceEstimator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40788442686c56a94e0ced58f74e2be9">makeCovarianceEstimator</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:a40788442686c56a94e0ced58f74e2be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт оценщик по имени.  <br /></td></tr>
+<tr class="memitem:acb2b2c1fbcca7afc28343ef0fb2611ae" id="r_acb2b2c1fbcca7afc28343ef0fb2611ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structquant_1_1ReturnMatrix.html">ReturnMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb2b2c1fbcca7afc28343ef0fb2611ae">simpleReturns</a> (const <a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;prices)</td></tr>
+<tr class="memdesc:acb2b2c1fbcca7afc28343ef0fb2611ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Простые дневные доходности r_t = P_t / P_{t−1} − 1.  <br /></td></tr>
+<tr class="memitem:a29b58eb3c8b76dc0fffa6690dfccced9" id="r_a29b58eb3c8b76dc0fffa6690dfccced9"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29b58eb3c8b76dc0fffa6690dfccced9">meanReturns</a> (const Eigen::MatrixXd &amp;returns)</td></tr>
+<tr class="memdesc:a29b58eb3c8b76dc0fffa6690dfccced9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Средняя доходность каждой бумаги (по столбцам).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a3f0a90b213ab7a48bacb375837ecc248" id="r_a3f0a90b213ab7a48bacb375837ecc248"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f0a90b213ab7a48bacb375837ecc248">kTradingDaysPerYear</a> = 252.0</td></tr>
+<tr class="memdesc:a3f0a90b213ab7a48bacb375837ecc248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Число торговых дней в году для перевода дневных величин в годовые.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a2a5c85edf4c3d5876425543a7f30008e" name="a2a5c85edf4c3d5876425543a7f30008e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a5c85edf4c3d5876425543a7f30008e">&#9670;&#160;</a></span>callPrice()</h2>
+<a id="a52e05d2fb9aca4d1010425c87ef1c31a" name="a52e05d2fb9aca4d1010425c87ef1c31a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e05d2fb9aca4d1010425c87ef1c31a">&#9670;&#160;</a></span>applySplits()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double quant::callPrice </td>
+          <td class="memname">void quant::applySplits </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structquant_1_1OptionParams.html">OptionParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structquant_1_1Split.html">Split</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>splits</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Цена европейского опциона Call. </p>
-<p>C = S·N(d1) − K·e^(−rT)·N(d2), где d1 = (ln(S/K) + (r + σ²/2)·T) / (σ·√T), d2 = d1 − σ·√T.</p>
+<p>Пересчитывает цены до даты сплита: делит их на ratio. </p>
+<p>Сплиты по тикерам, которых нет в таблице, пропускаются.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p</td><td>Параметры опциона. </td></tr>
+    <tr><td class="paramname">table</td><td>Таблица цен, изменяется на месте. </td></tr>
+    <tr><td class="paramname">splits</td><td>Список сплитов. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Справедливая цена Call. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>если S, K, σ или T не положительны. </td></tr>
+    <tr><td class="paramname">std::invalid_argument</td><td>если ratio ≤ 0. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="a2f6bf8b6aa4a7c133bc712196bace7cb" name="a2f6bf8b6aa4a7c133bc712196bace7cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f6bf8b6aa4a7c133bc712196bace7cb">&#9670;&#160;</a></span>normalCdf()</h2>
+<a id="a8658696e4887ade47ec304e8d56524e5" name="a8658696e4887ade47ec304e8d56524e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8658696e4887ade47ec304e8d56524e5">&#9670;&#160;</a></span>findAnomalies()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double quant::normalCdf </td>
+          <td class="memname">std::vector&lt; <a class="el" href="structquant_1_1PriceAnomaly.html">PriceAnomaly</a> &gt; quant::findAnomalies </td>
           <td>(</td>
-          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>table</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>threshold</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Функция распределения стандартного нормального закона N(x). </p>
+<p>Находит дневные изменения цены, по модулю превышающие порог. </p>
+<p>Типичная причина — неучтённый сплит или ошибка в данных.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>Аргумент. </td></tr>
+    <tr><td class="paramname">table</td><td>Таблица цен без пропусков. </td></tr>
+    <tr><td class="paramname">threshold</td><td>Порог для |доходности|, например 0.5 (50%). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Вероятность P(Z &lt;= x), где Z ~ N(0, 1). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Список аномалий в порядке дат. </dd></dl>
 
 </div>
 </div>
-<a id="a2de8584b3bc6eddc805cea5e3541a9df" name="a2de8584b3bc6eddc805cea5e3541a9df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2de8584b3bc6eddc805cea5e3541a9df">&#9670;&#160;</a></span>putPrice()</h2>
+<a id="a93d08f7624525f54c26899d179bd2a97" name="a93d08f7624525f54c26899d179bd2a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93d08f7624525f54c26899d179bd2a97">&#9670;&#160;</a></span>forwardFill()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double quant::putPrice </td>
+          <td class="memname">void quant::forwardFill </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structquant_1_1OptionParams.html">OptionParams</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>table</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Цена европейского опциона Put. </p>
-<p>P = K·e^(−rT)·N(−d2) − S·N(−d1).</p>
+<p>Заполняет пропуски последней известной ценой (forward fill). </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">p</td><td>Параметры опциона. </td></tr>
+    <tr><td class="paramname">table</td><td>Таблица цен, изменяется на месте. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Справедливая цена Put. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>если S, K, σ или T не положительны. </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>если у бумаги нет цены в первый день таблицы. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a00f3deecb650ebaa9c313fd34e3a0173" name="a00f3deecb650ebaa9c313fd34e3a0173"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00f3deecb650ebaa9c313fd34e3a0173">&#9670;&#160;</a></span>ledoitWolf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structquant_1_1LedoitWolfResult.html">LedoitWolfResult</a> quant::ledoitWolf </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;</td>          <td class="paramname"><span class="paramname"><em>returns</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице. </p>
+<p>Σ = (1 − δ)·S + δ·m·I, где S — выборочная ковариация (делитель T), m = tr(S) / N, а δ выбирается так, чтобы минимизировать ожидаемую ошибку (Ledoit, Wolf, 2004, "A well-conditioned estimator for large-dimensional
+covariance matrices"). Формулы совпадают с sklearn.covariance.ledoit_wolf.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">returns</td><td>Доходности T × N, T ≥ 2. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Оценка и коэффициент сжатия. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если T &lt; 2. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a40788442686c56a94e0ced58f74e2be9" name="a40788442686c56a94e0ced58f74e2be9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40788442686c56a94e0ced58f74e2be9">&#9670;&#160;</a></span>makeCovarianceEstimator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classquant_1_1CovarianceEstimator.html">CovarianceEstimator</a> &gt; quant::makeCovarianceEstimator </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Создаёт оценщик по имени. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>"sample" или "ledoit-wolf" (также "lw"). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Оценщик. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>для неизвестного имени. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a29b58eb3c8b76dc0fffa6690dfccced9" name="a29b58eb3c8b76dc0fffa6690dfccced9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29b58eb3c8b76dc0fffa6690dfccced9">&#9670;&#160;</a></span>meanReturns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd quant::meanReturns </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;</td>          <td class="paramname"><span class="paramname"><em>returns</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Средняя доходность каждой бумаги (по столбцам). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">returns</td><td>Матрица доходностей T × N, T ≥ 1. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Вектор средних длины N. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если матрица пустая. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d25720bd7ae9d0024b233e63b8e3ca5" name="a2d25720bd7ae9d0024b233e63b8e3ca5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d25720bd7ae9d0024b233e63b8e3ca5">&#9670;&#160;</a></span>readPriceCsv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> quant::readPriceCsv </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает цены из CSV в широком формате <span class="tt">date,TICKER1,TICKER2,...</span>. </p>
+<p>Пустая ячейка означает отсутствие цены (NaN).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Путь к файлу. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Таблица цен (пропуски не заполняются). </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>если файл не открывается или формат нарушен: неверное число столбцов, некорректная дата, даты не по возрастанию, цена не число или ≤ 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a27a2137ce6dc2ebcf6ee723479809c29" name="a27a2137ce6dc2ebcf6ee723479809c29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27a2137ce6dc2ebcf6ee723479809c29">&#9670;&#160;</a></span>readSplitsCsv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structquant_1_1Split.html">Split</a> &gt; quant::readSplitsCsv </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает список сплитов из CSV <span class="tt">date,ticker,ratio</span>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Путь к файлу. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Список сплитов. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>если файл не открывается или формат нарушен. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="acb2b2c1fbcca7afc28343ef0fb2611ae" name="acb2b2c1fbcca7afc28343ef0fb2611ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb2b2c1fbcca7afc28343ef0fb2611ae">&#9670;&#160;</a></span>simpleReturns()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structquant_1_1ReturnMatrix.html">ReturnMatrix</a> quant::simpleReturns </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>prices</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Простые дневные доходности r_t = P_t / P_{t−1} − 1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prices</td><td>Таблица цен без пропусков (см. <a class="el" href="#a93d08f7624525f54c26899d179bd2a97" title="Заполняет пропуски последней известной ценой (forward fill).">forwardFill()</a>). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Доходности; дней на один меньше, чем в таблице цен. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если в таблице меньше двух дней или есть пропуски. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a3f0a90b213ab7a48bacb375837ecc248" name="a3f0a90b213ab7a48bacb375837ecc248"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f0a90b213ab7a48bacb375837ecc248">&#9670;&#160;</a></span>kTradingDaysPerYear</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double quant::kTradingDaysPerYear = 252.0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Число торговых дней в году для перевода дневных величин в годовые. </p>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['volatility_0',['volatility',['../structquant_1_1OptionParams.html#a44515f15e2d247200028840612060008',1,'quant::OptionParams']]]
+  ['prices_0',['prices',['../structquant_1_1PriceTable.html#a1f9d36a887bb1ef3f6f3e45034a5647e',1,'quant::PriceTable']]]
 ];

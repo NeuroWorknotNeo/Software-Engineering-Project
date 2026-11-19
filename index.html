@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Software-Engineering-Project: Software-Engineering-Project</title>
+<title>Markowitz Portfolio Optimizer: Оптимизатор портфеля по Марковицу</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,9 +26,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Software-Engineering-Project
+   <div id="projectname">Markowitz Portfolio Optimizer
    </div>
-   <div id="projectbrief">Тема не утверждена: настройка инфраструктуры (пример — формула Блэка–Шоулза)</div>
+   <div id="projectbrief">Оптимизатор портфеля по Марковицу: эффективная граница и бэктест</div>
   </td>
  </tr>
  </tbody>
@@ -89,63 +89,70 @@ $(function(){initNavTree('index.html','',''); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">Software-Engineering-Project </div></div>
+  <div class="headertitle"><div class="title">Оптимизатор портфеля по Марковицу </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="md_README"></a></p>
 <p><a href="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/ci.yml"><img src="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/ci.yml/badge.svg" alt="CI" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/docs.yml"><img src="https://github.com/NeuroWorknotNeo/Software-Engineering-Project/actions/workflows/docs.yml/badge.svg" alt="Docs" style="pointer-events: none;" class="inline"/></a></p>
-<p>Итоговый проект курса «Программная инженерия и C++ для количественного анализа и алгоритмической торговли».</p>
-<blockquote class="doxtable">
-<p><b>Тема проекта:</b> «Оптимизатор портфеля по Марковицу: эффективная граница и бэктест с ребалансировкой» (утверждена 16.11.2026). Проект в разработке: требования, архитектура. Расчёт опционов по Блэку–Шоулзу ниже — временный пример кода из настройки инфраструктуры, он будет заменён. </p>
-</blockquote>
-<p><b>Документация:</b> <a href="https://neuroworknotneo.github.io/Software-Engineering-Project/">https://neuroworknotneo.github.io/Software-Engineering-Project/</a></p>
+<p>Итоговый проект курса «Программная инженерия и C++ для количественного анализа и алгоритмической торговли»: <b>«Оптимизатор портфеля по Марковицу: эффективная граница и бэктест с ребалансировкой»</b>.</p>
+<p><b>Документация API:</b> <a href="https://neuroworknotneo.github.io/Software-Engineering-Project/">https://neuroworknotneo.github.io/Software-Engineering-Project/</a> · <b>Требования:</b> <a class="el" href="md_docs_2REQUIREMENTS.html">docs/REQUIREMENTS.md</a> · <b>Архитектура:</b> <a class="el" href="md_docs_2ARCHITECTURE.html">docs/ARCHITECTURE.md</a></p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
 Что делает программа</h1>
-<p><span class="tt">bs_app</span> считает справедливые цены европейских опционов Call и Put по формуле Блэка–Шоулза:</p>
-<ul>
-<li>C = S·N(d1) − K·e^(−rT)·N(d2)</li>
-<li>P = K·e^(−rT)·N(−d2) − S·N(−d1)</li>
-<li>d1 = (ln(S/K) + (r + σ²/2)·T) / (σ·√T), d2 = d1 − σ·√T</li>
-</ul>
-<p>где S — цена базового актива, K — страйк, r — безрисковая ставка, σ — волатильность, T — время до экспирации в годах, N — функция распределения стандартного нормального закона.</p>
-<div class="fragment"><div class="line">./build/bs_app                       # пример: S=100 K=100 r=0.05 sigma=0.2 T=1</div>
-<div class="line">./build/bs_app 42 40 0.1 0.2 0.5     # свои параметры: S K r sigma T</div>
-</div><!-- fragment --><div class="fragment"><div class="line">S=42.0000 K=40.0000 r=0.1000 sigma=0.2000 T=0.5000</div>
-<div class="line">Call: 4.7594</div>
-<div class="line">Put:  0.8086</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
-Структура проекта</h1>
-<div class="fragment"><div class="line">.</div>
-<div class="line">├── include/quant/      # публичные заголовки библиотеки</div>
-<div class="line">├── src/                # реализация библиотеки и main.cpp</div>
-<div class="line">├── tests/              # unit-тесты (GoogleTest)</div>
-<div class="line">├── bench/              # бенчмарки (Google Benchmark)</div>
-<div class="line">├── docs/Doxyfile       # конфигурация Doxygen</div>
-<div class="line">├── .github/workflows/  # CI/CD (GitHub Actions)</div>
-<div class="line">├── CMakeLists.txt</div>
-<div class="line">├── AGENTS.md           # инструкции для ИИ-агентов</div>
-<div class="line">└── CLAUDE.md           # подключает AGENTS.md для Claude Code</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+<p>Консольная утилита <span class="tt">mpt</span> по историческим ценам акций Московской биржи:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Команда  </th><th class="markdownTableHeadNone">Что делает  </th><th class="markdownTableHeadNone">Статус  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">stats</span>  </td><td class="markdownTableBodyNone">Годовые средние доходности, волатильности и ковариационная матрица (выборочная или Ledoit–Wolf); корректировка на сплиты, поиск аномалий в данных  </td><td class="markdownTableBodyNone">✅ готово  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">optimize</span>  </td><td class="markdownTableBodyNone">Портфели минимальной дисперсии и максимального Шарпа, с короткими продажами и без  </td><td class="markdownTableBodyNone">🚧 в разработке  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><span class="tt">frontier</span>  </td><td class="markdownTableBodyNone">Эффективная граница  </td><td class="markdownTableBodyNone">🚧 в разработке  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><span class="tt">backtest</span>  </td><td class="markdownTableBodyNone">Скользящее окно, ежемесячная ребалансировка, сравнение с портфелем 1/N  </td><td class="markdownTableBodyNone">🚧 в разработке  </td></tr>
+</table>
+<p>Данные: 20 ликвидных акций из индекса IMOEX за 2019–2025 годы (список — в <a class="el" href="md_docs_2REQUIREMENTS.html">docs/REQUIREMENTS.md</a>).</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
 Сборка</h1>
-<p>Нужны CMake ≥ 3.20 и компилятор с поддержкой C++20 (GCC ≥ 10 или Clang ≥ 12). GoogleTest и Google Benchmark берутся из системы, если установлены, иначе CMake скачает их сам.</p>
+<p>Нужны CMake ≥ 3.20 и компилятор C++20 (GCC ≥ 11 или Clang ≥ 14). Eigen 3, GoogleTest и Google Benchmark берутся из системы, если установлены, иначе CMake скачает их сам.</p>
 <div class="fragment"><div class="line">cmake -S . -B build -DCMAKE_BUILD_TYPE=Release</div>
 <div class="line">cmake --build build -j</div>
-<div class="line">./build/bs_app</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
-Тесты</h1>
-<div class="fragment"><div class="line">ctest --test-dir build --output-on-failure</div>
-</div><!-- fragment --><p>Тесты сверяют цены с эталонными значениями (в том числе с примером из учебника Hull), проверяют паритет Put–Call и обработку некорректных параметров.</p>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Данные</h1>
+<p>Цены выгружаются с MOEX ISS скриптом на Python (только стандартная библиотека):</p>
+<div class="fragment"><div class="line">python3 scripts/download_prices.py --out data/prices.csv</div>
+</div><!-- fragment --><p>Формат — широкий CSV: <span class="tt">date,SBER,GAZP,...</span>, пустая ячейка — день без торгов. Сплиты перечисляются в <span class="tt">data/splits.csv</span> в формате <span class="tt">date,ticker,ratio</span>, где ratio — число новых акций на одну старую.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Запуск</h1>
+<div class="fragment"><div class="line">./build/mpt stats --prices data/prices.csv --splits data/splits.csv --cov ledoit-wolf</div>
+<div class="line">./build/mpt --help</div>
+</div><!-- fragment --><p>Если в данных есть дневное изменение цены больше 50% (обычно неучтённый сплит), утилита выводит предупреждение с датой и тикером.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
-Бенчмарки</h1>
-<div class="fragment"><div class="line">./build/bench/bs_bench</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Тесты и бенчмарки</h1>
+<div class="fragment"><div class="line">ctest --test-dir build --output-on-failure</div>
+<div class="line">./build/bench/mpt_bench</div>
+</div><!-- fragment --><p>Тесты сверяют результаты с эталонами из numpy и scikit-learn и проверяют обработку некорректных данных. Бенчмарки измеряют скорость оценки ковариации.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 Документация</h1>
 <div class="fragment"><div class="line">doxygen docs/Doxyfile   # результат в docs/html/index.html</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Структура проекта</h1>
+<div class="fragment"><div class="line">.</div>
+<div class="line">├── include/quant/      # публичные заголовки: data/, stats/</div>
+<div class="line">├── src/                # реализация библиотеки mpt_core и утилита mpt (main.cpp)</div>
+<div class="line">├── tests/              # unit-тесты (GoogleTest) и тестовые CSV</div>
+<div class="line">├── bench/              # бенчмарки (Google Benchmark)</div>
+<div class="line">├── scripts/            # Python: загрузка данных с MOEX</div>
+<div class="line">├── data/               # цены и сплиты</div>
+<div class="line">├── docs/               # требования, архитектура, Doxyfile</div>
+<div class="line">├── .github/workflows/  # CI/CD (GitHub Actions)</div>
+<div class="line">├── AGENTS.md           # инструкции для ИИ-агентов</div>
+<div class="line">└── CLAUDE.md           # подключает AGENTS.md для Claude Code</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 CI/CD</h1>
 <ul>
-<li><b>CI</b> (<span class="tt">.github/workflows/ci.yml</span>) — на каждый push и pull request: сборка, запуск тестов и бенчмарков; результаты бенчмарка видны в логе и в summary запуска.</li>
-<li><b>Docs</b> (<span class="tt">.github/workflows/docs.yml</span>) — на каждый push в <span class="tt"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></span>: генерация документации Doxygen и публикация на GitHub Pages (ветка <span class="tt">gh-pages</span>). </li>
+<li><b>CI</b> (<span class="tt">.github/workflows/ci.yml</span>) — на каждый push и pull request: сборка, запуск утилиты, тесты, бенчмарки (результаты — в логе и в summary запуска).</li>
+<li><b>Docs</b> (<span class="tt">.github/workflows/docs.yml</span>) — на каждый push в <span class="tt"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></span>: документация Doxygen публикуется на GitHub Pages. </li>
 </ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"></a>

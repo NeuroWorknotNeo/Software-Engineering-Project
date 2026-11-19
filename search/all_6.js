@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['project_0',['Software-Engineering-Project',['../index.html',1,'']]],
-  ['putprice_1',['putPrice',['../namespacequant.html#a2de8584b3bc6eddc805cea5e3541a9df',1,'quant']]]
+  ['6_20обработка_20ошибок_0',['ADR-6. Обработка ошибок',['../md_docs_2ARCHITECTURE.html#autotoc_md32',1,'']]],
+  ['6_20целевая_20структура_20репозитория_1',['6. Целевая структура репозитория',['../md_docs_2ARCHITECTURE.html#autotoc_md33',1,'']]]
 ];

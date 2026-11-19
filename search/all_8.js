@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rate_0',['rate',['../structquant_1_1OptionParams.html#ace112c700b1a2a77ec668871613e1586',1,'quant::OptionParams']]],
-  ['readme_2emd_1',['README.md',['../README_8md.html',1,'']]]
+  ['9…fr_2011_0',['ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)',['../md_docs_2ARCHITECTURE.html#autotoc_md30',1,'']]]
 ];

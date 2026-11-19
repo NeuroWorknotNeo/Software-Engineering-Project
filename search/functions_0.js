@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['callprice_0',['callPrice',['../namespacequant.html#a2a5c85edf4c3d5876425543a7f30008e',1,'quant']]]
+  ['applysplits_0',['applySplits',['../namespacequant.html#a52e05d2fb9aca4d1010425c87ef1c31a',1,'quant']]]
 ];

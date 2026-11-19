@@ -1,6 +1,11 @@
 var searchData=
 [
-  ['software_20engineering_20project_0',['Software-Engineering-Project',['../index.html',1,'']]],
-  ['spot_1',['spot',['../structquant_1_1OptionParams.html#a6f058ffc685c768d51bf328da6dd644c',1,'quant::OptionParams']]],
-  ['strike_2',['strike',['../structquant_1_1OptionParams.html#aa73c17e938ac44f3006835c9aa6af348',1,'quant::OptionParams']]]
+  ['adr_201_20метод_20оптимизации_20без_20коротких_20продаж_20fr_2012…fr_2014_0',['ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)',['../md_docs_2ARCHITECTURE.html#autotoc_md27',1,'']]],
+  ['adr_202_20линейная_20алгебра_1',['ADR-2. Линейная алгебра',['../md_docs_2ARCHITECTURE.html#autotoc_md28',1,'']]],
+  ['adr_203_20хранение_20данных_2',['ADR-3. Хранение данных',['../md_docs_2ARCHITECTURE.html#autotoc_md29',1,'']]],
+  ['adr_204_20аналитическое_20решение_20с_20короткими_20продажами_20fr_209…fr_2011_3',['ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)',['../md_docs_2ARCHITECTURE.html#autotoc_md30',1,'']]],
+  ['adr_205_20параллельность_20бэктеста_20c_4',['ADR-5. Параллельность бэктеста (C)',['../md_docs_2ARCHITECTURE.html#autotoc_md31',1,'']]],
+  ['adr_206_20обработка_20ошибок_5',['ADR-6. Обработка ошибок',['../md_docs_2ARCHITECTURE.html#autotoc_md32',1,'']]],
+  ['applysplits_6',['applySplits',['../namespacequant.html#a52e05d2fb9aca4d1010425c87ef1c31a',1,'quant']]],
+  ['architecture_2emd_7',['ARCHITECTURE.md',['../ARCHITECTURE_8md.html',1,'']]]
 ];

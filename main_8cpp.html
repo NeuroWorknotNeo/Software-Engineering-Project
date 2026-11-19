@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.15.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Software-Engineering-Project: src/main.cpp File Reference</title>
+<title>Markowitz Portfolio Optimizer: src/main.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,9 +26,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Software-Engineering-Project
+   <div id="projectname">Markowitz Portfolio Optimizer
    </div>
-   <div id="projectbrief">Тема не утверждена: настройка инфраструктуры (пример — формула Блэка–Шоулза)</div>
+   <div id="projectbrief">Оптимизатор портфеля по Марковицу: эффективная граница и бэктест</div>
   </td>
  </tr>
  </tbody>
@@ -93,22 +93,28 @@ $(function(){initNavTree('main_8cpp.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>Консольная утилита: считает цены Call и Put по Блэку–Шоулзу.  
+<p>Консольная утилита mpt: портфельный анализ по Марковицу.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;cstdlib&gt;</code><br />
+<div class="textblock"><code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;exception&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iomanip&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &quot;<a class="el" href="black__scholes_8hpp_source.html">quant/black_scholes.hpp</a>&quot;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="price__table_8hpp_source.html">quant/data/price_table.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="covariance_8hpp_source.html">quant/stats/covariance.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="returns_8hpp_source.html">quant/stats/returns.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Консольная утилита: считает цены Call и Put по Блэку–Шоулзу. </p>
-<p>Использование: bs_app [S K r sigma T] Без аргументов считает пример S=100, K=100, r=0.05, sigma=0.2, T=1. </p>
+<div class="textblock"><p>Консольная утилита mpt: портфельный анализ по Марковицу. </p>
+<p>Сейчас реализована команда <span class="tt">stats</span>; <span class="tt">optimize</span>, <span class="tt">frontier</span> и <span class="tt">backtest</span> в разработке (см. <a class="el" href="REQUIREMENTS_8md.html">docs/REQUIREMENTS.md</a>). </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
