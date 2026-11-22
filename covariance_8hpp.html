@@ -110,7 +110,7 @@ Classes</h2></td></tr>
 <tr class="memitem:quant_3A_3ALedoitWolfResult" id="r_quant_3A_3ALedoitWolfResult"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1LedoitWolfResult.html">quant::LedoitWolfResult</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Результат оценки Ledoit–Wolf.  <a href="structquant_1_1LedoitWolfResult.html#details">More...</a><br /></td></tr>
 <tr class="memitem:quant_3A_3ALedoitWolfCovariance" id="r_quant_3A_3ALedoitWolfCovariance"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1LedoitWolfCovariance.html">quant::LedoitWolfCovariance</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через <a class="el" href="namespacequant.html#a00f3deecb650ebaa9c313fd34e3a0173" title="Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.">ledoitWolf()</a>.  <a href="classquant_1_1LedoitWolfCovariance.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через <a class="el" href="namespacequant.html#a1442d580d60a43a6ff31bc2af4ca4e06" title="Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.">EstimateLedoitWolf()</a>.  <a href="classquant_1_1LedoitWolfCovariance.html#details">More...</a><br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -118,10 +118,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a00f3deecb650ebaa9c313fd34e3a0173" id="r_a00f3deecb650ebaa9c313fd34e3a0173"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structquant_1_1LedoitWolfResult.html">LedoitWolfResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#a00f3deecb650ebaa9c313fd34e3a0173">quant::ledoitWolf</a> (const Eigen::MatrixXd &amp;returns)</td></tr>
-<tr class="memdesc:a00f3deecb650ebaa9c313fd34e3a0173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.  <br /></td></tr>
-<tr class="memitem:a40788442686c56a94e0ced58f74e2be9" id="r_a40788442686c56a94e0ced58f74e2be9"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classquant_1_1CovarianceEstimator.html">CovarianceEstimator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#a40788442686c56a94e0ced58f74e2be9">quant::makeCovarianceEstimator</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a40788442686c56a94e0ced58f74e2be9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт оценщик по имени.  <br /></td></tr>
+<tr class="memitem:a1442d580d60a43a6ff31bc2af4ca4e06" id="r_a1442d580d60a43a6ff31bc2af4ca4e06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structquant_1_1LedoitWolfResult.html">LedoitWolfResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#a1442d580d60a43a6ff31bc2af4ca4e06">quant::EstimateLedoitWolf</a> (const Eigen::MatrixXd &amp;returns)</td></tr>
+<tr class="memdesc:a1442d580d60a43a6ff31bc2af4ca4e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.  <br /></td></tr>
+<tr class="memitem:ac619192916c196220dc62d14cae9b543" id="r_ac619192916c196220dc62d14cae9b543"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classquant_1_1CovarianceEstimator.html">CovarianceEstimator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#ac619192916c196220dc62d14cae9b543">quant::MakeCovarianceEstimator</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:ac619192916c196220dc62d14cae9b543"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создаёт оценщик по имени.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Оценки ковариационной матрицы доходностей. </p>

@@ -92,9 +92,9 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
   <div class="headertitle"><div class="title">Архитектура </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md21"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md22"></a></p>
 <p>Статус: v0.2 (19.11.2026). Реализованы модули <span class="tt">data</span> и <span class="tt">stats</span>. Требования — в <a class="el" href="md_docs_2REQUIREMENTS.html">REQUIREMENTS.md</a>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
 1. Общая схема</h1>
 <p>Приложение — конвейер обработки данных. Каждый шаг — отдельный модуль библиотеки <span class="tt"><a class="el" href="namespacequant.html">quant</a></span>, консольная утилита только разбирает параметры и соединяет шаги.</p>
 <div class="fragment"><div class="line">flowchart LR</div>
@@ -108,15 +108,15 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line">    B --&gt; W</div>
 <div class="line">    W --&gt; P[scripts/plot_*.py&lt;br/&gt;графики для отчёта]</div>
 </div><!-- fragment --><p>Правило зависимостей: <span class="tt">data → stats → optim → backtest</span>. Математические модули (<span class="tt">stats</span>, <span class="tt">optim</span>) не знают о файлах и консоли — их можно тестировать на синтетических данных. Чтение и запись файлов — только в <span class="tt">data</span> и <span class="tt">io</span>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 2. Модули</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Модуль  </th><th class="markdownTableHeadNone">Ответственность  </th><th class="markdownTableHeadNone">Основные типы  </th><th class="markdownTableHeadNone">Требования  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">data</span>  </td><td class="markdownTableBodyNone">Чтение CSV, заполнение пропусков, сплиты, поиск аномалий  </td><td class="markdownTableBodyNone"><span class="tt">PriceTable</span>, <span class="tt">Split</span>, <span class="tt">PriceAnomaly</span>; функции <span class="tt">readPriceCsv</span>, <span class="tt">forwardFill</span>, <span class="tt">readSplitsCsv</span>, <span class="tt">applySplits</span>, <span class="tt">findAnomalies</span>  </td><td class="markdownTableBodyNone">FR-2…FR-5  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">data</span>  </td><td class="markdownTableBodyNone">Чтение CSV, заполнение пропусков, сплиты, поиск аномалий  </td><td class="markdownTableBodyNone"><span class="tt">PriceTable</span>, <span class="tt">Split</span>, <span class="tt">PriceAnomaly</span>; функции <span class="tt">ReadPriceCsv</span>, <span class="tt">FillMissingPrices</span>, <span class="tt">ReadSplitsCsv</span>, <span class="tt">ApplySplits</span>, <span class="tt">FindPriceAnomalies</span>  </td><td class="markdownTableBodyNone">FR-2…FR-5  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">stats</span>  </td><td class="markdownTableBodyNone">Доходности, средние, оценки ковариации  </td><td class="markdownTableBodyNone"><span class="tt">ReturnMatrix</span>, <span class="tt">CovarianceEstimator</span> (интерфейс), <span class="tt">SampleCovariance</span>, <span class="tt">LedoitWolfCovariance</span>; функции <span class="tt">simpleReturns</span>, <span class="tt">meanReturns</span>, <span class="tt">ledoitWolf</span>, <span class="tt">makeCovarianceEstimator</span>  </td><td class="markdownTableBodyNone">FR-6…FR-8  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">stats</span>  </td><td class="markdownTableBodyNone">Доходности, средние, оценки ковариации  </td><td class="markdownTableBodyNone"><span class="tt">ReturnMatrix</span>, <span class="tt">CovarianceEstimator</span> (интерфейс), <span class="tt">SampleCovariance</span>, <span class="tt">LedoitWolfCovariance</span>; функции <span class="tt">ComputeSimpleReturns</span>, <span class="tt">ComputeMeanReturns</span>, <span class="tt">EstimateLedoitWolf</span>, <span class="tt">MakeCovarianceEstimator</span>  </td><td class="markdownTableBodyNone">FR-6…FR-8  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone">Аналитические решения, QP-решатель, эффективная граница  </td><td class="markdownTableBodyNone"><span class="tt">MarketModel</span> (μ, Σ), <span class="tt">Portfolio</span>, <span class="tt">AnalyticOptimizer</span>, <span class="tt">QpSolver</span> (интерфейс), <span class="tt">ActiveSetSolver</span>, <span class="tt">ProjectedGradientSolver</span>, <span class="tt">FrontierBuilder</span>  </td><td class="markdownTableBodyNone">FR-9…FR-15  </td></tr>
 <tr class="markdownTableRowEven">
@@ -126,12 +126,12 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">scripts/</span> (Python)  </td><td class="markdownTableBodyNone">Загрузка данных с MOEX, графики  </td><td class="markdownTableBodyNone"><span class="tt">download_prices.py</span>, <span class="tt">plot_frontier.py</span>, <span class="tt">plot_backtest.py</span>  </td><td class="markdownTableBodyNone">FR-1, FR-22  </td></tr>
 </table>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
 3. Диаграмма классов (ядро)</h1>
 <div class="fragment"><div class="line">classDiagram</div>
 <div class="line">    class CovarianceEstimator {</div>
 <div class="line">        &lt;&lt;interface&gt;&gt;</div>
-<div class="line">        +estimate(ReturnMatrix) Matrix</div>
+<div class="line">        +Estimate(ReturnMatrix) Matrix</div>
 <div class="line">    }</div>
 <div class="line">    CovarianceEstimator &lt;|.. SampleCovariance</div>
 <div class="line">    CovarianceEstimator &lt;|.. LedoitWolfCovariance</div>
@@ -144,27 +144,27 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line"> </div>
 <div class="line">    class QpSolver {</div>
 <div class="line">        &lt;&lt;interface&gt;&gt;</div>
-<div class="line">        +solve(QpProblem) QpResult</div>
+<div class="line">        +Solve(QpProblem) QpResult</div>
 <div class="line">    }</div>
 <div class="line">    QpSolver &lt;|.. ActiveSetSolver</div>
 <div class="line">    QpSolver &lt;|.. ProjectedGradientSolver</div>
 <div class="line"> </div>
 <div class="line">    class AnalyticOptimizer {</div>
-<div class="line">        +minVariance(MarketModel) Portfolio</div>
-<div class="line">        +maxSharpe(MarketModel, double rf) Portfolio</div>
-<div class="line">        +frontier(MarketModel, int n) Frontier</div>
+<div class="line">        +MinVariance(MarketModel) Portfolio</div>
+<div class="line">        +MaxSharpe(MarketModel, double rf) Portfolio</div>
+<div class="line">        +Frontier(MarketModel, int n) Frontier</div>
 <div class="line">    }</div>
 <div class="line">    class FrontierBuilder {</div>
 <div class="line">        -QpSolver&amp; solver</div>
-<div class="line">        +minVariance(MarketModel) Portfolio</div>
-<div class="line">        +maxSharpe(MarketModel, double rf) Portfolio</div>
-<div class="line">        +frontier(MarketModel, int n) Frontier</div>
+<div class="line">        +MinVariance(MarketModel) Portfolio</div>
+<div class="line">        +MaxSharpe(MarketModel, double rf) Portfolio</div>
+<div class="line">        +Frontier(MarketModel, int n) Frontier</div>
 <div class="line">    }</div>
 <div class="line">    FrontierBuilder --&gt; QpSolver</div>
 <div class="line"> </div>
 <div class="line">    class AllocationStrategy {</div>
 <div class="line">        &lt;&lt;interface&gt;&gt;</div>
-<div class="line">        +weights(MarketModel) Vector</div>
+<div class="line">        +Weights(MarketModel) Vector</div>
 <div class="line">    }</div>
 <div class="line">    AllocationStrategy &lt;|.. GmvStrategy</div>
 <div class="line">    AllocationStrategy &lt;|.. MaxSharpeStrategy</div>
@@ -172,31 +172,31 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line"> </div>
 <div class="line">    class Backtester {</div>
 <div class="line">        -CovarianceEstimator&amp; estimator</div>
-<div class="line">        +run(PriceTable, AllocationStrategy&amp;) BacktestResult</div>
+<div class="line">        +Run(PriceTable, AllocationStrategy&amp;) BacktestResult</div>
 <div class="line">    }</div>
 <div class="line">    Backtester --&gt; CovarianceEstimator</div>
 <div class="line">    Backtester --&gt; AllocationStrategy</div>
 </div><!-- fragment --><p>Паттерн <b>Strategy</b> используется трижды: оценка ковариации, QP-решатель и правило распределения в бэктесте. Это позволяет сравнивать варианты (выборочная ковариация против Ledoit–Wolf, два решателя, GMV против 1/N) без изменения остального кода.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 4. Диаграмма последовательности: бэктест</h1>
 <div class="fragment"><div class="line">sequenceDiagram</div>
 <div class="line">    participant CLI as main</div>
 <div class="line">    participant BT as Backtester</div>
 <div class="line">    participant EST as CovarianceEstimator</div>
 <div class="line">    participant STR as AllocationStrategy</div>
-<div class="line">    CLI-&gt;&gt;BT: run(prices, strategy)</div>
+<div class="line">    CLI-&gt;&gt;BT: Run(prices, strategy)</div>
 <div class="line">    loop каждая дата ребалансировки t</div>
 <div class="line">        BT-&gt;&gt;BT: окно доходностей [t−L, t)</div>
-<div class="line">        BT-&gt;&gt;EST: estimate(окно)</div>
+<div class="line">        BT-&gt;&gt;EST: Estimate(окно)</div>
 <div class="line">        EST--&gt;&gt;BT: Σ</div>
-<div class="line">        BT-&gt;&gt;STR: weights(μ, Σ)</div>
+<div class="line">        BT-&gt;&gt;STR: Weights(μ, Σ)</div>
 <div class="line">        STR--&gt;&gt;BT: w</div>
 <div class="line">        BT-&gt;&gt;BT: доходность портфеля до следующей ребалансировки</div>
 <div class="line">    end</div>
 <div class="line">    BT--&gt;&gt;CLI: кривая капитала, метрики</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
 5. Архитектурные решения</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
 ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)</h2>
 <p>Все три задачи сводятся к одной задаче квадратичного программирования:</p>
 <blockquote class="doxtable">
@@ -215,22 +215,22 @@ ADR-1. Метод оптимизации без коротких продаж (F
 </table>
 <p><b>Решение:</b> (а) — основной решатель; (б) — эталон для тестов и сравнение в бенчмарке; (в) — не используем.</p>
 <p><b>Обоснование:</b> (а) даёт точность из NFR-2 и скорость из NFR-1 без новых зависимостей. (б) настолько прост, что почти не может содержать ошибок, поэтому годится для перекрёстной проверки, а сравнение скорости (а) и (б) войдёт в отчёт. Риск сложности (а) закрывается тем, что (б) уже будет работать.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
 ADR-2. Линейная алгебра</h2>
 <p>Варианты: Eigen 3 / собственные матрицы / BLAS+LAPACK. <b>Решение:</b> Eigen 3 — стандарт в индустрии, только заголовки, есть разложения Холецкого и LDLᵀ для решения систем. Подключается через <span class="tt">find_package</span>, при отсутствии — через <span class="tt">FetchContent</span>.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
 ADR-3. Хранение данных</h2>
 <p>Варианты: CSV-файлы / SQLite. <b>Решение:</b> CSV в широком формате (<span class="tt">date,TICKER1,...</span>). Объём маленький (~1700 дней × 20 бумаг), файлы удобно смотреть глазами и класть в репозиторий для воспроизводимости (NFR-3). Сплиты — отдельный <span class="tt">splits.csv</span> (<span class="tt">date,ticker,ratio</span>).</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
 ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)</h2>
 <p>Решается через множители Лагранжа: GMV — w = Σ⁻¹1 / (1ᵀΣ⁻¹1), касательный портфель — w ∝ Σ⁻¹(μ − r_f·1), граница — линейная комбинация двух портфелей. Системы решаются разложением LDLᵀ без явного обращения Σ (устойчивее численно). Если Σ вырождена — ошибка с предложением использовать Ledoit–Wolf.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
 ADR-5. Параллельность бэктеста (C)</h2>
 <p>Расчёты на разных датах ребалансировки независимы, их можно запускать через <span class="tt">std::async</span>. Делаем только если останется время; эффект измеряем бенчмарком.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
 ADR-6. Обработка ошибок</h2>
 <p>Библиотека бросает исключения (<span class="tt">std::invalid_argument</span>, <span class="tt">std::runtime_error</span> с понятным текстом). <span class="tt"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></span> перехватывает их, печатает сообщение в stderr и возвращает код 1 (некорректный ввод) или 2 (ошибка расчёта).</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
 6. Целевая структура репозитория</h1>
 <div class="fragment"><div class="line">include/quant/{data,stats,optim,backtest,io}/   заголовки</div>
 <div class="line">src/{data,stats,optim,backtest,io}/             реализация библиотеки mpt_core</div>
@@ -242,7 +242,7 @@ ADR-6. Обработка ошибок</h2>
 <div class="line">docs/                                           требования, архитектура, план, Doxyfile</div>
 <div class="line">report/                                         отчёт LaTeX и PDF</div>
 <div class="line">Dockerfile</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
 7. Трассировка требований</h1>
 <p>Заполняется по мере реализации: требование → модуль → тест. ✅ — реализовано и покрыто тестами.</p>
 <table class="markdownTable">
@@ -253,7 +253,7 @@ ADR-6. Обработка ошибок</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">FR-2 ✅  </td><td class="markdownTableBodyNone"><span class="tt">data</span>  </td><td class="markdownTableBodyNone"><span class="tt">ReadPriceCsv.*</span> в <span class="tt">test_data.cpp</span>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">FR-3 ✅  </td><td class="markdownTableBodyNone"><span class="tt">data</span>  </td><td class="markdownTableBodyNone"><span class="tt">ForwardFill.*</span>  </td></tr>
+<td class="markdownTableBodyNone">FR-3 ✅  </td><td class="markdownTableBodyNone"><span class="tt">data</span>  </td><td class="markdownTableBodyNone"><span class="tt">FillMissingPrices.*</span>  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">FR-4 ✅  </td><td class="markdownTableBodyNone"><span class="tt">data</span>  </td><td class="markdownTableBodyNone"><span class="tt">Splits.*</span>  </td></tr>
 <tr class="markdownTableRowOdd">

@@ -1,5 +1,5 @@
 var covariance_8cpp =
 [
-    [ "quant::ledoitWolf", "namespacequant.html#a00f3deecb650ebaa9c313fd34e3a0173", null ],
-    [ "quant::makeCovarianceEstimator", "namespacequant.html#a40788442686c56a94e0ced58f74e2be9", null ]
+    [ "quant::EstimateLedoitWolf", "namespacequant.html#a1442d580d60a43a6ff31bc2af4ca4e06", null ],
+    [ "quant::MakeCovarianceEstimator", "namespacequant.html#ac619192916c196220dc62d14cae9b543", null ]
 ];

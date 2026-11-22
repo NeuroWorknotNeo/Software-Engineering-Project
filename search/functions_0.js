@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['applysplits_0',['applySplits',['../namespacequant.html#a52e05d2fb9aca4d1010425c87ef1c31a',1,'quant']]]
+  ['applysplits_0',['ApplySplits',['../namespacequant.html#a2d79f976faaa8617aeef582e3eab9e3c',1,'quant']]]
 ];

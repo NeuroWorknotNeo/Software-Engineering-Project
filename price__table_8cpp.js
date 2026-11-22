@@ -1,8 +1,8 @@
 var price__table_8cpp =
 [
-    [ "quant::applySplits", "namespacequant.html#a52e05d2fb9aca4d1010425c87ef1c31a", null ],
-    [ "quant::findAnomalies", "namespacequant.html#a8658696e4887ade47ec304e8d56524e5", null ],
-    [ "quant::forwardFill", "namespacequant.html#a93d08f7624525f54c26899d179bd2a97", null ],
-    [ "quant::readPriceCsv", "namespacequant.html#a2d25720bd7ae9d0024b233e63b8e3ca5", null ],
-    [ "quant::readSplitsCsv", "namespacequant.html#a27a2137ce6dc2ebcf6ee723479809c29", null ]
+    [ "quant::ApplySplits", "namespacequant.html#a2d79f976faaa8617aeef582e3eab9e3c", null ],
+    [ "quant::FillMissingPrices", "namespacequant.html#a3366daf0f71cda5dfc5e8aec4f10c01f", null ],
+    [ "quant::FindPriceAnomalies", "namespacequant.html#aa34e98ece951956ffb1417626bf7452a", null ],
+    [ "quant::ReadPriceCsv", "namespacequant.html#af00f34500d5d91625b8da88cb4c91052", null ],
+    [ "quant::ReadSplitsCsv", "namespacequant.html#a0ef1c4167097f5fb615b1c40422c1a8f", null ]
 ];

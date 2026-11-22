@@ -1,5 +1,5 @@
 var classquant_1_1SampleCovariance =
 [
-    [ "estimate", "classquant_1_1SampleCovariance.html#a7cb48e3df18826264767216b50a3b02b", null ],
-    [ "name", "classquant_1_1SampleCovariance.html#a2229fe2274930f688935eebe0316d192", null ]
+    [ "Estimate", "classquant_1_1SampleCovariance.html#a10ab84b39204c58148b179a719965924", null ],
+    [ "Name", "classquant_1_1SampleCovariance.html#a6c1cccb6e2910f9a61cbd24e44e05abf", null ]
 ];

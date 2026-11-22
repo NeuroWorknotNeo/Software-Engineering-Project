@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['simplereturns_0',['simpleReturns',['../namespacequant.html#acb2b2c1fbcca7afc28343ef0fb2611ae',1,'quant']]]
+  ['_7ecovarianceestimator_0',['~CovarianceEstimator',['../classquant_1_1CovarianceEstimator.html#a8029fa96752863ca81ca8720255e0e38',1,'quant::CovarianceEstimator']]]
 ];

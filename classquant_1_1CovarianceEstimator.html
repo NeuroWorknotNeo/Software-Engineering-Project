@@ -103,7 +103,7 @@ Inheritance diagram for quant::CovarianceEstimator:</div>
  <div class="center">
   <img src="classquant_1_1CovarianceEstimator.png" usemap="#quant_3A_3ACovarianceEstimator_map" alt=""/>
   <map id="quant_3A_3ACovarianceEstimator_map" name="quant_3A_3ACovarianceEstimator_map">
-<area href="classquant_1_1LedoitWolfCovariance.html" title="Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через ledoitWolf()." alt="quant::LedoitWolfCovariance" shape="rect" coords="0,56,173,80"/>
+<area href="classquant_1_1LedoitWolfCovariance.html" title="Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через EstimateLedoitWolf()." alt="quant::LedoitWolfCovariance" shape="rect" coords="0,56,173,80"/>
 <area href="classquant_1_1SampleCovariance.html" title="Несмещённая выборочная ковариация (делитель T − 1)." alt="quant::SampleCovariance" shape="rect" coords="183,56,356,80"/>
   </map>
 </div></div>
@@ -111,10 +111,10 @@ Inheritance diagram for quant::CovarianceEstimator:</div>
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8029fa96752863ca81ca8720255e0e38" id="r_a8029fa96752863ca81ca8720255e0e38"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8029fa96752863ca81ca8720255e0e38">~CovarianceEstimator</a> ()=default</td></tr>
-<tr class="memitem:a212eb6e73a4ce505164d72b44f89751b" id="r_a212eb6e73a4ce505164d72b44f89751b"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a212eb6e73a4ce505164d72b44f89751b">estimate</a> (const Eigen::MatrixXd &amp;returns) const =0</td></tr>
-<tr class="memdesc:a212eb6e73a4ce505164d72b44f89751b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценивает ковариацию по матрице доходностей.  <br /></td></tr>
-<tr class="memitem:a525c02c4571a32a51be71c0e046ae612" id="r_a525c02c4571a32a51be71c0e046ae612"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a525c02c4571a32a51be71c0e046ae612">name</a> () const =0</td></tr>
-<tr class="memdesc:a525c02c4571a32a51be71c0e046ae612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Короткое имя метода для вывода: "sample" или "ledoit-wolf".  <br /></td></tr>
+<tr class="memitem:a82258ab88276e62133991762b9435791" id="r_a82258ab88276e62133991762b9435791"><td class="memItemLeft" align="right" valign="top">virtual Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a82258ab88276e62133991762b9435791">Estimate</a> (const Eigen::MatrixXd &amp;returns) const =0</td></tr>
+<tr class="memdesc:a82258ab88276e62133991762b9435791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценивает ковариацию по матрице доходностей.  <br /></td></tr>
+<tr class="memitem:ae6d8ff6bde251594ecfeb1cbca41798b" id="r_ae6d8ff6bde251594ecfeb1cbca41798b"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6d8ff6bde251594ecfeb1cbca41798b">Name</a> () const =0</td></tr>
+<tr class="memdesc:ae6d8ff6bde251594ecfeb1cbca41798b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Короткое имя метода для вывода: "sample" или "ledoit-wolf".  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Интерфейс оценки ковариационной матрицы (паттерн Strategy). </p>
@@ -145,8 +145,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a212eb6e73a4ce505164d72b44f89751b" name="a212eb6e73a4ce505164d72b44f89751b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a212eb6e73a4ce505164d72b44f89751b">&#9670;&#160;</a></span>estimate()</h2>
+<a id="a82258ab88276e62133991762b9435791" name="a82258ab88276e62133991762b9435791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82258ab88276e62133991762b9435791">&#9670;&#160;</a></span>Estimate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -155,7 +155,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Eigen::MatrixXd quant::CovarianceEstimator::estimate </td>
+          <td class="memname">virtual Eigen::MatrixXd quant::CovarianceEstimator::Estimate </td>
           <td>(</td>
           <td class="paramtype">const Eigen::MatrixXd &amp;</td>          <td class="paramname"><span class="paramname"><em>returns</em></span></td><td>)</td>
           <td> const</td>
@@ -183,12 +183,12 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classquant_1_1LedoitWolfCovariance.html#a07d1d6a6fe0c6e3f6adfe0d42df4ef64">quant::LedoitWolfCovariance</a>, and <a class="el" href="classquant_1_1SampleCovariance.html#a7cb48e3df18826264767216b50a3b02b">quant::SampleCovariance</a>.</p>
+<p>Implemented in <a class="el" href="classquant_1_1LedoitWolfCovariance.html#a01ba97984c71870884308e22c3e0886e">quant::LedoitWolfCovariance</a>, and <a class="el" href="classquant_1_1SampleCovariance.html#a10ab84b39204c58148b179a719965924">quant::SampleCovariance</a>.</p>
 
 </div>
 </div>
-<a id="a525c02c4571a32a51be71c0e046ae612" name="a525c02c4571a32a51be71c0e046ae612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a525c02c4571a32a51be71c0e046ae612">&#9670;&#160;</a></span>name()</h2>
+<a id="ae6d8ff6bde251594ecfeb1cbca41798b" name="ae6d8ff6bde251594ecfeb1cbca41798b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6d8ff6bde251594ecfeb1cbca41798b">&#9670;&#160;</a></span>Name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +197,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::string quant::CovarianceEstimator::name </td>
+          <td class="memname">virtual std::string quant::CovarianceEstimator::Name </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -212,7 +212,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Короткое имя метода для вывода: "sample" или "ledoit-wolf". </p>
 
-<p>Implemented in <a class="el" href="classquant_1_1LedoitWolfCovariance.html#a8293e77cce1fc30627e6e96f4332ca4b">quant::LedoitWolfCovariance</a>, and <a class="el" href="classquant_1_1SampleCovariance.html#a2229fe2274930f688935eebe0316d192">quant::SampleCovariance</a>.</p>
+<p>Implemented in <a class="el" href="classquant_1_1LedoitWolfCovariance.html#a40899cedcf34cc55b66824a0f04cfc73">quant::LedoitWolfCovariance</a>, and <a class="el" href="classquant_1_1SampleCovariance.html#a6c1cccb6e2910f9a61cbd24e44e05abf">quant::SampleCovariance</a>.</p>
 
 </div>
 </div>

@@ -109,18 +109,18 @@ Inheritance diagram for quant::SampleCovariance:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7cb48e3df18826264767216b50a3b02b" id="r_a7cb48e3df18826264767216b50a3b02b"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7cb48e3df18826264767216b50a3b02b">estimate</a> (const Eigen::MatrixXd &amp;returns) const override</td></tr>
-<tr class="memdesc:a7cb48e3df18826264767216b50a3b02b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценивает ковариацию по матрице доходностей.     <br /></td></tr>
-<tr class="memitem:a2229fe2274930f688935eebe0316d192" id="r_a2229fe2274930f688935eebe0316d192"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2229fe2274930f688935eebe0316d192">name</a> () const override</td></tr>
-<tr class="memdesc:a2229fe2274930f688935eebe0316d192"><td class="mdescLeft">&#160;</td><td class="mdescRight">Короткое имя метода для вывода: "sample" или "ledoit-wolf".  <br /></td></tr>
+<tr class="memitem:a10ab84b39204c58148b179a719965924" id="r_a10ab84b39204c58148b179a719965924"><td class="memItemLeft" align="right" valign="top">Eigen::MatrixXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10ab84b39204c58148b179a719965924">Estimate</a> (const Eigen::MatrixXd &amp;returns) const override</td></tr>
+<tr class="memdesc:a10ab84b39204c58148b179a719965924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценивает ковариацию по матрице доходностей.  <br /></td></tr>
+<tr class="memitem:a6c1cccb6e2910f9a61cbd24e44e05abf" id="r_a6c1cccb6e2910f9a61cbd24e44e05abf"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c1cccb6e2910f9a61cbd24e44e05abf">Name</a> () const override</td></tr>
+<tr class="memdesc:a6c1cccb6e2910f9a61cbd24e44e05abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Короткое имя метода для вывода: "sample" или "ledoit-wolf".  <br /></td></tr>
 <tr class="inherit_header pub_methods_classquant_1_1CovarianceEstimator"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classquant_1_1CovarianceEstimator')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="classquant_1_1CovarianceEstimator.html">quant::CovarianceEstimator</a></td></tr>
 <tr class="memitem:a8029fa96752863ca81ca8720255e0e38 inherit pub_methods_classquant_1_1CovarianceEstimator" id="r_a8029fa96752863ca81ca8720255e0e38"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1CovarianceEstimator.html#a8029fa96752863ca81ca8720255e0e38">~CovarianceEstimator</a> ()=default</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Несмещённая выборочная ковариация (делитель T − 1). </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a7cb48e3df18826264767216b50a3b02b" name="a7cb48e3df18826264767216b50a3b02b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cb48e3df18826264767216b50a3b02b">&#9670;&#160;</a></span>estimate()</h2>
+<a id="a10ab84b39204c58148b179a719965924" name="a10ab84b39204c58148b179a719965924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ab84b39204c58148b179a719965924">&#9670;&#160;</a></span>Estimate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -129,7 +129,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Eigen::MatrixXd quant::SampleCovariance::estimate </td>
+          <td class="memname">Eigen::MatrixXd quant::SampleCovariance::Estimate </td>
           <td>(</td>
           <td class="paramtype">const Eigen::MatrixXd &amp;</td>          <td class="paramname"><span class="paramname"><em>returns</em></span></td><td>)</td>
           <td> const</td>
@@ -142,7 +142,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Оценивает ковариацию по матрице доходностей.    </p>
+<p>Оценивает ковариацию по матрице доходностей. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">returns</td><td>Доходности T × N (строка — наблюдение, столбец — бумага). </td></tr>
@@ -152,17 +152,17 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Симметричная матрица N × N. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname">std::invalid_argument</td><td>если наблюдений недостаточно.    </td></tr>
+    <tr><td class="paramname">std::invalid_argument</td><td>если наблюдений недостаточно. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="classquant_1_1CovarianceEstimator.html#a212eb6e73a4ce505164d72b44f89751b">quant::CovarianceEstimator</a>.</p>
+<p>Implements <a class="el" href="classquant_1_1CovarianceEstimator.html#a82258ab88276e62133991762b9435791">quant::CovarianceEstimator</a>.</p>
 
 </div>
 </div>
-<a id="a2229fe2274930f688935eebe0316d192" name="a2229fe2274930f688935eebe0316d192"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2229fe2274930f688935eebe0316d192">&#9670;&#160;</a></span>name()</h2>
+<a id="a6c1cccb6e2910f9a61cbd24e44e05abf" name="a6c1cccb6e2910f9a61cbd24e44e05abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c1cccb6e2910f9a61cbd24e44e05abf">&#9670;&#160;</a></span>Name()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,7 +171,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string quant::SampleCovariance::name </td>
+          <td class="memname">std::string quant::SampleCovariance::Name </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -179,14 +179,14 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Короткое имя метода для вывода: "sample" или "ledoit-wolf". </p>
 
-<p>Implements <a class="el" href="classquant_1_1CovarianceEstimator.html#a525c02c4571a32a51be71c0e046ae612">quant::CovarianceEstimator</a>.</p>
+<p>Implements <a class="el" href="classquant_1_1CovarianceEstimator.html#ae6d8ff6bde251594ecfeb1cbca41798b">quant::CovarianceEstimator</a>.</p>
 
 </div>
 </div>

@@ -27,34 +27,34 @@ var NAVTREE =
   [ "Markowitz Portfolio Optimizer", "index.html", [
     [ "Оптимизатор портфеля по Марковицу", "index.html", "index" ],
     [ "Требования", "md_docs_2REQUIREMENTS.html", [
-      [ "1. Цель", "md_docs_2REQUIREMENTS.html#autotoc_md10", null ],
-      [ "2. Исходные данные и допущения", "md_docs_2REQUIREMENTS.html#autotoc_md11", null ],
-      [ "3. Функциональные требования", "md_docs_2REQUIREMENTS.html#autotoc_md12", [
-        [ "Данные", "md_docs_2REQUIREMENTS.html#autotoc_md13", null ],
-        [ "Статистика", "md_docs_2REQUIREMENTS.html#autotoc_md14", null ],
-        [ "Оптимизация с разрешёнными короткими продажами (аналитически)", "md_docs_2REQUIREMENTS.html#autotoc_md15", null ],
-        [ "Оптимизация без коротких продаж (веса ≥ 0)", "md_docs_2REQUIREMENTS.html#autotoc_md16", null ],
-        [ "Бэктест", "md_docs_2REQUIREMENTS.html#autotoc_md17", null ],
-        [ "Интерфейс и вывод", "md_docs_2REQUIREMENTS.html#autotoc_md18", null ]
+      [ "1. Цель", "md_docs_2REQUIREMENTS.html#autotoc_md11", null ],
+      [ "2. Исходные данные и допущения", "md_docs_2REQUIREMENTS.html#autotoc_md12", null ],
+      [ "3. Функциональные требования", "md_docs_2REQUIREMENTS.html#autotoc_md13", [
+        [ "Данные", "md_docs_2REQUIREMENTS.html#autotoc_md14", null ],
+        [ "Статистика", "md_docs_2REQUIREMENTS.html#autotoc_md15", null ],
+        [ "Оптимизация с разрешёнными короткими продажами (аналитически)", "md_docs_2REQUIREMENTS.html#autotoc_md16", null ],
+        [ "Оптимизация без коротких продаж (веса ≥ 0)", "md_docs_2REQUIREMENTS.html#autotoc_md17", null ],
+        [ "Бэктест", "md_docs_2REQUIREMENTS.html#autotoc_md18", null ],
+        [ "Интерфейс и вывод", "md_docs_2REQUIREMENTS.html#autotoc_md19", null ]
       ] ],
-      [ "4. Нефункциональные требования", "md_docs_2REQUIREMENTS.html#autotoc_md19", null ],
-      [ "5. Ограничения модели (сознательно не делаем)", "md_docs_2REQUIREMENTS.html#autotoc_md20", null ]
+      [ "4. Нефункциональные требования", "md_docs_2REQUIREMENTS.html#autotoc_md20", null ],
+      [ "5. Ограничения модели (сознательно не делаем)", "md_docs_2REQUIREMENTS.html#autotoc_md21", null ]
     ] ],
     [ "Архитектура", "md_docs_2ARCHITECTURE.html", [
-      [ "1. Общая схема", "md_docs_2ARCHITECTURE.html#autotoc_md22", null ],
-      [ "2. Модули", "md_docs_2ARCHITECTURE.html#autotoc_md23", null ],
-      [ "3. Диаграмма классов (ядро)", "md_docs_2ARCHITECTURE.html#autotoc_md24", null ],
-      [ "4. Диаграмма последовательности: бэктест", "md_docs_2ARCHITECTURE.html#autotoc_md25", null ],
-      [ "5. Архитектурные решения", "md_docs_2ARCHITECTURE.html#autotoc_md26", [
-        [ "ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)", "md_docs_2ARCHITECTURE.html#autotoc_md27", null ],
-        [ "ADR-2. Линейная алгебра", "md_docs_2ARCHITECTURE.html#autotoc_md28", null ],
-        [ "ADR-3. Хранение данных", "md_docs_2ARCHITECTURE.html#autotoc_md29", null ],
-        [ "ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)", "md_docs_2ARCHITECTURE.html#autotoc_md30", null ],
-        [ "ADR-5. Параллельность бэктеста (C)", "md_docs_2ARCHITECTURE.html#autotoc_md31", null ],
-        [ "ADR-6. Обработка ошибок", "md_docs_2ARCHITECTURE.html#autotoc_md32", null ]
+      [ "1. Общая схема", "md_docs_2ARCHITECTURE.html#autotoc_md23", null ],
+      [ "2. Модули", "md_docs_2ARCHITECTURE.html#autotoc_md24", null ],
+      [ "3. Диаграмма классов (ядро)", "md_docs_2ARCHITECTURE.html#autotoc_md25", null ],
+      [ "4. Диаграмма последовательности: бэктест", "md_docs_2ARCHITECTURE.html#autotoc_md26", null ],
+      [ "5. Архитектурные решения", "md_docs_2ARCHITECTURE.html#autotoc_md27", [
+        [ "ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)", "md_docs_2ARCHITECTURE.html#autotoc_md28", null ],
+        [ "ADR-2. Линейная алгебра", "md_docs_2ARCHITECTURE.html#autotoc_md29", null ],
+        [ "ADR-3. Хранение данных", "md_docs_2ARCHITECTURE.html#autotoc_md30", null ],
+        [ "ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)", "md_docs_2ARCHITECTURE.html#autotoc_md31", null ],
+        [ "ADR-5. Параллельность бэктеста (C)", "md_docs_2ARCHITECTURE.html#autotoc_md32", null ],
+        [ "ADR-6. Обработка ошибок", "md_docs_2ARCHITECTURE.html#autotoc_md33", null ]
       ] ],
-      [ "6. Целевая структура репозитория", "md_docs_2ARCHITECTURE.html#autotoc_md33", null ],
-      [ "7. Трассировка требований", "md_docs_2ARCHITECTURE.html#autotoc_md34", null ]
+      [ "6. Целевая структура репозитория", "md_docs_2ARCHITECTURE.html#autotoc_md34", null ],
+      [ "7. Трассировка требований", "md_docs_2ARCHITECTURE.html#autotoc_md35", null ]
     ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],

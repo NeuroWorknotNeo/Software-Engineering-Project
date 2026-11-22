@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name_0',['name',['../classquant_1_1CovarianceEstimator.html#a525c02c4571a32a51be71c0e046ae612',1,'quant::CovarianceEstimator::name()'],['../classquant_1_1SampleCovariance.html#a2229fe2274930f688935eebe0316d192',1,'quant::SampleCovariance::name()'],['../classquant_1_1LedoitWolfCovariance.html#a8293e77cce1fc30627e6e96f4332ca4b',1,'quant::LedoitWolfCovariance::name()']]]
+  ['name_0',['Name',['../classquant_1_1CovarianceEstimator.html#ae6d8ff6bde251594ecfeb1cbca41798b',1,'quant::CovarianceEstimator::Name()'],['../classquant_1_1SampleCovariance.html#a6c1cccb6e2910f9a61cbd24e44e05abf',1,'quant::SampleCovariance::Name()'],['../classquant_1_1LedoitWolfCovariance.html#a40899cedcf34cc55b66824a0f04cfc73',1,'quant::LedoitWolfCovariance::Name()']]]
 ];

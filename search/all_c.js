@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['estimate_0',['estimate',['../classquant_1_1CovarianceEstimator.html#a212eb6e73a4ce505164d72b44f89751b',1,'quant::CovarianceEstimator::estimate()'],['../classquant_1_1SampleCovariance.html#a7cb48e3df18826264767216b50a3b02b',1,'quant::SampleCovariance::estimate()'],['../classquant_1_1LedoitWolfCovariance.html#a07d1d6a6fe0c6e3f6adfe0d42df4ef64',1,'quant::LedoitWolfCovariance::estimate()']]]
+  ['estimate_0',['Estimate',['../classquant_1_1CovarianceEstimator.html#a82258ab88276e62133991762b9435791',1,'quant::CovarianceEstimator::Estimate()'],['../classquant_1_1SampleCovariance.html#a10ab84b39204c58148b179a719965924',1,'quant::SampleCovariance::Estimate()'],['../classquant_1_1LedoitWolfCovariance.html#a01ba97984c71870884308e22c3e0886e',1,'quant::LedoitWolfCovariance::Estimate()']]],
+  ['estimateledoitwolf_1',['EstimateLedoitWolf',['../namespacequant.html#a1442d580d60a43a6ff31bc2af4ca4e06',1,'quant']]]
 ];

@@ -1,5 +1,5 @@
 var classquant_1_1LedoitWolfCovariance =
 [
-    [ "estimate", "classquant_1_1LedoitWolfCovariance.html#a07d1d6a6fe0c6e3f6adfe0d42df4ef64", null ],
-    [ "name", "classquant_1_1LedoitWolfCovariance.html#a8293e77cce1fc30627e6e96f4332ca4b", null ]
+    [ "Estimate", "classquant_1_1LedoitWolfCovariance.html#a01ba97984c71870884308e22c3e0886e", null ],
+    [ "Name", "classquant_1_1LedoitWolfCovariance.html#a40899cedcf34cc55b66824a0f04cfc73", null ]
 ];
