@@ -105,7 +105,9 @@ doxygen docs/Doxyfile   # результат в docs/html/index.html
 
 ## CI/CD
 
-- **CI** (`.github/workflows/ci.yml`) — на каждый push и pull request: сборка, запуск
-  утилиты, тесты, бенчмарки (результаты — в логе и в summary запуска).
+- **CI** (`.github/workflows/ci.yml`) — на каждый push и pull request две задачи:
+  `style` — проверка форматирования (clang-format) и статический анализ (clang-tidy);
+  `build-test-bench` — сборка, запуск утилиты, тесты, бенчмарки (результаты — в логе
+  и в summary запуска).
 - **Docs** (`.github/workflows/docs.yml`) — на каждый push в `main`: документация
   Doxygen публикуется на GitHub Pages.

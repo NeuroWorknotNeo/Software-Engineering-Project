@@ -5,6 +5,25 @@ on:
   pull_request:
 
 jobs:
+  style:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang-format and clang-tidy
+        run: sudo apt-get update && sudo apt-get install -y clang-format-18 clang-tidy-18
+
+      - name: Check formatting (clang-format)
+        run: |
+          clang-format-18 --dry-run --Werror \
+            src/*.cpp src/*/*.cpp include/quant/*/*.hpp tests/*.cpp bench/*.cpp
+
+      - name: Static analysis (clang-tidy)
+        run: |
+          cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+            -DMPT_BUILD_TESTS=OFF -DMPT_BUILD_BENCHMARKS=OFF
+          clang-tidy-18 -p build --quiet src/*.cpp src/*/*.cpp
+
   build-test-bench:
     runs-on: ubuntu-latest
     steps:
