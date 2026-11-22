@@ -52,3 +52,16 @@ jobs:
             cat bench.txt
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+  docker:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build image (compiles and runs unit tests)
+        run: docker build -t mpt .
+
+      - name: Run container
+        run: |
+          docker run --rm mpt --help
+          docker run --rm mpt

@@ -207,5 +207,5 @@ Dockerfile
 | FR-20, FR-21, NFR-8 | `io`/`app` | `test_cli.cpp` |
 | NFR-1 | `optim` | `bench/bench_frontier.cpp` |
 | NFR-2 | `optim` | `test_qp.cpp` |
-| NFR-4 ✅ | `Dockerfile` | сборка образа с прогоном тестов; `docker run --rm mpt` |
+| NFR-4 ✅ | `Dockerfile` | задача `docker` в CI: сборка образа с прогоном тестов и запуск контейнера |
 | NFR-5 ✅ | `.clang-format`, `.clang-tidy` | задача `style` в CI |
