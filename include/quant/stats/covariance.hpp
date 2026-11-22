@@ -5,7 +5,6 @@
 #pragma once
 
 #include <Eigen/Dense>
-
 #include <memory>
 #include <string>
 
@@ -24,10 +23,10 @@ public:
      * @return Симметричная матрица N × N.
      * @throws std::invalid_argument если наблюдений недостаточно.
      */
-    [[nodiscard]] virtual Eigen::MatrixXd estimate(const Eigen::MatrixXd& returns) const = 0;
+    [[nodiscard]] virtual Eigen::MatrixXd Estimate(const Eigen::MatrixXd& returns) const = 0;
 
     /// Короткое имя метода для вывода: "sample" или "ledoit-wolf".
-    [[nodiscard]] virtual std::string name() const = 0;
+    [[nodiscard]] virtual std::string Name() const = 0;
 };
 
 /**
@@ -35,17 +34,20 @@ public:
  */
 class SampleCovariance final : public CovarianceEstimator {
 public:
-    /// @copydoc CovarianceEstimator::estimate
-    [[nodiscard]] Eigen::MatrixXd estimate(const Eigen::MatrixXd& returns) const override;
-    [[nodiscard]] std::string name() const override { return "sample"; }
+    [[nodiscard]] Eigen::MatrixXd Estimate(const Eigen::MatrixXd& returns) const override;
+
+    [[nodiscard]] std::string Name() const override;
 };
 
 /**
  * @brief Результат оценки Ledoit–Wolf.
  */
 struct LedoitWolfResult {
-    Eigen::MatrixXd covariance;  ///< Оценка ковариации.
-    double shrinkage;            ///< Коэффициент сжатия δ ∈ [0, 1].
+    /// Оценка ковариации.
+    Eigen::MatrixXd covariance;
+
+    /// Коэффициент сжатия δ ∈ [0, 1].
+    double shrinkage = 0.0;
 };
 
 /**
@@ -60,18 +62,16 @@ struct LedoitWolfResult {
  * @return Оценка и коэффициент сжатия.
  * @throws std::invalid_argument если T < 2.
  */
-LedoitWolfResult ledoitWolf(const Eigen::MatrixXd& returns);
+LedoitWolfResult EstimateLedoitWolf(const Eigen::MatrixXd& returns);
 
 /**
- * @brief Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через ledoitWolf().
+ * @brief Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через EstimateLedoitWolf().
  */
 class LedoitWolfCovariance final : public CovarianceEstimator {
 public:
-    /// @copydoc CovarianceEstimator::estimate
-    [[nodiscard]] Eigen::MatrixXd estimate(const Eigen::MatrixXd& returns) const override {
-        return ledoitWolf(returns).covariance;
-    }
-    [[nodiscard]] std::string name() const override { return "ledoit-wolf"; }
+    [[nodiscard]] Eigen::MatrixXd Estimate(const Eigen::MatrixXd& returns) const override;
+
+    [[nodiscard]] std::string Name() const override;
 };
 
 /**
@@ -80,6 +80,6 @@ public:
  * @return Оценщик.
  * @throws std::invalid_argument для неизвестного имени.
  */
-std::unique_ptr<CovarianceEstimator> makeCovarianceEstimator(const std::string& name);
+std::unique_ptr<CovarianceEstimator> MakeCovarianceEstimator(const std::string& name);
 
 }  // namespace quant

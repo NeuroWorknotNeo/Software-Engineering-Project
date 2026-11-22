@@ -1,0 +1,14 @@
+# Google C++ Style Guide с правками стайлгайда курса
+# (https://github.com/yandexdataschool/algorithms/blob/master/src/styleguide.md):
+# отступ 4 пробела, строка до 100 символов, if/for/while не на одной строке и всегда со скобками.
+BasedOnStyle: Google
+IndentWidth: 4
+ColumnLimit: 100
+AccessModifierOffset: -4
+DerivePointerAlignment: false
+PointerAlignment: Left
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: Empty
+InsertBraces: true

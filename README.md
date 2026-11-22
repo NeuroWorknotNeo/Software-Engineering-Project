@@ -68,6 +68,17 @@ ctest --test-dir build --output-on-failure
 Тесты сверяют результаты с эталонами из numpy и scikit-learn и проверяют обработку
 некорректных данных. Бенчмарки измеряют скорость оценки ковариации.
 
+## Стиль кода
+
+Код следует [стайлгайду курса](https://github.com/yandexdataschool/algorithms/blob/master/src/styleguide.md)
+(Google C++ Style Guide с отступом 4 пробела и строками до 100 символов). Проверка:
+
+```bash
+clang-format --dry-run --Werror src/*.cpp src/*/*.cpp include/quant/*/*.hpp tests/*.cpp bench/*.cpp
+cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+clang-tidy -p build src/*.cpp src/*/*.cpp
+```
+
 ## Документация
 
 ```bash
@@ -86,6 +97,8 @@ doxygen docs/Doxyfile   # результат в docs/html/index.html
 ├── data/               # цены и сплиты
 ├── docs/               # требования, архитектура, Doxyfile
 ├── .github/workflows/  # CI/CD (GitHub Actions)
+├── .clang-format       # форматирование кода
+├── .clang-tidy         # статический анализ и проверка имён
 ├── AGENTS.md           # инструкции для ИИ-агентов
 └── CLAUDE.md           # подключает AGENTS.md для Claude Code
 ```

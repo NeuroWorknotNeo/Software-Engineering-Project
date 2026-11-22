@@ -5,7 +5,6 @@
 #pragma once
 
 #include <Eigen/Dense>
-
 #include <string>
 #include <vector>
 
@@ -22,18 +21,23 @@ inline constexpr double kTradingDaysPerYear = 252.0;
  * Строка матрицы @ref returns — день, столбец — бумага.
  */
 struct ReturnMatrix {
-    std::vector<std::string> dates;    ///< Дата, на конец которой посчитана доходность.
-    std::vector<std::string> tickers;  ///< Тикеры в порядке столбцов.
-    Eigen::MatrixXd returns;           ///< Доходности: dates.size() × tickers.size().
+    /// Дата, на конец которой посчитана доходность.
+    std::vector<std::string> dates;
+
+    /// Тикеры в порядке столбцов.
+    std::vector<std::string> tickers;
+
+    /// Доходности: dates.size() × tickers.size().
+    Eigen::MatrixXd returns;
 };
 
 /**
  * @brief Простые дневные доходности r_t = P_t / P_{t−1} − 1.
- * @param prices Таблица цен без пропусков (см. forwardFill()).
+ * @param table Таблица цен без пропусков (см. FillMissingPrices()).
  * @return Доходности; дней на один меньше, чем в таблице цен.
  * @throws std::invalid_argument если в таблице меньше двух дней или есть пропуски.
  */
-ReturnMatrix simpleReturns(const PriceTable& prices);
+ReturnMatrix ComputeSimpleReturns(const PriceTable& table);
 
 /**
  * @brief Средняя доходность каждой бумаги (по столбцам).
@@ -41,6 +45,6 @@ ReturnMatrix simpleReturns(const PriceTable& prices);
  * @return Вектор средних длины N.
  * @throws std::invalid_argument если матрица пустая.
  */
-Eigen::VectorXd meanReturns(const Eigen::MatrixXd& returns);
+Eigen::VectorXd ComputeMeanReturns(const Eigen::MatrixXd& returns);
 
 }  // namespace quant

@@ -5,7 +5,6 @@
 #pragma once
 
 #include <Eigen/Dense>
-
 #include <string>
 #include <vector>
 
@@ -18,9 +17,14 @@ namespace quant {
  * Пропущенная цена хранится как NaN.
  */
 struct PriceTable {
-    std::vector<std::string> dates;    ///< Даты в формате YYYY-MM-DD, строго по возрастанию.
-    std::vector<std::string> tickers;  ///< Тикеры в порядке столбцов.
-    Eigen::MatrixXd prices;            ///< Цены: dates.size() × tickers.size().
+    /// Даты в формате YYYY-MM-DD, строго по возрастанию.
+    std::vector<std::string> dates;
+
+    /// Тикеры в порядке столбцов.
+    std::vector<std::string> tickers;
+
+    /// Цены: dates.size() × tickers.size().
+    Eigen::MatrixXd prices;
 };
 
 /**
@@ -29,18 +33,28 @@ struct PriceTable {
  * Для обратного сплита (консолидации) ratio < 1.
  */
 struct Split {
-    std::string date;    ///< Первый торговый день по новым ценам, YYYY-MM-DD.
-    std::string ticker;  ///< Тикер бумаги.
-    double ratio;        ///< Число новых акций на одну старую (> 0).
+    /// Первый торговый день по новым ценам, YYYY-MM-DD.
+    std::string date;
+
+    /// Тикер бумаги.
+    std::string ticker;
+
+    /// Число новых акций на одну старую (> 0).
+    double ratio = 1.0;
 };
 
 /**
  * @brief Подозрительное изменение цены за один торговый день.
  */
 struct PriceAnomaly {
-    std::string date;     ///< Дата, на которую пришлось изменение.
-    std::string ticker;   ///< Тикер бумаги.
-    double dailyReturn;   ///< Простая доходность за день.
+    /// Дата, на которую пришлось изменение.
+    std::string date;
+
+    /// Тикер бумаги.
+    std::string ticker;
+
+    /// Простая доходность за день.
+    double daily_return = 0.0;
 };
 
 /**
@@ -53,14 +67,15 @@ struct PriceAnomaly {
  * @throws std::runtime_error если файл не открывается или формат нарушен: неверное число
  *         столбцов, некорректная дата, даты не по возрастанию, цена не число или ≤ 0.
  */
-PriceTable readPriceCsv(const std::string& path);
+PriceTable ReadPriceCsv(const std::string& path);
 
 /**
  * @brief Заполняет пропуски последней известной ценой (forward fill).
- * @param table Таблица цен, изменяется на месте.
+ * @param table Таблица цен.
+ * @return Таблица без пропусков.
  * @throws std::runtime_error если у бумаги нет цены в первый день таблицы.
  */
-void forwardFill(PriceTable& table);
+PriceTable FillMissingPrices(PriceTable table);
 
 /**
  * @brief Читает список сплитов из CSV `date,ticker,ratio`.
@@ -68,18 +83,19 @@ void forwardFill(PriceTable& table);
  * @return Список сплитов.
  * @throws std::runtime_error если файл не открывается или формат нарушен.
  */
-std::vector<Split> readSplitsCsv(const std::string& path);
+std::vector<Split> ReadSplitsCsv(const std::string& path);
 
 /**
  * @brief Пересчитывает цены до даты сплита: делит их на ratio.
  *
  * Сплиты по тикерам, которых нет в таблице, пропускаются.
  *
- * @param table Таблица цен, изменяется на месте.
+ * @param table Таблица цен.
  * @param splits Список сплитов.
+ * @return Таблица с ценами, приведёнными к последнему количеству акций.
  * @throws std::invalid_argument если ratio ≤ 0.
  */
-void applySplits(PriceTable& table, const std::vector<Split>& splits);
+PriceTable ApplySplits(PriceTable table, const std::vector<Split>& splits);
 
 /**
  * @brief Находит дневные изменения цены, по модулю превышающие порог.
@@ -90,6 +106,6 @@ void applySplits(PriceTable& table, const std::vector<Split>& splits);
  * @param threshold Порог для |доходности|, например 0.5 (50%).
  * @return Список аномалий в порядке дат.
  */
-std::vector<PriceAnomaly> findAnomalies(const PriceTable& table, double threshold);
+std::vector<PriceAnomaly> FindPriceAnomalies(const PriceTable& table, double threshold);
 
 }  // namespace quant

@@ -29,8 +29,8 @@ flowchart LR
 
 | Модуль | Ответственность | Основные типы | Требования |
 |---|---|---|---|
-| `data` | Чтение CSV, заполнение пропусков, сплиты, поиск аномалий | `PriceTable`, `Split`, `PriceAnomaly`; функции `readPriceCsv`, `forwardFill`, `readSplitsCsv`, `applySplits`, `findAnomalies` | FR-2…FR-5 |
-| `stats` | Доходности, средние, оценки ковариации | `ReturnMatrix`, `CovarianceEstimator` (интерфейс), `SampleCovariance`, `LedoitWolfCovariance`; функции `simpleReturns`, `meanReturns`, `ledoitWolf`, `makeCovarianceEstimator` | FR-6…FR-8 |
+| `data` | Чтение CSV, заполнение пропусков, сплиты, поиск аномалий | `PriceTable`, `Split`, `PriceAnomaly`; функции `ReadPriceCsv`, `FillMissingPrices`, `ReadSplitsCsv`, `ApplySplits`, `FindPriceAnomalies` | FR-2…FR-5 |
+| `stats` | Доходности, средние, оценки ковариации | `ReturnMatrix`, `CovarianceEstimator` (интерфейс), `SampleCovariance`, `LedoitWolfCovariance`; функции `ComputeSimpleReturns`, `ComputeMeanReturns`, `EstimateLedoitWolf`, `MakeCovarianceEstimator` | FR-6…FR-8 |
 | `optim` | Аналитические решения, QP-решатель, эффективная граница | `MarketModel` (μ, Σ), `Portfolio`, `AnalyticOptimizer`, `QpSolver` (интерфейс), `ActiveSetSolver`, `ProjectedGradientSolver`, `FrontierBuilder` | FR-9…FR-15 |
 | `backtest` | Скользящее окно, ребалансировка, метрики | `Backtester`, `AllocationStrategy` (интерфейс), `GmvStrategy`, `MaxSharpeStrategy`, `EqualWeightStrategy`, `PerformanceMetrics` | FR-16…FR-19 |
 | `io` / `app` | Разбор параметров, запись CSV, сводка в stdout, коды возврата | `CliOptions`, `ResultWriter`, утилита `mpt` (`src/main.cpp`) | FR-20, FR-21, NFR-8 |
@@ -42,7 +42,7 @@ flowchart LR
 classDiagram
     class CovarianceEstimator {
         <<interface>>
-        +estimate(ReturnMatrix) Matrix
+        +Estimate(ReturnMatrix) Matrix
     }
     CovarianceEstimator <|.. SampleCovariance
     CovarianceEstimator <|.. LedoitWolfCovariance
@@ -55,27 +55,27 @@ classDiagram
 
     class QpSolver {
         <<interface>>
-        +solve(QpProblem) QpResult
+        +Solve(QpProblem) QpResult
     }
     QpSolver <|.. ActiveSetSolver
     QpSolver <|.. ProjectedGradientSolver
 
     class AnalyticOptimizer {
-        +minVariance(MarketModel) Portfolio
-        +maxSharpe(MarketModel, double rf) Portfolio
-        +frontier(MarketModel, int n) Frontier
+        +MinVariance(MarketModel) Portfolio
+        +MaxSharpe(MarketModel, double rf) Portfolio
+        +Frontier(MarketModel, int n) Frontier
     }
     class FrontierBuilder {
         -QpSolver& solver
-        +minVariance(MarketModel) Portfolio
-        +maxSharpe(MarketModel, double rf) Portfolio
-        +frontier(MarketModel, int n) Frontier
+        +MinVariance(MarketModel) Portfolio
+        +MaxSharpe(MarketModel, double rf) Portfolio
+        +Frontier(MarketModel, int n) Frontier
     }
     FrontierBuilder --> QpSolver
 
     class AllocationStrategy {
         <<interface>>
-        +weights(MarketModel) Vector
+        +Weights(MarketModel) Vector
     }
     AllocationStrategy <|.. GmvStrategy
     AllocationStrategy <|.. MaxSharpeStrategy
@@ -83,7 +83,7 @@ classDiagram
 
     class Backtester {
         -CovarianceEstimator& estimator
-        +run(PriceTable, AllocationStrategy&) BacktestResult
+        +Run(PriceTable, AllocationStrategy&) BacktestResult
     }
     Backtester --> CovarianceEstimator
     Backtester --> AllocationStrategy
@@ -102,12 +102,12 @@ sequenceDiagram
     participant BT as Backtester
     participant EST as CovarianceEstimator
     participant STR as AllocationStrategy
-    CLI->>BT: run(prices, strategy)
+    CLI->>BT: Run(prices, strategy)
     loop каждая дата ребалансировки t
         BT->>BT: окно доходностей [t−L, t)
-        BT->>EST: estimate(окно)
+        BT->>EST: Estimate(окно)
         EST-->>BT: Σ
-        BT->>STR: weights(μ, Σ)
+        BT->>STR: Weights(μ, Σ)
         STR-->>BT: w
         BT->>BT: доходность портфеля до следующей ребалансировки
     end
@@ -195,7 +195,7 @@ Dockerfile
 |---|---|---|
 | FR-1 ✅ | `scripts/download_prices.py` | проверен на имитации ответов ISS; реальная выгрузка — вручную |
 | FR-2 ✅ | `data` | `ReadPriceCsv.*` в `test_data.cpp` |
-| FR-3 ✅ | `data` | `ForwardFill.*` |
+| FR-3 ✅ | `data` | `FillMissingPrices.*` |
 | FR-4 ✅ | `data` | `Splits.*` |
 | FR-5 ✅ | `data` | `Anomalies.DetectsUnadjustedSplit` |
 | FR-6 ✅ | `stats` | `Returns.*`, `Covariance.SampleMatchesNumpy` в `test_stats.cpp` |
