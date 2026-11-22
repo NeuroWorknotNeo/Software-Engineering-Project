@@ -159,7 +159,7 @@ $(function(){initNavTree('index.html','',''); });
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 CI/CD</h1>
 <ul>
-<li><b>CI</b> (<span class="tt">.github/workflows/ci.yml</span>) — на каждый push и pull request: сборка, запуск утилиты, тесты, бенчмарки (результаты — в логе и в summary запуска).</li>
+<li><b>CI</b> (<span class="tt">.github/workflows/ci.yml</span>) — на каждый push и pull request две задачи: <span class="tt">style</span> — проверка форматирования (clang-format) и статический анализ (clang-tidy); <span class="tt">build-test-bench</span> — сборка, запуск утилиты, тесты, бенчмарки (результаты — в логе и в summary запуска).</li>
 <li><b>Docs</b> (<span class="tt">.github/workflows/docs.yml</span>) — на каждый push в <span class="tt"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></span>: документация Doxygen публикуется на GitHub Pages. </li>
 </ul>
 </div></div><!-- PageDoc -->
