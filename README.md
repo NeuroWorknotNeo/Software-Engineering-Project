@@ -58,6 +58,17 @@ python3 scripts/download_prices.py --out data/prices.csv
 Если в данных есть дневное изменение цены больше 50% (обычно неучтённый сплит),
 утилита выводит предупреждение с датой и тикером.
 
+## Запуск в Docker
+
+Образ собирает проект, прогоняет тесты и содержит утилиту вместе с данными из `data/`:
+
+```bash
+docker build -t mpt .
+docker run --rm mpt                                   # stats по data/prices.csv, Ledoit–Wolf
+docker run --rm mpt stats --prices data/prices.csv --cov sample
+docker run --rm -v "$PWD/my_data:/data" mpt stats --prices /data/prices.csv   # свои данные
+```
+
 ## Тесты и бенчмарки
 
 ```bash
@@ -97,6 +108,7 @@ doxygen docs/Doxyfile   # результат в docs/html/index.html
 ├── data/               # цены и сплиты
 ├── docs/               # требования, архитектура, Doxyfile
 ├── .github/workflows/  # CI/CD (GitHub Actions)
+├── Dockerfile          # сборка и запуск в контейнере
 ├── .clang-format       # форматирование кода
 ├── .clang-tidy         # статический анализ и проверка имён
 ├── AGENTS.md           # инструкции для ИИ-агентов
