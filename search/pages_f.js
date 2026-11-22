@@ -1,12 +1,6 @@
 var searchData=
 [
-  ['данные_0',['Данные',['../index.html#autotoc_md3',1,'Данные'],['../md_docs_2REQUIREMENTS.html#autotoc_md14',1,'Данные']]],
-  ['диаграмма_20классов_20ядро_1',['3. Диаграмма классов (ядро)',['../md_docs_2ARCHITECTURE.html#autotoc_md25',1,'']]],
-  ['диаграмма_20последовательности_3a_20бэктест_2',['4. Диаграмма последовательности: бэктест',['../md_docs_2ARCHITECTURE.html#autotoc_md26',1,'']]],
-  ['документация_3',['Документация',['../index.html#autotoc_md7',1,'']]],
-  ['данные_20и_20допущения_4',['2. Исходные данные и допущения',['../md_docs_2REQUIREMENTS.html#autotoc_md12',1,'']]],
-  ['данных_5',['ADR-3. Хранение данных',['../md_docs_2ARCHITECTURE.html#autotoc_md30',1,'']]],
-  ['делаем_6',['5. Ограничения модели (сознательно не делаем)',['../md_docs_2REQUIREMENTS.html#autotoc_md21',1,'']]],
-  ['делает_20программа_7',['Что делает программа',['../index.html#autotoc_md1',1,'']]],
-  ['допущения_8',['2. Исходные данные и допущения',['../md_docs_2REQUIREMENTS.html#autotoc_md12',1,'']]]
+  ['веса_20≥_200_0',['Оптимизация без коротких продаж (веса ≥ 0)',['../md_docs_2REQUIREMENTS.html#autotoc_md18',1,'']]],
+  ['вывод_1',['Интерфейс и вывод',['../md_docs_2REQUIREMENTS.html#autotoc_md20',1,'']]],
+  ['в_20docker_2',['Запуск в Docker',['../index.html#autotoc_md5',1,'']]]
 ];

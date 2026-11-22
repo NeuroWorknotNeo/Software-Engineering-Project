@@ -128,20 +128,27 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">./build/mpt --help</div>
 </div><!-- fragment --><p>Если в данных есть дневное изменение цены больше 50% (обычно неучтённый сплит), утилита выводит предупреждение с датой и тикером.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Запуск в Docker</h1>
+<p>Образ собирает проект, прогоняет тесты и содержит утилиту вместе с данными из <span class="tt">data/</span>:</p>
+<div class="fragment"><div class="line">docker build -t mpt .</div>
+<div class="line">docker run --rm mpt                                   # stats по data/prices.csv, Ledoit–Wolf</div>
+<div class="line">docker run --rm mpt stats --prices data/prices.csv --cov sample</div>
+<div class="line">docker run --rm -v &quot;$PWD/my_data:/data&quot; mpt stats --prices /data/prices.csv   # свои данные</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
 Тесты и бенчмарки</h1>
 <div class="fragment"><div class="line">ctest --test-dir build --output-on-failure</div>
 <div class="line">./build/bench/mpt_bench</div>
 </div><!-- fragment --><p>Тесты сверяют результаты с эталонами из numpy и scikit-learn и проверяют обработку некорректных данных. Бенчмарки измеряют скорость оценки ковариации.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Стиль кода</h1>
 <p>Код следует <a href="https://github.com/yandexdataschool/algorithms/blob/master/src/styleguide.md">стайлгайду курса</a> (Google C++ Style Guide с отступом 4 пробела и строками до 100 символов). Проверка:</p>
 <div class="fragment"><div class="line">clang-format --dry-run --Werror src/*.cpp src/*/*.cpp include/quant/*/*.hpp tests/*.cpp bench/*.cpp</div>
 <div class="line">cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON</div>
 <div class="line">clang-tidy -p build src/*.cpp src/*/*.cpp</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 Документация</h1>
 <div class="fragment"><div class="line">doxygen docs/Doxyfile   # результат в docs/html/index.html</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Структура проекта</h1>
 <div class="fragment"><div class="line">.</div>
 <div class="line">├── include/quant/      # публичные заголовки: data/, stats/</div>
@@ -152,11 +159,12 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">├── data/               # цены и сплиты</div>
 <div class="line">├── docs/               # требования, архитектура, Doxyfile</div>
 <div class="line">├── .github/workflows/  # CI/CD (GitHub Actions)</div>
+<div class="line">├── Dockerfile          # сборка и запуск в контейнере</div>
 <div class="line">├── .clang-format       # форматирование кода</div>
 <div class="line">├── .clang-tidy         # статический анализ и проверка имён</div>
 <div class="line">├── AGENTS.md           # инструкции для ИИ-агентов</div>
 <div class="line">└── CLAUDE.md           # подключает AGENTS.md для Claude Code</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
 CI/CD</h1>
 <ul>
 <li><b>CI</b> (<span class="tt">.github/workflows/ci.yml</span>) — на каждый push и pull request две задачи: <span class="tt">style</span> — проверка форматирования (clang-format) и статический анализ (clang-tidy); <span class="tt">build-test-bench</span> — сборка, запуск утилиты, тесты, бенчмарки (результаты — в логе и в summary запуска).</li>

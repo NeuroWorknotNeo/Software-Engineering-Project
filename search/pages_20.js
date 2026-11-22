@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['≥_200_0',['Оптимизация без коротких продаж (веса ≥ 0)',['../md_docs_2REQUIREMENTS.html#autotoc_md17',1,'']]]
+  ['ядро_0',['3. Диаграмма классов (ядро)',['../md_docs_2ARCHITECTURE.html#autotoc_md26',1,'']]]
 ];
