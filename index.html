@@ -141,25 +141,29 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">docker run --rm mpt stats --prices data/prices.csv --cov sample</div>
 <div class="line">docker run --rm -v &quot;$PWD/my_data:/data&quot; mpt stats --prices /data/prices.csv   # свои данные</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Результаты экспериментов</h1>
+<p>Все результаты для отчёта (бэктесты с разными параметрами, эффективные границы, графики, сводная таблица) лежат в results/ и пересчитываются одной командой:</p>
+<div class="fragment"><div class="line">scripts/run_experiments.sh</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Графики</h1>
 <p>Скриптам нужен matplotlib (<span class="tt">pip install matplotlib</span>):</p>
 <div class="fragment"><div class="line">python3 scripts/plot_frontier.py frontier.csv --portfolios portfolios.csv --out frontier.png</div>
 <div class="line">python3 scripts/plot_backtest.py equity.csv --exclude max-sharpe/short --log --out backtest.png</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 Тесты и бенчмарки</h1>
 <div class="fragment"><div class="line">ctest --test-dir build --output-on-failure</div>
 <div class="line">./build/bench/mpt_bench</div>
 </div><!-- fragment --><p>Тесты сверяют результаты с эталонами из numpy и scikit-learn и проверяют обработку некорректных данных. Бенчмарки измеряют скорость оценки ковариации.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Стиль кода</h1>
 <p>Код следует <a href="https://github.com/yandexdataschool/algorithms/blob/master/src/styleguide.md">стайлгайду курса</a> (Google C++ Style Guide с отступом 4 пробела и строками до 100 символов). Проверка:</p>
 <div class="fragment"><div class="line">clang-format --dry-run --Werror src/*.cpp src/*/*.cpp include/quant/*/*.hpp tests/*.cpp bench/*.cpp</div>
 <div class="line">cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON</div>
 <div class="line">clang-tidy -p build src/*.cpp src/*/*.cpp</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
 Документация</h1>
 <div class="fragment"><div class="line">doxygen docs/Doxyfile   # результат в docs/html/index.html</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 Структура проекта</h1>
 <div class="fragment"><div class="line">.</div>
 <div class="line">├── include/quant/      # публичные заголовки: data/, stats/, optim/, backtest/, io/</div>
@@ -168,6 +172,7 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">├── bench/              # бенчмарки (Google Benchmark)</div>
 <div class="line">├── scripts/            # Python: загрузка данных с MOEX, графики</div>
 <div class="line">├── data/               # цены и сплиты</div>
+<div class="line">├── results/            # результаты экспериментов (scripts/run_experiments.sh)</div>
 <div class="line">├── docs/               # требования, архитектура, Doxyfile</div>
 <div class="line">├── .github/workflows/  # CI/CD (GitHub Actions)</div>
 <div class="line">├── Dockerfile          # сборка и запуск в контейнере</div>
@@ -175,7 +180,7 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">├── .clang-tidy         # статический анализ и проверка имён</div>
 <div class="line">├── AGENTS.md           # инструкции для ИИ-агентов</div>
 <div class="line">└── CLAUDE.md           # подключает AGENTS.md для Claude Code</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
 CI/CD</h1>
 <ul>
 <li><b>CI</b> (<span class="tt">.github/workflows/ci.yml</span>) — на каждый push и pull request три задачи: <span class="tt">style</span> — проверка форматирования (clang-format) и статический анализ (clang-tidy); <span class="tt">build-test-bench</span> — сборка, запуск утилиты, тесты, бенчмарки (результаты — в логе и в summary запуска); <span class="tt">docker</span> — сборка Docker-образа (с прогоном тестов) и запуск контейнера.</li>

@@ -92,9 +92,9 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
   <div class="headertitle"><div class="title">Архитектура </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md24"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md25"></a></p>
 <p>Статус: v0.4 (28.11.2026). Реализованы все модули: <span class="tt">data</span>, <span class="tt">stats</span>, <span class="tt">optim</span>, <span class="tt">backtest</span>, <span class="tt">io</span>. Требования — в <a class="el" href="md_docs_2REQUIREMENTS.html">REQUIREMENTS.md</a>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md25"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
 1. Общая схема</h1>
 <p>Приложение — конвейер обработки данных. Каждый шаг — отдельный модуль библиотеки <span class="tt"><a class="el" href="namespacequant.html">quant</a></span>, консольная утилита только разбирает параметры и соединяет шаги.</p>
 <div class="fragment"><div class="line">flowchart LR</div>
@@ -108,7 +108,7 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line">    B --&gt; W</div>
 <div class="line">    W --&gt; P[scripts/plot_*.py&lt;br/&gt;графики для отчёта]</div>
 </div><!-- fragment --><p>Правило зависимостей: <span class="tt">data → stats → optim → backtest</span>. Математические модули (<span class="tt">stats</span>, <span class="tt">optim</span>) не знают о файлах и консоли — их можно тестировать на синтетических данных. Чтение и запись файлов — только в <span class="tt">data</span> и <span class="tt">io</span>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md26"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
 2. Модули</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -126,7 +126,7 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">scripts/</span> (Python)  </td><td class="markdownTableBodyNone">Загрузка данных с MOEX, графики  </td><td class="markdownTableBodyNone"><span class="tt">download_prices.py</span>, <span class="tt">plot_frontier.py</span>, <span class="tt">plot_backtest.py</span>  </td><td class="markdownTableBodyNone">FR-1, FR-22  </td></tr>
 </table>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md27"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
 3. Диаграмма классов (ядро)</h1>
 <div class="fragment"><div class="line">classDiagram</div>
 <div class="line">    class CovarianceEstimator {</div>
@@ -184,7 +184,7 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line">    RunBacktest --&gt; CovarianceEstimator</div>
 <div class="line">    RunBacktest --&gt; AllocationStrategy</div>
 </div><!-- fragment --><p>Паттерн <b>Strategy</b> используется трижды: оценка ковариации, QP-решатель и правило распределения в бэктесте. Это позволяет сравнивать варианты (выборочная ковариация против Ledoit–Wolf, два решателя, GMV против 1/N) без изменения остального кода.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md28"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
 4. Диаграмма последовательности: бэктест</h1>
 <div class="fragment"><div class="line">sequenceDiagram</div>
 <div class="line">    participant CLI as main</div>
@@ -201,9 +201,9 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line">        BT-&gt;&gt;BT: доходность портфеля до следующей ребалансировки</div>
 <div class="line">    end</div>
 <div class="line">    BT--&gt;&gt;CLI: кривая капитала, метрики</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md29"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
 5. Архитектурные решения</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
 ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)</h2>
 <p>Все три задачи сводятся к одной задаче квадратичного программирования:</p>
 <blockquote class="doxtable">
@@ -228,26 +228,26 @@ ADR-1. Метод оптимизации без коротких продаж (F
 <li>Бенчмарк GMV без коротких продаж: 20 бумаг — (а) 19 мкс, (б) 62 мкс; 50 бумаг — (а) 0,26 мс, (б) 0,53 мс; 100 бумаг — (а) 5,6 мс, (б) 3,1 мс. Число итераций (а) растёт с числом бумаг, а каждая итерация решает систему ККТ, поэтому на больших N (б) быстрее, но даёт только приближённое решение.</li>
 <li>NFR-1: граница из 50 точек без коротких продаж для 50 бумаг × 1000 дней вместе с оценкой Ledoit–Wolf — около 24 мс (требование — ≤ 1 с).</li>
 </ul>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md31"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
 ADR-2. Линейная алгебра</h2>
 <p>Варианты: Eigen 3 / собственные матрицы / BLAS+LAPACK. <b>Решение:</b> Eigen 3 — стандарт в индустрии, только заголовки, есть разложения Холецкого и LDLᵀ для решения систем. Подключается через <span class="tt">find_package</span>, при отсутствии — через <span class="tt">FetchContent</span>.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md32"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
 ADR-3. Хранение данных</h2>
 <p>Варианты: CSV-файлы / SQLite. <b>Решение:</b> CSV в широком формате (<span class="tt">date,TICKER1,...</span>). Объём маленький (~1700 дней × 20 бумаг), файлы удобно смотреть глазами и класть в репозиторий для воспроизводимости (NFR-3). Сплиты — отдельный <span class="tt">splits.csv</span> (<span class="tt">date,ticker,ratio</span>).</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md33"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
 ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)</h2>
 <p>Решается через множители Лагранжа: GMV — w = Σ⁻¹1 / (1ᵀΣ⁻¹1), касательный портфель — w ∝ Σ⁻¹(μ − r_f·1), граница — линейная комбинация двух портфелей. Системы решаются разложением LDLᵀ без явного обращения Σ (устойчивее численно). Если Σ вырождена — ошибка с предложением использовать Ledoit–Wolf.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md34"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
 ADR-5. Параллельность бэктеста (C)</h2>
 <p>Целевые веса на разных датах ребалансировки зависят только от окна данных и не зависят друг от друга. Поэтому <span class="tt">RunBacktest</span> сначала считает веса на всех датах, разбивая даты на блоки по числу ядер (<span class="tt">std::thread::hardware_concurrency</span>) и запуская блоки через <span class="tt">std::async</span>, а затем последовательно прогоняет стоимость портфеля по дням (этот шаг зависит от предыдущего дня). Общего изменяемого состояния у потоков нет: стратегии, оптимизаторы, решатели и оценщики ковариации — объекты без изменяемых полей, поэтому мьютексы не нужны, а результат совпадает с последовательным побитово (тест <span class="tt">Backtester.ParallelMatchesSequential</span>).</p>
 <p>Бенчмарк (<span class="tt">bench/bench_backtest.cpp</span>, 2016 дней, окно 252, max-Sharpe без коротких продаж, Ledoit–Wolf, 4 ядра): 20 бумаг — 8,3 мс последовательно и 4,2 мс параллельно (×2,0); 50 бумаг — 56 мс и 16 мс (×3,5). Чем дороже одна оптимизация, тем ближе ускорение к числу ядер.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md35"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
 ADR-7. Если портфеля максимального Шарпа не существует (FR-17)</h2>
 <p>На отдельных датах бэктеста касательный портфель может не существовать: с короткими продажами — если доходность GMV в окне не выше безрисковой ставки, без коротких продаж — если ни одна бумага не обгоняет ставку. Варианты: (а) оставить прежние веса, (б) уйти в равновзвешенный портфель, (в) взять портфель минимальной дисперсии того же режима. <b>Решение:</b> (в) — самый консервативный выбор, согласованный с логикой стратегии (минимум риска, когда за риск не платят). Такие даты помечаются (<span class="tt">Rebalance::is_fallback</span>) и считаются в метриках (<span class="tt">PerformanceMetrics::fallback_count</span>).</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md36"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
 ADR-6. Обработка ошибок</h2>
 <p>Библиотека бросает исключения (<span class="tt">std::invalid_argument</span>, <span class="tt">std::runtime_error</span> с понятным текстом). <span class="tt"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></span> перехватывает их, печатает сообщение в stderr и возвращает код 1 (некорректный ввод) или 2 (ошибка расчёта).</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md37"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
 6. Целевая структура репозитория</h1>
 <div class="fragment"><div class="line">include/quant/{data,stats,optim,backtest,io}/   заголовки</div>
 <div class="line">src/{data,stats,optim,backtest,io}/             реализация библиотеки mpt_core</div>
@@ -255,11 +255,12 @@ ADR-6. Обработка ошибок</h2>
 <div class="line">tests/, tests/data/                             unit-тесты (GoogleTest) и тестовые CSV</div>
 <div class="line">bench/                                          бенчмарки (Google Benchmark)</div>
 <div class="line">data/prices.csv, data/splits.csv                данные для воспроизводимого запуска</div>
+<div class="line">results/                                        результаты экспериментов (scripts/run_experiments.sh)</div>
 <div class="line">scripts/                                        Python: загрузка данных, графики</div>
 <div class="line">docs/                                           требования, архитектура, план, Doxyfile</div>
 <div class="line">report/                                         отчёт LaTeX и PDF</div>
 <div class="line">Dockerfile</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md38"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md39"></a>
 7. Трассировка требований</h1>
 <p>Заполняется по мере реализации: требование → модуль → тест. ✅ — реализовано и покрыто тестами.</p>
 <table class="markdownTable">
@@ -304,7 +305,7 @@ ADR-6. Обработка ошибок</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FR-20, FR-21 ✅  </td><td class="markdownTableBodyNone"><span class="tt">io</span>/<span class="tt">app</span>  </td><td class="markdownTableBodyNone"><span class="tt">CommandLineOptions.*</span>, <span class="tt">ResultWriter.*</span> в <span class="tt">test_io.cpp</span>; запуск <span class="tt">mpt</span> в CI  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">FR-22 ✅  </td><td class="markdownTableBodyNone"><span class="tt">scripts/plot_frontier.py</span>, <span class="tt">scripts/plot_backtest.py</span>  </td><td class="markdownTableBodyNone">проверены вручную на результатах <span class="tt">mpt</span>  </td></tr>
+<td class="markdownTableBodyNone">FR-22 ✅  </td><td class="markdownTableBodyNone"><span class="tt">scripts/plot_frontier.py</span>, <span class="tt">scripts/plot_backtest.py</span>, <span class="tt">scripts/summarize_results.py</span>, <span class="tt">scripts/run_experiments.sh</span>  </td><td class="markdownTableBodyNone">все графики и таблицы в <span class="tt">results/</span> пересчитываются одной командой; повторный запуск даёт побайтово те же файлы  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">NFR-1 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">BM_LongOnlyFrontierWithEstimation/50</span> в <span class="tt">bench/bench_optim.cpp</span>  </td></tr>
 <tr class="markdownTableRowEven">

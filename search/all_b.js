@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['c_0',['ADR-5. Параллельность бэктеста (C)',['../md_docs_2ARCHITECTURE.html#autotoc_md34',1,'']]],
-  ['cd_1',['CI/CD',['../index.html#autotoc_md11',1,'']]],
-  ['ci_20cd_2',['CI/CD',['../index.html#autotoc_md11',1,'']]],
+  ['c_0',['ADR-5. Параллельность бэктеста (C)',['../md_docs_2ARCHITECTURE.html#autotoc_md35',1,'']]],
+  ['cd_1',['CI/CD',['../index.html#autotoc_md12',1,'']]],
+  ['ci_20cd_2',['CI/CD',['../index.html#autotoc_md12',1,'']]],
   ['cli_5foptions_2ecpp_3',['cli_options.cpp',['../cli__options_8cpp.html',1,'']]],
   ['cli_5foptions_2ehpp_4',['cli_options.hpp',['../cli__options_8hpp.html',1,'']]],
   ['commandlineoptions_5',['CommandLineOptions',['../namespacequant.html#afbd7e5ee506b56abe96f5597b17ddc48',1,'quant']]],

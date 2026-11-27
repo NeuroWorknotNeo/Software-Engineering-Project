@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"structquant_1_1Allocation.html#af3c7457b08c7b85af93265534e12338e":[4,0,0,0,1],
 "structquant_1_1BacktestConfig.html":[3,0,0,5],
 "structquant_1_1BacktestConfig.html":[4,0,0,5],
 "structquant_1_1BacktestConfig.html#a73a2b0b3f5be1040c97f1450cf6245c7":[3,0,0,5,0],

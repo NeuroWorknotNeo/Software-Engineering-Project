@@ -7,9 +7,9 @@ var searchData=
   ['findminimumvarianceforreturn_4',['FindMinimumVarianceForReturn',['../classquant_1_1PortfolioOptimizer.html#a1363cb9a641f8d09bdfadea4e7018769',1,'quant::PortfolioOptimizer::FindMinimumVarianceForReturn()'],['../classquant_1_1ShortSellingOptimizer.html#aa2745bf135e5da6620b65ccce17a67f9',1,'quant::ShortSellingOptimizer::FindMinimumVarianceForReturn()'],['../classquant_1_1LongOnlyOptimizer.html#ad79895f8c631856e49c3f6649cc07a12',1,'quant::LongOnlyOptimizer::FindMinimumVarianceForReturn()']]],
   ['findpriceanomalies_5',['FindPriceAnomalies',['../namespacequant.html#aa34e98ece951956ffb1417626bf7452a',1,'quant']]],
   ['findrebalancedays_6',['FindRebalanceDays',['../namespacequant.html#ac54411cbb027e10de4b73cc5c531ba53',1,'quant']]],
-  ['fr_2012…fr_2014_7',['ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)',['../md_docs_2ARCHITECTURE.html#autotoc_md30',1,'']]],
-  ['fr_2017_8',['ADR-7. Если портфеля максимального Шарпа не существует (FR-17)',['../md_docs_2ARCHITECTURE.html#autotoc_md35',1,'']]],
-  ['fr_209…fr_2011_9',['ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)',['../md_docs_2ARCHITECTURE.html#autotoc_md33',1,'']]],
+  ['fr_2012…fr_2014_7',['ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)',['../md_docs_2ARCHITECTURE.html#autotoc_md31',1,'']]],
+  ['fr_2017_8',['ADR-7. Если портфеля максимального Шарпа не существует (FR-17)',['../md_docs_2ARCHITECTURE.html#autotoc_md36',1,'']]],
+  ['fr_209…fr_2011_9',['ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)',['../md_docs_2ARCHITECTURE.html#autotoc_md34',1,'']]],
   ['frontier_2ecpp_10',['frontier.cpp',['../frontier_8cpp.html',1,'']]],
   ['frontier_2ehpp_11',['frontier.hpp',['../frontier_8hpp.html',1,'']]]
 ];
