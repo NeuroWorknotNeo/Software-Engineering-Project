@@ -11,7 +11,7 @@ if(NOT GTest_FOUND)
   FetchContent_MakeAvailable(googletest)
 endif()
 
-add_executable(mpt_tests test_data.cpp test_stats.cpp test_optim.cpp test_io.cpp)
+add_executable(mpt_tests test_data.cpp test_stats.cpp test_optim.cpp test_io.cpp test_backtest.cpp)
 target_link_libraries(mpt_tests PRIVATE mpt_core GTest::gtest_main)
 target_compile_definitions(mpt_tests PRIVATE
   MPT_TEST_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data")

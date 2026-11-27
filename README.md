@@ -20,7 +20,7 @@
 | `stats` | Годовые средние доходности, волатильности и ковариационная матрица (выборочная или Ledoit–Wolf); корректировка на сплиты, поиск аномалий в данных | ✅ готово |
 | `optimize` | Портфели минимальной дисперсии и максимального Шарпа, с короткими продажами и без | ✅ готово |
 | `frontier` | Эффективная граница из N точек, с короткими продажами и без | ✅ готово |
-| `backtest` | Скользящее окно, ежемесячная ребалансировка, сравнение с портфелем 1/N | 🚧 в разработке |
+| `backtest` | Скользящее окно, ежемесячная ребалансировка, сравнение с портфелем 1/N | ✅ готово |
 
 Данные: 20 ликвидных акций из индекса IMOEX за 2019–2025 годы (список —
 в [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md)).
@@ -54,12 +54,19 @@ python3 scripts/download_prices.py --out data/prices.csv
 ./build/mpt stats --prices data/prices.csv --splits data/splits.csv --cov ledoit-wolf
 ./build/mpt optimize --prices data/prices.csv --splits data/splits.csv --risk-free 0.10 --out portfolios.csv
 ./build/mpt frontier --prices data/prices.csv --splits data/splits.csv --points 50 --out frontier.csv
+./build/mpt backtest --prices data/prices.csv --splits data/splits.csv --window 252 --cost 0.001 \
+    --out equity.csv --weights-out weights.csv --metrics-out metrics.csv
 ./build/mpt --help
 ```
 
 Без коротких продаж оптимальные портфели ищет собственный метод активного множества
 (задача квадратичного программирования); с короткими продажами — точные формулы через
 множители Лагранжа. Безрисковая ставка по умолчанию — 10% годовых.
+
+Бэктест каждый месяц оценивает μ и Σ по последним 252 дням (только прошлые данные)
+и сравнивает пять стратегий: минимальная дисперсия и максимальный Шарп с короткими
+продажами и без них, а также равновзвешенный портфель 1/N. Метрики: среднегодовая
+доходность, волатильность, коэффициент Шарпа, максимальная просадка, оборот.
 
 Если в данных есть дневное изменение цены больше 50% (обычно неучтённый сплит),
 утилита выводит предупреждение с датой и тикером.
@@ -73,6 +80,15 @@ docker build -t mpt .
 docker run --rm mpt                                   # stats по data/prices.csv, Ledoit–Wolf
 docker run --rm mpt stats --prices data/prices.csv --cov sample
 docker run --rm -v "$PWD/my_data:/data" mpt stats --prices /data/prices.csv   # свои данные
+```
+
+## Графики
+
+Скриптам нужен matplotlib (`pip install matplotlib`):
+
+```bash
+python3 scripts/plot_frontier.py frontier.csv --portfolios portfolios.csv --out frontier.png
+python3 scripts/plot_backtest.py equity.csv --exclude max-sharpe/short --log --out backtest.png
 ```
 
 ## Тесты и бенчмарки
@@ -106,11 +122,11 @@ doxygen docs/Doxyfile   # результат в docs/html/index.html
 
 ```
 .
-├── include/quant/      # публичные заголовки: data/, stats/, optim/, io/
+├── include/quant/      # публичные заголовки: data/, stats/, optim/, backtest/, io/
 ├── src/                # реализация библиотеки mpt_core и утилита mpt (main.cpp)
 ├── tests/              # unit-тесты (GoogleTest) и тестовые CSV
 ├── bench/              # бенчмарки (Google Benchmark)
-├── scripts/            # Python: загрузка данных с MOEX
+├── scripts/            # Python: загрузка данных с MOEX, графики
 ├── data/               # цены и сплиты
 ├── docs/               # требования, архитектура, Doxyfile
 ├── .github/workflows/  # CI/CD (GitHub Actions)

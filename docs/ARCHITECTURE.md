@@ -1,6 +1,6 @@
 # Архитектура
 
-Статус: v0.3 (27.11.2026). Реализованы модули `data`, `stats`, `optim` и `io`. Требования — в [REQUIREMENTS.md](REQUIREMENTS.md).
+Статус: v0.4 (28.11.2026). Реализованы все модули: `data`, `stats`, `optim`, `backtest`, `io`. Требования — в [REQUIREMENTS.md](REQUIREMENTS.md).
 
 ## 1. Общая схема
 
@@ -32,8 +32,8 @@ flowchart LR
 | `data` | Чтение CSV, заполнение пропусков, сплиты, поиск аномалий | `PriceTable`, `Split`, `PriceAnomaly`; функции `ReadPriceCsv`, `FillMissingPrices`, `ReadSplitsCsv`, `ApplySplits`, `FindPriceAnomalies` | FR-2…FR-5 |
 | `stats` | Доходности, средние, оценки ковариации | `ReturnMatrix`, `CovarianceEstimator` (интерфейс), `SampleCovariance`, `LedoitWolfCovariance`; функции `ComputeSimpleReturns`, `ComputeMeanReturns`, `EstimateLedoitWolf`, `MakeCovarianceEstimator` | FR-6…FR-8 |
 | `optim` | Оптимальные портфели, QP-решатели, эффективная граница | `MarketModel` (μ, Σ), `Portfolio`, `PortfolioOptimizer` (интерфейс), `ShortSellingOptimizer`, `LongOnlyOptimizer`, `QpSolver` (интерфейс), `ActiveSetSolver`, `ProjectedGradientSolver`; функции `EvaluatePortfolio`, `ComputeSharpeRatio`, `BuildEfficientFrontier` | FR-9…FR-15 |
-| `backtest` | Скользящее окно, ребалансировка, метрики | `Backtester`, `AllocationStrategy` (интерфейс), `GmvStrategy`, `MaxSharpeStrategy`, `EqualWeightStrategy`, `PerformanceMetrics` | FR-16…FR-19 |
-| `io` / `app` | Разбор параметров, запись CSV, сводка в stdout, коды возврата | `CommandLineOptions`, `LabeledPortfolio`; функции `ParseCommandLineOptions`, `WritePortfoliosCsv`, `WriteMatrixCsv`; утилита `mpt` (`src/main.cpp`) | FR-20, FR-21, NFR-8 |
+| `backtest` | Скользящее окно, ребалансировка, метрики | `AllocationStrategy` (интерфейс), `MinimumVarianceStrategy`, `MaxSharpeStrategy`, `EqualWeightStrategy`, `Allocation`, `BacktestConfig`, `BacktestResult`, `Rebalance`, `PerformanceMetrics`; функции `FindRebalanceDays`, `RunBacktest`, `ComputePerformance` | FR-16…FR-19 |
+| `io` / `app` | Разбор параметров, запись CSV, сводка в stdout, коды возврата | `CommandLineOptions`, `LabeledPortfolio`; функции `ParseCommandLineOptions`, `WritePortfoliosCsv`, `WriteMatrixCsv`, `WriteEquityCsv`, `WriteRebalancesCsv`, `WriteMetricsCsv`; утилита `mpt` (`src/main.cpp`) | FR-20, FR-21, NFR-8 |
 | `scripts/` (Python) | Загрузка данных с MOEX, графики | `download_prices.py`, `plot_frontier.py`, `plot_backtest.py` | FR-1, FR-22 |
 
 ## 3. Диаграмма классов (ядро)
@@ -80,18 +80,20 @@ classDiagram
 
     class AllocationStrategy {
         <<interface>>
-        +Weights(MarketModel) Vector
+        +Allocate(MarketModel) Allocation
     }
-    AllocationStrategy <|.. GmvStrategy
+    AllocationStrategy <|.. MinimumVarianceStrategy
     AllocationStrategy <|.. MaxSharpeStrategy
     AllocationStrategy <|.. EqualWeightStrategy
+    MinimumVarianceStrategy --> PortfolioOptimizer
+    MaxSharpeStrategy --> PortfolioOptimizer
 
-    class Backtester {
-        -CovarianceEstimator& estimator
-        +Run(PriceTable, AllocationStrategy&) BacktestResult
+    class RunBacktest {
+        <<function>>
+        +(ReturnMatrix, AllocationStrategy&, CovarianceEstimator&, BacktestConfig) BacktestResult
     }
-    Backtester --> CovarianceEstimator
-    Backtester --> AllocationStrategy
+    RunBacktest --> CovarianceEstimator
+    RunBacktest --> AllocationStrategy
 ```
 
 Паттерн **Strategy** используется трижды: оценка ковариации, QP-решатель
@@ -181,9 +183,29 @@ sequenceDiagram
 
 ### ADR-5. Параллельность бэктеста (C)
 
-Расчёты на разных датах ребалансировки независимы, их можно запускать
-через `std::async`. Делаем только если останется время; эффект измеряем
-бенчмарком.
+Целевые веса на разных датах ребалансировки зависят только от окна данных и не зависят
+друг от друга. Поэтому `RunBacktest` сначала считает веса на всех датах, разбивая даты
+на блоки по числу ядер (`std::thread::hardware_concurrency`) и запуская блоки через
+`std::async`, а затем последовательно прогоняет стоимость портфеля по дням (этот шаг
+зависит от предыдущего дня). Общего изменяемого состояния у потоков нет: стратегии,
+оптимизаторы, решатели и оценщики ковариации — объекты без изменяемых полей, поэтому
+мьютексы не нужны, а результат совпадает с последовательным побитово
+(тест `Backtester.ParallelMatchesSequential`).
+
+Бенчмарк (`bench/bench_backtest.cpp`, 2016 дней, окно 252, max-Sharpe без коротких
+продаж, Ledoit–Wolf, 4 ядра): 20 бумаг — 8,3 мс последовательно и 4,2 мс параллельно
+(×2,0); 50 бумаг — 56 мс и 16 мс (×3,5). Чем дороже одна оптимизация, тем ближе
+ускорение к числу ядер.
+
+### ADR-7. Если портфеля максимального Шарпа не существует (FR-17)
+
+На отдельных датах бэктеста касательный портфель может не существовать: с короткими
+продажами — если доходность GMV в окне не выше безрисковой ставки, без коротких
+продаж — если ни одна бумага не обгоняет ставку. Варианты: (а) оставить прежние веса,
+(б) уйти в равновзвешенный портфель, (в) взять портфель минимальной дисперсии того же
+режима. **Решение:** (в) — самый консервативный выбор, согласованный с логикой
+стратегии (минимум риска, когда за риск не платят). Такие даты помечаются
+(`Rebalance::is_fallback`) и считаются в метриках (`PerformanceMetrics::fallback_count`).
 
 ### ADR-6. Обработка ошибок
 
@@ -226,8 +248,12 @@ Dockerfile
 | FR-12 ✅ | `optim` | `LongOnly.MinimumVarianceDropsShortedAsset`, `LongOnly.ActiveSetAgreesWithProjectedGradientOnRandomModels` |
 | FR-13 ✅ | `optim` | `LongOnly.MaxSharpeBeatsFrontierAndIsBelowShortSelling` |
 | FR-14 ✅ | `optim` | `LongOnly.FrontierPointsAreFeasibleAndRiskier`, `LongOnly.MeanVarianceTradeOffAgreesWithReturnTarget` |
-| FR-16…FR-18 | `backtest` | `test_backtest.cpp` |
-| FR-20, FR-21 ✅ (кроме `backtest`) | `io`/`app` | `CommandLineOptions.*`, `ResultWriter.*` в `test_io.cpp`; запуск `mpt` в CI |
+| FR-16 ✅ | `backtest` | `RebalanceDays.*`, `Backtester.UsesOnlyPastDataForDecisions`, `Backtester.WeightsDriftBetweenRebalances`, `Backtester.RebalancesAtNewMonthWithTurnover` в `test_backtest.cpp`; кривые капитала сверены с независимым расчётом на Python (до 5·10⁻¹²) |
+| FR-17 ✅ | `backtest` | `Backtester.MaxSharpeFallsBackToMinimumVariance`, `Backtester.ParallelMatchesSequential` |
+| FR-18 ✅ | `backtest` | `Performance.ComputesMetricsFromEquityCurve` |
+| FR-19 ✅ | `backtest` | `Backtester.TransactionCostsReduceValue` |
+| FR-20, FR-21 ✅ | `io`/`app` | `CommandLineOptions.*`, `ResultWriter.*` в `test_io.cpp`; запуск `mpt` в CI |
+| FR-22 ✅ | `scripts/plot_frontier.py`, `scripts/plot_backtest.py` | проверены вручную на результатах `mpt` |
 | NFR-1 ✅ | `optim` | `BM_LongOnlyFrontierWithEstimation/50` в `bench/bench_optim.cpp` |
 | NFR-2 ✅ | `optim` | `LongOnly.MatchesAnalyticSolutionWhenConstraintIsInactive`, проверки ККТ в `test_optim.cpp` |
 | NFR-8 | `io`/`app` | `ReadPriceCsv.RejectsMalformedInput`, `ShortSelling.RejectsNotPositiveDefiniteCovariance`, `LongOnly.RejectsUnreachableTargetsAndRates`, `QpSolvers.RejectInvalidProblems` |

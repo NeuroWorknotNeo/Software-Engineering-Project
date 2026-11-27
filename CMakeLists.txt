@@ -37,6 +37,9 @@ add_library(mpt_core
   src/optim/qp_solver.cpp
   src/optim/optimizer.cpp
   src/optim/frontier.cpp
+  src/backtest/allocation_strategy.cpp
+  src/backtest/backtester.cpp
+  src/backtest/performance.cpp
   src/io/cli_options.cpp
   src/io/result_writer.cpp
 )

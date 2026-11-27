@@ -14,12 +14,12 @@
 ## Структура
 
 - `include/quant/<модуль>/` — публичные заголовки (`.hpp`); модули: `data`, `stats`, `optim`,
-  `io`, далее `backtest` (см. `docs/ARCHITECTURE.md`).
+  `backtest`, `io` (см. `docs/ARCHITECTURE.md`).
 - `src/<модуль>/` — реализация библиотеки `mpt_core`; `src/main.cpp` — утилита `mpt`.
 - `tests/` — unit-тесты на GoogleTest, по файлу `test_<модуль>.cpp`; тестовые CSV — в `tests/data/`.
 - `bench/` — бенчмарки на Google Benchmark, по файлу `bench_<модуль>.cpp`.
-- `scripts/` — Python-скрипты (загрузка данных с MOEX, графики), только стандартная библиотека
-  для загрузки.
+- `scripts/` — Python-скрипты: загрузка данных с MOEX (только стандартная библиотека)
+  и графики (`plot_*.py`, matplotlib).
 - `data/` — цены (`prices.csv`) и сплиты (`splits.csv`).
 - `docs/` — требования, архитектура, `Doxyfile`.
 - `.github/workflows/` — CI (`ci.yml`) и публикация документации (`docs.yml`).
@@ -38,6 +38,7 @@ ctest --test-dir build --output-on-failure
 ./build/mpt stats --prices data/prices.csv --splits data/splits.csv
 ./build/mpt optimize --prices data/prices.csv --splits data/splits.csv
 ./build/mpt frontier --prices data/prices.csv --splits data/splits.csv --points 50
+./build/mpt backtest --prices data/prices.csv --splits data/splits.csv --out equity.csv
 
 # Бенчмарки
 ./build/bench/mpt_bench

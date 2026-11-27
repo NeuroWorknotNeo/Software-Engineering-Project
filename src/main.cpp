@@ -2,8 +2,7 @@
  * @file main.cpp
  * @brief Консольная утилита mpt: портфельный анализ по Марковицу.
  *
- * Команды `stats`, `optimize` и `frontier`; `backtest` в разработке
- * (см. docs/REQUIREMENTS.md).
+ * Команды `stats`, `optimize`, `frontier` и `backtest` (см. docs/REQUIREMENTS.md).
  */
 #include <cmath>
 #include <exception>
@@ -15,6 +14,9 @@
 #include <string>
 #include <vector>
 
+#include "quant/backtest/allocation_strategy.hpp"
+#include "quant/backtest/backtester.hpp"
+#include "quant/backtest/performance.hpp"
 #include "quant/data/price_table.hpp"
 #include "quant/io/cli_options.hpp"
 #include "quant/io/result_writer.hpp"
@@ -41,6 +43,8 @@ constexpr int kRatioPrecision = 4;
 constexpr double kDefaultAnomalyThreshold = 0.5;
 constexpr double kDefaultRiskFreeRate = 0.10;
 constexpr int kDefaultFrontierPoints = 50;
+constexpr double kDefaultTransactionCost = 0.0;
+constexpr int kStrategyColumnWidth = 24;
 const char* const kDefaultCovarianceEstimator = "sample";
 
 const char* const kUsage = R"(Usage: mpt <command> [options]
@@ -49,7 +53,7 @@ Commands:
   stats      Annual mean returns, volatilities and covariance of assets
   optimize   Minimum-variance and max-Sharpe portfolios, with and without short selling
   frontier   Efficient frontier, with and without short selling
-  backtest   Rolling backtest (in development)
+  backtest   Rolling-window backtest with monthly rebalancing vs the 1/N portfolio
 
 Common options:
   --prices PATH             CSV with prices: date,TICKER1,TICKER2,... (required)
@@ -58,13 +62,18 @@ Common options:
   --anomaly-threshold X     Warn about daily |returns| above X (default: 0.5)
   --help                    Show this help
 
-Options for 'optimize' and 'frontier':
+Options for 'optimize', 'frontier' and 'backtest':
   --risk-free R             Annual risk-free rate (default: 0.10)
   --points N                Number of frontier points, 'frontier' only (default: 50)
+  --window N                Estimation window in trading days, 'backtest' only (default: 252)
+  --cost C                  Transaction cost per unit of traded weight, 'backtest' only
+                            (default: 0)
 
-Output:
+Output (CSV):
   --out PATH                'stats': annual covariance matrix; 'optimize', 'frontier':
-                            portfolios with weights (CSV)
+                            portfolios with weights; 'backtest': equity curves
+  --weights-out PATH        'backtest': weights and turnover at every rebalancing
+  --metrics-out PATH        'backtest': performance metrics of strategies
 )";
 
 /// Годовая модель рынка и сведения о данных, по которым она построена.
@@ -101,14 +110,22 @@ void PrintAnomalyWarnings(const quant::PriceTable& table, double threshold) {
     }
 }
 
-MarketData LoadMarketData(const quant::CommandLineOptions& options) {
+quant::ReturnMatrix LoadDailyReturns(const quant::CommandLineOptions& options) {
     const quant::PriceTable table = LoadPrices(options);
     PrintAnomalyWarnings(
         table, quant::GetDoubleOption(options, "anomaly-threshold", kDefaultAnomalyThreshold));
+    return quant::ComputeSimpleReturns(table);
+}
 
-    const quant::ReturnMatrix daily = quant::ComputeSimpleReturns(table);
-    const auto estimator = quant::MakeCovarianceEstimator(
+std::unique_ptr<quant::CovarianceEstimator> MakeEstimator(
+    const quant::CommandLineOptions& options) {
+    return quant::MakeCovarianceEstimator(
         quant::GetOptionOrDefault(options, "cov", kDefaultCovarianceEstimator));
+}
+
+MarketData LoadMarketData(const quant::CommandLineOptions& options) {
+    const quant::ReturnMatrix daily = LoadDailyReturns(options);
+    const auto estimator = MakeEstimator(options);
 
     MarketData data;
     data.first_date = daily.dates.front();
@@ -318,6 +335,99 @@ int RunFrontier(const quant::CommandLineOptions& options) {
     return kExitOk;
 }
 
+void PrintBacktestMetrics(const std::vector<quant::BacktestResult>& results,
+                          const std::vector<quant::PerformanceMetrics>& metrics) {
+    std::cout << '\n'
+              << std::left << std::setw(kStrategyColumnWidth) << "strategy" << std::right
+              << std::setw(kNumberColumnWidth) << "CAGR, %" << std::setw(kNumberColumnWidth)
+              << "vol, %" << std::setw(kNumberColumnWidth) << "Sharpe"
+              << std::setw(kNumberColumnWidth) << "max DD, %" << std::setw(kNumberColumnWidth)
+              << "turnover, %" << std::setw(kNumberColumnWidth) << "fallbacks" << '\n';
+    for (std::size_t index = 0; index < results.size(); ++index) {
+        const auto& item = metrics[index];
+        std::cout << std::left << std::setw(kStrategyColumnWidth) << results[index].strategy_name
+                  << std::right << std::fixed << std::setprecision(kPercentPrecision)
+                  << std::setw(kNumberColumnWidth) << item.annual_return * kPercent
+                  << std::setw(kNumberColumnWidth) << item.annual_volatility * kPercent
+                  << std::setprecision(kRatioPrecision) << std::setw(kNumberColumnWidth)
+                  << item.sharpe_ratio << std::setprecision(kPercentPrecision)
+                  << std::setw(kNumberColumnWidth) << item.max_drawdown * kPercent
+                  << std::setw(kNumberColumnWidth) << item.average_turnover * kPercent
+                  << std::setw(kNumberColumnWidth) << item.fallback_count << '\n';
+    }
+    std::cout << "(CAGR — compound annual return; turnover — average one-way per rebalancing; "
+                 "fallbacks — rebalancings where the max-Sharpe portfolio did not exist and the "
+                 "minimum-variance one was used)\n";
+}
+
+void WriteBacktestOutputs(const quant::CommandLineOptions& options,
+                          const std::vector<std::string>& tickers,
+                          const std::vector<quant::BacktestResult>& results,
+                          const std::vector<quant::PerformanceMetrics>& metrics) {
+    const auto equity_path = options.find("out");
+    if (equity_path != options.end()) {
+        quant::WriteEquityCsv(equity_path->second, results);
+        std::cout << "Equity curves written to " << equity_path->second << '\n';
+    }
+    const auto weights_path = options.find("weights-out");
+    if (weights_path != options.end()) {
+        quant::WriteRebalancesCsv(weights_path->second, tickers, results);
+        std::cout << "Rebalancing history written to " << weights_path->second << '\n';
+    }
+    const auto metrics_path = options.find("metrics-out");
+    if (metrics_path != options.end()) {
+        std::vector<std::string> names;
+        names.reserve(results.size());
+        for (const auto& result : results) {
+            names.push_back(result.strategy_name);
+        }
+        quant::WriteMetricsCsv(metrics_path->second, names, metrics);
+        std::cout << "Metrics written to " << metrics_path->second << '\n';
+    }
+}
+
+int RunBacktest(const quant::CommandLineOptions& options) {
+    const quant::ReturnMatrix daily = LoadDailyReturns(options);
+    const auto estimator = MakeEstimator(options);
+    const double risk_free_rate =
+        quant::GetDoubleOption(options, "risk-free", kDefaultRiskFreeRate);
+    quant::BacktestConfig config;
+    config.window_days = quant::GetIntOption(options, "window", quant::kDefaultBacktestWindowDays);
+    config.transaction_cost_rate = quant::GetDoubleOption(options, "cost", kDefaultTransactionCost);
+
+    const quant::ActiveSetSolver solver;
+    const quant::ShortSellingOptimizer short_selling;
+    const quant::LongOnlyOptimizer long_only(solver);
+    const quant::MinimumVarianceStrategy minimum_variance_short(short_selling);
+    const quant::MinimumVarianceStrategy minimum_variance_long(long_only);
+    const quant::MaxSharpeStrategy max_sharpe_short(short_selling, risk_free_rate);
+    const quant::MaxSharpeStrategy max_sharpe_long(long_only, risk_free_rate);
+    const quant::EqualWeightStrategy equal_weight;
+    const std::vector<const quant::AllocationStrategy*> strategies = {
+        &minimum_variance_short, &minimum_variance_long, &max_sharpe_short, &max_sharpe_long,
+        &equal_weight};
+
+    std::vector<quant::BacktestResult> results;
+    std::vector<quant::PerformanceMetrics> metrics;
+    for (const auto* strategy : strategies) {
+        results.push_back(quant::RunBacktest(daily, *strategy, *estimator, config));
+        metrics.push_back(quant::ComputePerformance(results.back(), risk_free_rate));
+    }
+
+    const auto& first = results.front();
+    std::cout << "Backtest: " << first.dates.front() << " .. " << first.dates.back() << " ("
+              << first.dates.size() << " days, " << first.rebalances.size()
+              << " monthly rebalancings)\n"
+              << "Estimation window: " << config.window_days
+              << " days, covariance: " << estimator->Name() << '\n'
+              << "Transaction cost: " << std::fixed << std::setprecision(kPercentPrecision)
+              << config.transaction_cost_rate * kPercent << "% of traded weight\n";
+    PrintRiskFreeRate(risk_free_rate);
+    PrintBacktestMetrics(results, metrics);
+    WriteBacktestOutputs(options, daily.tickers, results, metrics);
+    return kExitOk;
+}
+
 int RunCommand(const std::string& command, const quant::CommandLineOptions& options) {
     if (options.contains("help")) {
         std::cout << kUsage;
@@ -333,8 +443,7 @@ int RunCommand(const std::string& command, const quant::CommandLineOptions& opti
         return RunFrontier(options);
     }
     if (command == "backtest") {
-        std::cerr << "error: command '" << command << "' is not implemented yet\n";
-        return kExitBadInput;
+        return RunBacktest(options);
     }
     std::cerr << "error: unknown command '" << command << "'\n\n" << kUsage;
     return kExitBadInput;
