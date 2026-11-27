@@ -1,12 +1,5 @@
 var searchData=
 [
-  ['данные_0',['Данные',['../index.html#autotoc_md3',1,'Данные'],['../md_docs_2REQUIREMENTS.html#autotoc_md15',1,'Данные']]],
-  ['диаграмма_20классов_20ядро_1',['3. Диаграмма классов (ядро)',['../md_docs_2ARCHITECTURE.html#autotoc_md26',1,'']]],
-  ['диаграмма_20последовательности_3a_20бэктест_2',['4. Диаграмма последовательности: бэктест',['../md_docs_2ARCHITECTURE.html#autotoc_md27',1,'']]],
-  ['документация_3',['Документация',['../index.html#autotoc_md8',1,'']]],
-  ['данные_20и_20допущения_4',['2. Исходные данные и допущения',['../md_docs_2REQUIREMENTS.html#autotoc_md13',1,'']]],
-  ['данных_5',['ADR-3. Хранение данных',['../md_docs_2ARCHITECTURE.html#autotoc_md31',1,'']]],
-  ['делаем_6',['5. Ограничения модели (сознательно не делаем)',['../md_docs_2REQUIREMENTS.html#autotoc_md22',1,'']]],
-  ['делает_20программа_7',['Что делает программа',['../index.html#autotoc_md1',1,'']]],
-  ['допущения_8',['2. Исходные данные и допущения',['../md_docs_2REQUIREMENTS.html#autotoc_md13',1,'']]]
+  ['validatemarketmodel_0',['ValidateMarketModel',['../namespacequant.html#a1a766ed412d91863bc59f041c0dba3ec',1,'quant']]],
+  ['volatility_1',['volatility',['../structquant_1_1Portfolio.html#afffb52cab6b07825a8cb94bf41cf53ca',1,'quant::Portfolio']]]
 ];

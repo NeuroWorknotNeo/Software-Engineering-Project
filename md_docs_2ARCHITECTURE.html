@@ -93,7 +93,7 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><a class="anchor" id="autotoc_md23"></a></p>
-<p>Статус: v0.2 (19.11.2026). Реализованы модули <span class="tt">data</span> и <span class="tt">stats</span>. Требования — в <a class="el" href="md_docs_2REQUIREMENTS.html">REQUIREMENTS.md</a>.</p>
+<p>Статус: v0.3 (27.11.2026). Реализованы модули <span class="tt">data</span>, <span class="tt">stats</span>, <span class="tt">optim</span> и <span class="tt">io</span>. Требования — в <a class="el" href="md_docs_2REQUIREMENTS.html">REQUIREMENTS.md</a>.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 1. Общая схема</h1>
 <p>Приложение — конвейер обработки данных. Каждый шаг — отдельный модуль библиотеки <span class="tt"><a class="el" href="namespacequant.html">quant</a></span>, консольная утилита только разбирает параметры и соединяет шаги.</p>
@@ -118,11 +118,11 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">stats</span>  </td><td class="markdownTableBodyNone">Доходности, средние, оценки ковариации  </td><td class="markdownTableBodyNone"><span class="tt">ReturnMatrix</span>, <span class="tt">CovarianceEstimator</span> (интерфейс), <span class="tt">SampleCovariance</span>, <span class="tt">LedoitWolfCovariance</span>; функции <span class="tt">ComputeSimpleReturns</span>, <span class="tt">ComputeMeanReturns</span>, <span class="tt">EstimateLedoitWolf</span>, <span class="tt">MakeCovarianceEstimator</span>  </td><td class="markdownTableBodyNone">FR-6…FR-8  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone">Аналитические решения, QP-решатель, эффективная граница  </td><td class="markdownTableBodyNone"><span class="tt">MarketModel</span> (μ, Σ), <span class="tt">Portfolio</span>, <span class="tt">AnalyticOptimizer</span>, <span class="tt">QpSolver</span> (интерфейс), <span class="tt">ActiveSetSolver</span>, <span class="tt">ProjectedGradientSolver</span>, <span class="tt">FrontierBuilder</span>  </td><td class="markdownTableBodyNone">FR-9…FR-15  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone">Оптимальные портфели, QP-решатели, эффективная граница  </td><td class="markdownTableBodyNone"><span class="tt">MarketModel</span> (μ, Σ), <span class="tt">Portfolio</span>, <span class="tt">PortfolioOptimizer</span> (интерфейс), <span class="tt">ShortSellingOptimizer</span>, <span class="tt">LongOnlyOptimizer</span>, <span class="tt">QpSolver</span> (интерфейс), <span class="tt">ActiveSetSolver</span>, <span class="tt">ProjectedGradientSolver</span>; функции <span class="tt">EvaluatePortfolio</span>, <span class="tt">ComputeSharpeRatio</span>, <span class="tt">BuildEfficientFrontier</span>  </td><td class="markdownTableBodyNone">FR-9…FR-15  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">backtest</span>  </td><td class="markdownTableBodyNone">Скользящее окно, ребалансировка, метрики  </td><td class="markdownTableBodyNone"><span class="tt">Backtester</span>, <span class="tt">AllocationStrategy</span> (интерфейс), <span class="tt">GmvStrategy</span>, <span class="tt">MaxSharpeStrategy</span>, <span class="tt">EqualWeightStrategy</span>, <span class="tt">PerformanceMetrics</span>  </td><td class="markdownTableBodyNone">FR-16…FR-19  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">io</span> / <span class="tt">app</span>  </td><td class="markdownTableBodyNone">Разбор параметров, запись CSV, сводка в stdout, коды возврата  </td><td class="markdownTableBodyNone"><span class="tt">CliOptions</span>, <span class="tt">ResultWriter</span>, утилита <span class="tt">mpt</span> (<span class="tt"><a class="el" href="main_8cpp.html" title="Консольная утилита mpt: портфельный анализ по Марковицу.">src/main.cpp</a></span>)  </td><td class="markdownTableBodyNone">FR-20, FR-21, NFR-8  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">io</span> / <span class="tt">app</span>  </td><td class="markdownTableBodyNone">Разбор параметров, запись CSV, сводка в stdout, коды возврата  </td><td class="markdownTableBodyNone"><span class="tt">CommandLineOptions</span>, <span class="tt">LabeledPortfolio</span>; функции <span class="tt">ParseCommandLineOptions</span>, <span class="tt">WritePortfoliosCsv</span>, <span class="tt">WriteMatrixCsv</span>; утилита <span class="tt">mpt</span> (<span class="tt"><a class="el" href="main_8cpp.html" title="Консольная утилита mpt: портфельный анализ по Марковицу.">src/main.cpp</a></span>)  </td><td class="markdownTableBodyNone">FR-20, FR-21, NFR-8  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">scripts/</span> (Python)  </td><td class="markdownTableBodyNone">Загрузка данных с MOEX, графики  </td><td class="markdownTableBodyNone"><span class="tt">download_prices.py</span>, <span class="tt">plot_frontier.py</span>, <span class="tt">plot_backtest.py</span>  </td><td class="markdownTableBodyNone">FR-1, FR-22  </td></tr>
 </table>
@@ -137,9 +137,9 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line">    CovarianceEstimator &lt;|.. LedoitWolfCovariance</div>
 <div class="line"> </div>
 <div class="line">    class MarketModel {</div>
-<div class="line">        +Vector mu</div>
-<div class="line">        +Matrix sigma</div>
 <div class="line">        +vector~string~ tickers</div>
+<div class="line">        +Vector mean_returns</div>
+<div class="line">        +Matrix covariance</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    class QpSolver {</div>
@@ -149,18 +149,23 @@ $(function(){initNavTree('md_docs_2ARCHITECTURE.html','',''); });
 <div class="line">    QpSolver &lt;|.. ActiveSetSolver</div>
 <div class="line">    QpSolver &lt;|.. ProjectedGradientSolver</div>
 <div class="line"> </div>
-<div class="line">    class AnalyticOptimizer {</div>
-<div class="line">        +MinVariance(MarketModel) Portfolio</div>
-<div class="line">        +MaxSharpe(MarketModel, double rf) Portfolio</div>
-<div class="line">        +Frontier(MarketModel, int n) Frontier</div>
+<div class="line">    class PortfolioOptimizer {</div>
+<div class="line">        &lt;&lt;interface&gt;&gt;</div>
+<div class="line">        +FindMinimumVariance(MarketModel) Vector</div>
+<div class="line">        +FindMinimumVarianceForReturn(MarketModel, double target) Vector</div>
+<div class="line">        +FindMaxSharpe(MarketModel, double rf) Vector</div>
 <div class="line">    }</div>
-<div class="line">    class FrontierBuilder {</div>
-<div class="line">        -QpSolver&amp; solver</div>
-<div class="line">        +MinVariance(MarketModel) Portfolio</div>
-<div class="line">        +MaxSharpe(MarketModel, double rf) Portfolio</div>
-<div class="line">        +Frontier(MarketModel, int n) Frontier</div>
+<div class="line">    PortfolioOptimizer &lt;|.. ShortSellingOptimizer</div>
+<div class="line">    PortfolioOptimizer &lt;|.. LongOnlyOptimizer</div>
+<div class="line">    class LongOnlyOptimizer {</div>
+<div class="line">        -QpSolver&amp; solver_</div>
 <div class="line">    }</div>
-<div class="line">    FrontierBuilder --&gt; QpSolver</div>
+<div class="line">    LongOnlyOptimizer --&gt; QpSolver</div>
+<div class="line">    class BuildEfficientFrontier {</div>
+<div class="line">        &lt;&lt;function&gt;&gt;</div>
+<div class="line">        +(MarketModel, PortfolioOptimizer&amp;, int points) vector~Portfolio~</div>
+<div class="line">    }</div>
+<div class="line">    BuildEfficientFrontier --&gt; PortfolioOptimizer</div>
 <div class="line"> </div>
 <div class="line">    class AllocationStrategy {</div>
 <div class="line">        &lt;&lt;interface&gt;&gt;</div>
@@ -215,6 +220,12 @@ ADR-1. Метод оптимизации без коротких продаж (F
 </table>
 <p><b>Решение:</b> (а) — основной решатель; (б) — эталон для тестов и сравнение в бенчмарке; (в) — не используем.</p>
 <p><b>Обоснование:</b> (а) даёт точность из NFR-2 и скорость из NFR-1 без новых зависимостей. (б) настолько прост, что почти не может содержать ошибок, поэтому годится для перекрёстной проверки, а сравнение скорости (а) и (б) войдёт в отчёт. Риск сложности (а) закрывается тем, что (б) уже будет работать.</p>
+<p><b>Реализация и результаты (27.11.2026):</b></p><ul>
+<li>(б) реализован только для симплекса {x ≥ 0, 1ᵀx = b}: проекция на него вычисляется за O(N log N). Поэтому (б) решает задачу GMV и задачу min ½wᵀΣw − τ·μᵀw, а точки границы с ограничением μᵀw = r и касательный портфель решает только (а).</li>
+<li>Тесты сверяют (а) и (б) на 20 случайных моделях (расхождение ≤ 1e-7), (а) — с аналитическим решением, когда ограничение неактивно (≤ 1e-8), и с условиями ККТ. На реальных данных результаты (а) совпали со scipy (SLSQP) до 1e-8.</li>
+<li>Бенчмарк GMV без коротких продаж: 20 бумаг — (а) 19 мкс, (б) 62 мкс; 50 бумаг — (а) 0,26 мс, (б) 0,53 мс; 100 бумаг — (а) 5,6 мс, (б) 3,1 мс. Число итераций (а) растёт с числом бумаг, а каждая итерация решает систему ККТ, поэтому на больших N (б) быстрее, но даёт только приближённое решение.</li>
+<li>NFR-1: граница из 50 точек без коротких продаж для 50 бумаг × 1000 дней вместе с оценкой Ledoit–Wolf — около 24 мс (требование — ≤ 1 с).</li>
+</ul>
 <h2 class="doxsection"><a class="anchor" id="autotoc_md30"></a>
 ADR-2. Линейная алгебра</h2>
 <p>Варианты: Eigen 3 / собственные матрицы / BLAS+LAPACK. <b>Решение:</b> Eigen 3 — стандарт в индустрии, только заголовки, есть разложения Холецкого и LDLᵀ для решения систем. Подключается через <span class="tt">find_package</span>, при отсутствии — через <span class="tt">FetchContent</span>.</p>
@@ -265,20 +276,30 @@ ADR-6. Обработка ошибок</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">FR-8 ✅  </td><td class="markdownTableBodyNone"><span class="tt">stats</span>  </td><td class="markdownTableBodyNone"><span class="tt">Covariance.FactoryByName</span>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">FR-9…FR-11  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">test_analytic.cpp</span>  </td></tr>
+<td class="markdownTableBodyNone">FR-9 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">ShortSelling.TwoAssetMinimumVarianceMatchesFormula</span>, <span class="tt">ShortSelling.MinimumVarianceSatisfiesOptimalityConditions</span> в <span class="tt">test_optim.cpp</span>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">FR-12…FR-14  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">test_qp.cpp</span>  </td></tr>
+<td class="markdownTableBodyNone">FR-10 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">ShortSelling.MaxSharpe*</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">FR-11 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">ShortSelling.FrontierPointHasTargetReturnAndMinimalVariance</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">FR-12 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">LongOnly.MinimumVarianceDropsShortedAsset</span>, <span class="tt">LongOnly.ActiveSetAgreesWithProjectedGradientOnRandomModels</span>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">FR-13 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">LongOnly.MaxSharpeBeatsFrontierAndIsBelowShortSelling</span>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">FR-14 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">LongOnly.FrontierPointsAreFeasibleAndRiskier</span>, <span class="tt">LongOnly.MeanVarianceTradeOffAgreesWithReturnTarget</span>  </td></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FR-16…FR-18  </td><td class="markdownTableBodyNone"><span class="tt">backtest</span>  </td><td class="markdownTableBodyNone"><span class="tt">test_backtest.cpp</span>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">FR-20, FR-21, NFR-8  </td><td class="markdownTableBodyNone"><span class="tt">io</span>/<span class="tt">app</span>  </td><td class="markdownTableBodyNone"><span class="tt">test_cli.cpp</span>  </td></tr>
+<td class="markdownTableBodyNone">FR-20, FR-21 ✅ (кроме <span class="tt">backtest</span>)  </td><td class="markdownTableBodyNone"><span class="tt">io</span>/<span class="tt">app</span>  </td><td class="markdownTableBodyNone"><span class="tt">CommandLineOptions.*</span>, <span class="tt">ResultWriter.*</span> в <span class="tt">test_io.cpp</span>; запуск <span class="tt">mpt</span> в CI  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">NFR-1  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">bench/bench_frontier.cpp</span>  </td></tr>
+<td class="markdownTableBodyNone">NFR-1 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">BM_LongOnlyFrontierWithEstimation/50</span> в <span class="tt">bench/bench_optim.cpp</span>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">NFR-2  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">test_qp.cpp</span>  </td></tr>
+<td class="markdownTableBodyNone">NFR-2 ✅  </td><td class="markdownTableBodyNone"><span class="tt">optim</span>  </td><td class="markdownTableBodyNone"><span class="tt">LongOnly.MatchesAnalyticSolutionWhenConstraintIsInactive</span>, проверки ККТ в <span class="tt">test_optim.cpp</span>  </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">NFR-8  </td><td class="markdownTableBodyNone"><span class="tt">io</span>/<span class="tt">app</span>  </td><td class="markdownTableBodyNone"><span class="tt">ReadPriceCsv.RejectsMalformedInput</span>, <span class="tt">ShortSelling.RejectsNotPositiveDefiniteCovariance</span>, <span class="tt">LongOnly.RejectsUnreachableTargetsAndRates</span>, <span class="tt">QpSolvers.RejectInvalidProblems</span>  </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">NFR-4 ✅  </td><td class="markdownTableBodyNone"><span class="tt">Dockerfile</span>  </td><td class="markdownTableBodyNone">задача <span class="tt">docker</span> в CI: сборка образа с прогоном тестов и запуск контейнера  </td></tr>
-<tr class="markdownTableRowEven">
+<tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">NFR-5 ✅  </td><td class="markdownTableBodyNone"><span class="tt">.clang-format</span>, <span class="tt">.clang-tidy</span>  </td><td class="markdownTableBodyNone">задача <span class="tt">style</span> в CI  </td></tr>
 </table>
 </div></div><!-- contents -->

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['shrinkage_0',['shrinkage',['../structquant_1_1LedoitWolfResult.html#ae4258d0cade731108ad9039749c3b2b4',1,'quant::LedoitWolfResult']]]
+  ['linear_0',['linear',['../structquant_1_1QpProblem.html#a42beb1fadfd2b3fd5549a3b95f4f98a1',1,'quant::QpProblem']]]
 ];

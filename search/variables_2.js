@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['ktradingdaysperyear_0',['kTradingDaysPerYear',['../namespacequant.html#a3f0a90b213ab7a48bacb375837ecc248',1,'quant']]]
+  ['equality_5fmatrix_0',['equality_matrix',['../structquant_1_1QpProblem.html#ab677bce076dbd8382b6b217ab8b11404',1,'quant::QpProblem']]],
+  ['equality_5frhs_1',['equality_rhs',['../structquant_1_1QpProblem.html#af2227901305da6d27e5ae034e76c1fa7',1,'quant::QpProblem']]],
+  ['expected_5freturn_2',['expected_return',['../structquant_1_1Portfolio.html#a75a139b37d70b812e3e82908cc8528a1',1,'quant::Portfolio']]]
 ];

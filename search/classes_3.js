@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['returnmatrix_0',['ReturnMatrix',['../structquant_1_1ReturnMatrix.html',1,'quant']]]
+  ['marketmodel_0',['MarketModel',['../structquant_1_1MarketModel.html',1,'quant']]]
 ];

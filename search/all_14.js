@@ -1,12 +1,5 @@
 var searchData=
 [
-  ['ratio_0',['ratio',['../structquant_1_1Split.html#a249297cbe04fa6bae83e09533192d7e9',1,'quant::Split']]],
-  ['readme_2emd_1',['README.md',['../README_8md.html',1,'']]],
-  ['readpricecsv_2',['ReadPriceCsv',['../namespacequant.html#af00f34500d5d91625b8da88cb4c91052',1,'quant']]],
-  ['readsplitscsv_3',['ReadSplitsCsv',['../namespacequant.html#a0ef1c4167097f5fb615b1c40422c1a8f',1,'quant']]],
-  ['requirements_2emd_4',['REQUIREMENTS.md',['../REQUIREMENTS_8md.html',1,'']]],
-  ['returnmatrix_5',['ReturnMatrix',['../structquant_1_1ReturnMatrix.html',1,'quant']]],
-  ['returns_6',['returns',['../structquant_1_1ReturnMatrix.html#a288d2e6210eddd905865086ad1523124',1,'quant::ReturnMatrix']]],
-  ['returns_2ecpp_7',['returns.cpp',['../returns_8cpp.html',1,'']]],
-  ['returns_2ehpp_8',['returns.hpp',['../returns_8hpp.html',1,'']]]
+  ['name_0',['Name',['../classquant_1_1PortfolioOptimizer.html#a685404b82516973e4d227ac3f41bca18',1,'quant::PortfolioOptimizer::Name()'],['../classquant_1_1ShortSellingOptimizer.html#a3979c84d4f8a12c1a075e668866cda81',1,'quant::ShortSellingOptimizer::Name()'],['../classquant_1_1LongOnlyOptimizer.html#a9691d15af7e67abce80c28ec1e3a1dd8',1,'quant::LongOnlyOptimizer::Name()'],['../classquant_1_1QpSolver.html#a502387256ed5dd1ce5eb0c085601951e',1,'quant::QpSolver::Name()'],['../classquant_1_1ActiveSetSolver.html#a779d6e09e5cd389ce0012e5982fc90b4',1,'quant::ActiveSetSolver::Name()'],['../classquant_1_1ProjectedGradientSolver.html#a288b5188298c27ab3ca3afcdbc24de04',1,'quant::ProjectedGradientSolver::Name()'],['../classquant_1_1CovarianceEstimator.html#ae6d8ff6bde251594ecfeb1cbca41798b',1,'quant::CovarianceEstimator::Name()'],['../classquant_1_1SampleCovariance.html#a6c1cccb6e2910f9a61cbd24e44e05abf',1,'quant::SampleCovariance::Name()'],['../classquant_1_1LedoitWolfCovariance.html#a40899cedcf34cc55b66824a0f04cfc73',1,'quant::LedoitWolfCovariance::Name()']]],
+  ['name_1',['name',['../structquant_1_1LabeledPortfolio.html#ab6f115b30f4fc35db5b91e6831e62088',1,'quant::LabeledPortfolio']]]
 ];

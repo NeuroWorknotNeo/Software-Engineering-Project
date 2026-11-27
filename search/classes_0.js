@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['covarianceestimator_0',['CovarianceEstimator',['../classquant_1_1CovarianceEstimator.html',1,'quant']]]
+  ['activesetsolver_0',['ActiveSetSolver',['../classquant_1_1ActiveSetSolver.html',1,'quant']]]
 ];

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['price_5ftable_2ecpp_0',['price_table.cpp',['../price__table_8cpp.html',1,'']]],
-  ['price_5ftable_2ehpp_1',['price_table.hpp',['../price__table_8hpp.html',1,'']]],
-  ['priceanomaly_2',['PriceAnomaly',['../structquant_1_1PriceAnomaly.html',1,'quant']]],
-  ['prices_3',['prices',['../structquant_1_1PriceTable.html#a1f9d36a887bb1ef3f6f3e45034a5647e',1,'quant::PriceTable']]],
-  ['pricetable_4',['PriceTable',['../structquant_1_1PriceTable.html',1,'quant']]]
+  ['labeledportfolio_0',['LabeledPortfolio',['../structquant_1_1LabeledPortfolio.html',1,'quant']]],
+  ['ledoitwolfcovariance_1',['LedoitWolfCovariance',['../classquant_1_1LedoitWolfCovariance.html',1,'quant']]],
+  ['ledoitwolfresult_2',['LedoitWolfResult',['../structquant_1_1LedoitWolfResult.html',1,'quant']]],
+  ['linear_3',['linear',['../structquant_1_1QpProblem.html#a42beb1fadfd2b3fd5549a3b95f4f98a1',1,'quant::QpProblem']]],
+  ['longonlyoptimizer_4',['LongOnlyOptimizer',['../classquant_1_1LongOnlyOptimizer.html',1,'quant::LongOnlyOptimizer'],['../classquant_1_1LongOnlyOptimizer.html#a63b172c40518e022346c03ec3f7aa158',1,'quant::LongOnlyOptimizer::LongOnlyOptimizer()']]]
 ];

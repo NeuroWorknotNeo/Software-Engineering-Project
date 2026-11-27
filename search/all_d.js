@@ -1,7 +1,9 @@
 var searchData=
 [
-  ['fillmissingprices_0',['FillMissingPrices',['../namespacequant.html#a3366daf0f71cda5dfc5e8aec4f10c01f',1,'quant']]],
-  ['findpriceanomalies_1',['FindPriceAnomalies',['../namespacequant.html#aa34e98ece951956ffb1417626bf7452a',1,'quant']]],
-  ['fr_2012…fr_2014_2',['ADR-1. Метод оптимизации без коротких продаж (FR-12…FR-14)',['../md_docs_2ARCHITECTURE.html#autotoc_md29',1,'']]],
-  ['fr_209…fr_2011_3',['ADR-4. Аналитическое решение с короткими продажами (FR-9…FR-11)',['../md_docs_2ARCHITECTURE.html#autotoc_md32',1,'']]]
+  ['equality_5fmatrix_0',['equality_matrix',['../structquant_1_1QpProblem.html#ab677bce076dbd8382b6b217ab8b11404',1,'quant::QpProblem']]],
+  ['equality_5frhs_1',['equality_rhs',['../structquant_1_1QpProblem.html#af2227901305da6d27e5ae034e76c1fa7',1,'quant::QpProblem']]],
+  ['estimate_2',['Estimate',['../classquant_1_1CovarianceEstimator.html#a82258ab88276e62133991762b9435791',1,'quant::CovarianceEstimator::Estimate()'],['../classquant_1_1SampleCovariance.html#a10ab84b39204c58148b179a719965924',1,'quant::SampleCovariance::Estimate()'],['../classquant_1_1LedoitWolfCovariance.html#a01ba97984c71870884308e22c3e0886e',1,'quant::LedoitWolfCovariance::Estimate()']]],
+  ['estimateledoitwolf_3',['EstimateLedoitWolf',['../namespacequant.html#a1442d580d60a43a6ff31bc2af4ca4e06',1,'quant']]],
+  ['evaluateportfolio_4',['EvaluatePortfolio',['../namespacequant.html#aeac404752f53b75b832c845ada230bef',1,'quant']]],
+  ['expected_5freturn_5',['expected_return',['../structquant_1_1Portfolio.html#a75a139b37d70b812e3e82908cc8528a1',1,'quant::Portfolio']]]
 ];

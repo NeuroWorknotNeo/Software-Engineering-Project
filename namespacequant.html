@@ -101,6 +101,28 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сплит бумаги: с даты <code class="param">date</code> одна старая акция превращается в <code class="param">ratio</code> новых.  <a href="structquant_1_1Split.html#details">More...</a><br /></td></tr>
 <tr class="memitem:PriceAnomaly" id="r_PriceAnomaly"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1PriceAnomaly.html">PriceAnomaly</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Подозрительное изменение цены за один торговый день.  <a href="structquant_1_1PriceAnomaly.html#details">More...</a><br /></td></tr>
+<tr class="memitem:LabeledPortfolio" id="r_LabeledPortfolio"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1LabeledPortfolio.html">LabeledPortfolio</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Портфель с подписями для вывода.  <a href="structquant_1_1LabeledPortfolio.html#details">More...</a><br /></td></tr>
+<tr class="memitem:PortfolioOptimizer" id="r_PortfolioOptimizer"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1PortfolioOptimizer.html">PortfolioOptimizer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Интерфейс оптимизатора портфеля (паттерн Strategy).  <a href="classquant_1_1PortfolioOptimizer.html#details">More...</a><br /></td></tr>
+<tr class="memitem:ShortSellingOptimizer" id="r_ShortSellingOptimizer"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1ShortSellingOptimizer.html">ShortSellingOptimizer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оптимизатор с разрешёнными короткими продажами: решения через множители Лагранжа.  <a href="classquant_1_1ShortSellingOptimizer.html#details">More...</a><br /></td></tr>
+<tr class="memitem:LongOnlyOptimizer" id="r_LongOnlyOptimizer"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1LongOnlyOptimizer.html">LongOnlyOptimizer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оптимизатор без коротких продаж (w ≥ 0): задачи сводятся к QP и решаются <a class="el" href="classquant_1_1QpSolver.html" title="Интерфейс решателя задачи квадратичного программирования (паттерн Strategy).">QpSolver</a>.  <a href="classquant_1_1LongOnlyOptimizer.html#details">More...</a><br /></td></tr>
+<tr class="memitem:MarketModel" id="r_MarketModel"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1MarketModel.html">MarketModel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Входные данные оптимизации: ожидаемые доходности и ковариация бумаг.  <a href="structquant_1_1MarketModel.html#details">More...</a><br /></td></tr>
+<tr class="memitem:Portfolio" id="r_Portfolio"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1Portfolio.html">Portfolio</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Портфель и его характеристики.  <a href="structquant_1_1Portfolio.html#details">More...</a><br /></td></tr>
+<tr class="memitem:QpProblem" id="r_QpProblem"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1QpProblem.html">QpProblem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Задача min ½·xᵀQx + cᵀx при Ax = b, x ≥ 0.  <a href="structquant_1_1QpProblem.html#details">More...</a><br /></td></tr>
+<tr class="memitem:QpResult" id="r_QpResult"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1QpResult.html">QpResult</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Решение задачи квадратичного программирования.  <a href="structquant_1_1QpResult.html#details">More...</a><br /></td></tr>
+<tr class="memitem:QpSolver" id="r_QpSolver"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1QpSolver.html">QpSolver</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Интерфейс решателя задачи квадратичного программирования (паттерн Strategy).  <a href="classquant_1_1QpSolver.html#details">More...</a><br /></td></tr>
+<tr class="memitem:ActiveSetSolver" id="r_ActiveSetSolver"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1ActiveSetSolver.html">ActiveSetSolver</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Прямой метод активного множества (Nocedal, Wright, «Numerical Optimization», алг. 16.3).  <a href="classquant_1_1ActiveSetSolver.html#details">More...</a><br /></td></tr>
+<tr class="memitem:ProjectedGradientSolver" id="r_ProjectedGradientSolver"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1ProjectedGradientSolver.html">ProjectedGradientSolver</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проекционный градиентный спуск — простой эталон для проверки <a class="el" href="classquant_1_1ActiveSetSolver.html" title="Прямой метод активного множества (Nocedal, Wright, «Numerical Optimization», алг. 16....">ActiveSetSolver</a>.  <a href="classquant_1_1ProjectedGradientSolver.html#details">More...</a><br /></td></tr>
 <tr class="memitem:CovarianceEstimator" id="r_CovarianceEstimator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1CovarianceEstimator.html">CovarianceEstimator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Интерфейс оценки ковариационной матрицы (паттерн Strategy).  <a href="classquant_1_1CovarianceEstimator.html#details">More...</a><br /></td></tr>
 <tr class="memitem:SampleCovariance" id="r_SampleCovariance"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classquant_1_1SampleCovariance.html">SampleCovariance</a></td></tr>
@@ -111,6 +133,11 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Оценка Ledoit–Wolf как стратегия; коэффициент сжатия — через <a class="el" href="#a1442d580d60a43a6ff31bc2af4ca4e06" title="Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.">EstimateLedoitWolf()</a>.  <a href="classquant_1_1LedoitWolfCovariance.html#details">More...</a><br /></td></tr>
 <tr class="memitem:ReturnMatrix" id="r_ReturnMatrix"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structquant_1_1ReturnMatrix.html">ReturnMatrix</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Дневные доходности бумаг.  <a href="structquant_1_1ReturnMatrix.html#details">More...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-typedef-members" class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:afbd7e5ee506b56abe96f5597b17ddc48" id="r_afbd7e5ee506b56abe96f5597b17ddc48"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> = std::map&lt;std::string, std::string&gt;</td></tr>
+<tr class="memdesc:afbd7e5ee506b56abe96f5597b17ddc48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Параметры командной строки: имя без "--" → значение. Флаг <span class="tt">--help</span> хранится с пустым значением.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -124,6 +151,30 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2d79f976faaa8617aeef582e3eab9e3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Пересчитывает цены до даты сплита: делит их на ratio.  <br /></td></tr>
 <tr class="memitem:aa34e98ece951956ffb1417626bf7452a" id="r_aa34e98ece951956ffb1417626bf7452a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structquant_1_1PriceAnomaly.html">PriceAnomaly</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa34e98ece951956ffb1417626bf7452a">FindPriceAnomalies</a> (const <a class="el" href="structquant_1_1PriceTable.html">PriceTable</a> &amp;table, double threshold)</td></tr>
 <tr class="memdesc:aa34e98ece951956ffb1417626bf7452a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Находит дневные изменения цены, по модулю превышающие порог.  <br /></td></tr>
+<tr class="memitem:a95a679f23cdd7c772898d6744db3032e" id="r_a95a679f23cdd7c772898d6744db3032e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95a679f23cdd7c772898d6744db3032e">ParseCommandLineOptions</a> (const std::vector&lt; std::string &gt; &amp;arguments)</td></tr>
+<tr class="memdesc:a95a679f23cdd7c772898d6744db3032e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Разбирает аргументы <span class="tt">--name value ...</span>.  <br /></td></tr>
+<tr class="memitem:aa340b2fac2726d54069fc03e33e06c58" id="r_aa340b2fac2726d54069fc03e33e06c58"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa340b2fac2726d54069fc03e33e06c58">GetRequiredOption</a> (const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;options, const std::string &amp;name)</td></tr>
+<tr class="memdesc:aa340b2fac2726d54069fc03e33e06c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Значение обязательного параметра.  <br /></td></tr>
+<tr class="memitem:ae22d26fefc195a897028d199009a57d8" id="r_ae22d26fefc195a897028d199009a57d8"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae22d26fefc195a897028d199009a57d8">GetOptionOrDefault</a> (const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;options, const std::string &amp;name, const std::string &amp;default_value)</td></tr>
+<tr class="memdesc:ae22d26fefc195a897028d199009a57d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Значение параметра или <code class="param">default_value</code>, если параметр не задан.  <br /></td></tr>
+<tr class="memitem:a8c0a25676e03f109aac924ed87216a2a" id="r_a8c0a25676e03f109aac924ed87216a2a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c0a25676e03f109aac924ed87216a2a">GetDoubleOption</a> (const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;options, const std::string &amp;name, double default_value)</td></tr>
+<tr class="memdesc:a8c0a25676e03f109aac924ed87216a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Значение параметра как вещественное число.  <br /></td></tr>
+<tr class="memitem:a8b027c5b71d5ddd0e6dae3288887cfe6" id="r_a8b027c5b71d5ddd0e6dae3288887cfe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b027c5b71d5ddd0e6dae3288887cfe6">GetIntOption</a> (const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;options, const std::string &amp;name, int default_value)</td></tr>
+<tr class="memdesc:a8b027c5b71d5ddd0e6dae3288887cfe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Значение параметра как целое число.  <br /></td></tr>
+<tr class="memitem:a9bac72da660411ad646c11c5a9f3a190" id="r_a9bac72da660411ad646c11c5a9f3a190"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bac72da660411ad646c11c5a9f3a190">WriteMatrixCsv</a> (const std::string &amp;path, const std::vector&lt; std::string &gt; &amp;tickers, const Eigen::MatrixXd &amp;matrix)</td></tr>
+<tr class="memdesc:a9bac72da660411ad646c11c5a9f3a190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает квадратную матрицу с подписями строк и столбцов.  <br /></td></tr>
+<tr class="memitem:a5a3c84bd89469e2c247431e9588d0ada" id="r_a5a3c84bd89469e2c247431e9588d0ada"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a3c84bd89469e2c247431e9588d0ada">WritePortfoliosCsv</a> (const std::string &amp;path, const std::vector&lt; std::string &gt; &amp;tickers, const std::vector&lt; <a class="el" href="structquant_1_1LabeledPortfolio.html">LabeledPortfolio</a> &gt; &amp;portfolios, double risk_free_rate)</td></tr>
+<tr class="memdesc:a5a3c84bd89469e2c247431e9588d0ada"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает портфели: <span class="tt">mode,name,expected_return,volatility,sharpe,TICKER1,...</span>.  <br /></td></tr>
+<tr class="memitem:a7c0ab96cac00db3d410382571a05dd5a" id="r_a7c0ab96cac00db3d410382571a05dd5a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structquant_1_1Portfolio.html">Portfolio</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7c0ab96cac00db3d410382571a05dd5a">BuildEfficientFrontier</a> (const <a class="el" href="structquant_1_1MarketModel.html">MarketModel</a> &amp;model, const <a class="el" href="classquant_1_1PortfolioOptimizer.html">PortfolioOptimizer</a> &amp;optimizer, int point_count)</td></tr>
+<tr class="memdesc:a7c0ab96cac00db3d410382571a05dd5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Строит эффективную границу из <code class="param">point_count</code> портфелей.  <br /></td></tr>
+<tr class="memitem:aeac404752f53b75b832c845ada230bef" id="r_aeac404752f53b75b832c845ada230bef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structquant_1_1Portfolio.html">Portfolio</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeac404752f53b75b832c845ada230bef">EvaluatePortfolio</a> (const <a class="el" href="structquant_1_1MarketModel.html">MarketModel</a> &amp;model, const Eigen::VectorXd &amp;weights)</td></tr>
+<tr class="memdesc:aeac404752f53b75b832c845ada230bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Считает доходность и волатильность портфеля с заданными весами.  <br /></td></tr>
+<tr class="memitem:a362b628cdd17ae271758acfcfedd07c1" id="r_a362b628cdd17ae271758acfcfedd07c1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a362b628cdd17ae271758acfcfedd07c1">ComputeSharpeRatio</a> (const <a class="el" href="structquant_1_1Portfolio.html">Portfolio</a> &amp;portfolio, double risk_free_rate)</td></tr>
+<tr class="memdesc:a362b628cdd17ae271758acfcfedd07c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Коэффициент Шарпа (μ_p − r_f) / σ_p.  <br /></td></tr>
+<tr class="memitem:a1a766ed412d91863bc59f041c0dba3ec" id="r_a1a766ed412d91863bc59f041c0dba3ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a766ed412d91863bc59f041c0dba3ec">ValidateMarketModel</a> (const <a class="el" href="structquant_1_1MarketModel.html">MarketModel</a> &amp;model)</td></tr>
+<tr class="memdesc:a1a766ed412d91863bc59f041c0dba3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет согласованность размеров μ и Σ и симметричность Σ.  <br /></td></tr>
+<tr class="memitem:a2a41d83cac0b480ae6da6d0e66188a06" id="r_a2a41d83cac0b480ae6da6d0e66188a06"><td class="memItemLeft" align="right" valign="top">Eigen::VectorXd&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a41d83cac0b480ae6da6d0e66188a06">ProjectOntoSimplex</a> (const Eigen::VectorXd &amp;point, double total)</td></tr>
+<tr class="memdesc:a2a41d83cac0b480ae6da6d0e66188a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Евклидова проекция точки на симплекс {x ≥ 0, x₁ + … + x_N = total}.  <br /></td></tr>
 <tr class="memitem:a1442d580d60a43a6ff31bc2af4ca4e06" id="r_a1442d580d60a43a6ff31bc2af4ca4e06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structquant_1_1LedoitWolfResult.html">LedoitWolfResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1442d580d60a43a6ff31bc2af4ca4e06">EstimateLedoitWolf</a> (const Eigen::MatrixXd &amp;returns)</td></tr>
 <tr class="memdesc:a1442d580d60a43a6ff31bc2af4ca4e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ковариация со сжатием Ledoit–Wolf к масштабированной единичной матрице.  <br /></td></tr>
 <tr class="memitem:ac619192916c196220dc62d14cae9b543" id="r_ac619192916c196220dc62d14cae9b543"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classquant_1_1CovarianceEstimator.html">CovarianceEstimator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac619192916c196220dc62d14cae9b543">MakeCovarianceEstimator</a> (const std::string &amp;name)</td></tr>
@@ -138,6 +189,23 @@ Variables</h2></td></tr>
 <tr class="memitem:a3f0a90b213ab7a48bacb375837ecc248" id="r_a3f0a90b213ab7a48bacb375837ecc248"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f0a90b213ab7a48bacb375837ecc248">kTradingDaysPerYear</a> = 252.0</td></tr>
 <tr class="memdesc:a3f0a90b213ab7a48bacb375837ecc248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Число торговых дней в году для перевода дневных величин в годовые.  <br /></td></tr>
 </table>
+<a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
+<a id="afbd7e5ee506b56abe96f5597b17ddc48" name="afbd7e5ee506b56abe96f5597b17ddc48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbd7e5ee506b56abe96f5597b17ddc48">&#9670;&#160;</a></span>CommandLineOptions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">quant::CommandLineOptions</a> = std::map&lt;std::string, std::string&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Параметры командной строки: имя без "--" → значение. Флаг <span class="tt">--help</span> хранится с пустым значением. </p>
+
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a2d79f976faaa8617aeef582e3eab9e3c" name="a2d79f976faaa8617aeef582e3eab9e3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d79f976faaa8617aeef582e3eab9e3c">&#9670;&#160;</a></span>ApplySplits()</h2>
@@ -177,6 +245,50 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a7c0ab96cac00db3d410382571a05dd5a" name="a7c0ab96cac00db3d410382571a05dd5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c0ab96cac00db3d410382571a05dd5a">&#9670;&#160;</a></span>BuildEfficientFrontier()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structquant_1_1Portfolio.html">Portfolio</a> &gt; quant::BuildEfficientFrontier </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structquant_1_1MarketModel.html">MarketModel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>model</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classquant_1_1PortfolioOptimizer.html">PortfolioOptimizer</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>optimizer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>point_count</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Строит эффективную границу из <code class="param">point_count</code> портфелей. </p>
+<p>Целевые доходности равномерно расставлены от доходности портфеля минимальной дисперсии до наибольшей ожидаемой доходности среди бумаг; для каждой находится портфель минимальной дисперсии с этой доходностью.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>Модель рынка. </td></tr>
+    <tr><td class="paramname">optimizer</td><td>Оптимизатор (с короткими продажами или без). </td></tr>
+    <tr><td class="paramname">point_count</td><td>Число точек, не меньше 2. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Портфели в порядке возрастания доходности. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если point_count &lt; 2. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a4df45054ac901a7d82df7615930d728d" name="a4df45054ac901a7d82df7615930d728d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4df45054ac901a7d82df7615930d728d">&#9670;&#160;</a></span>ComputeMeanReturns()</h2>
 
@@ -203,6 +315,43 @@ Variables</h2></td></tr>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::invalid_argument</td><td>если матрица пустая. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a362b628cdd17ae271758acfcfedd07c1" name="a362b628cdd17ae271758acfcfedd07c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a362b628cdd17ae271758acfcfedd07c1">&#9670;&#160;</a></span>ComputeSharpeRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double quant::ComputeSharpeRatio </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structquant_1_1Portfolio.html">Portfolio</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>portfolio</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>risk_free_rate</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Коэффициент Шарпа (μ_p − r_f) / σ_p. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">portfolio</td><td>Портфель. </td></tr>
+    <tr><td class="paramname">risk_free_rate</td><td>Безрисковая ставка (годовая). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Коэффициент Шарпа. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если волатильность портфеля нулевая. </td></tr>
   </table>
   </dd>
 </dl>
@@ -275,6 +424,43 @@ covariance matrices"). Формулы совпадают с sklearn.covariance.l
 
 </div>
 </div>
+<a id="aeac404752f53b75b832c845ada230bef" name="aeac404752f53b75b832c845ada230bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeac404752f53b75b832c845ada230bef">&#9670;&#160;</a></span>EvaluatePortfolio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structquant_1_1Portfolio.html">Portfolio</a> quant::EvaluatePortfolio </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structquant_1_1MarketModel.html">MarketModel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>model</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::VectorXd &amp;</td>          <td class="paramname"><span class="paramname"><em>weights</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Считает доходность и волатильность портфеля с заданными весами. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>Модель рынка. </td></tr>
+    <tr><td class="paramname">weights</td><td>Веса бумаг (длина N). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Портфель с посчитанными характеристиками. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если длина весов не совпадает с числом бумаг. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a3366daf0f71cda5dfc5e8aec4f10c01f" name="a3366daf0f71cda5dfc5e8aec4f10c01f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3366daf0f71cda5dfc5e8aec4f10c01f">&#9670;&#160;</a></span>FillMissingPrices()</h2>
 
@@ -339,6 +525,131 @@ covariance matrices"). Формулы совпадают с sklearn.covariance.l
 
 </div>
 </div>
+<a id="a8c0a25676e03f109aac924ed87216a2a" name="a8c0a25676e03f109aac924ed87216a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c0a25676e03f109aac924ed87216a2a">&#9670;&#160;</a></span>GetDoubleOption()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double quant::GetDoubleOption </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>default_value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Значение параметра как вещественное число. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если значение не число. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8b027c5b71d5ddd0e6dae3288887cfe6" name="a8b027c5b71d5ddd0e6dae3288887cfe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b027c5b71d5ddd0e6dae3288887cfe6">&#9670;&#160;</a></span>GetIntOption()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int quant::GetIntOption </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>default_value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Значение параметра как целое число. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если значение не целое число. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae22d26fefc195a897028d199009a57d8" name="ae22d26fefc195a897028d199009a57d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae22d26fefc195a897028d199009a57d8">&#9670;&#160;</a></span>GetOptionOrDefault()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string quant::GetOptionOrDefault </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>default_value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Значение параметра или <code class="param">default_value</code>, если параметр не задан. </p>
+
+</div>
+</div>
+<a id="aa340b2fac2726d54069fc03e33e06c58" name="aa340b2fac2726d54069fc03e33e06c58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa340b2fac2726d54069fc03e33e06c58">&#9670;&#160;</a></span>GetRequiredOption()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string quant::GetRequiredOption </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>options</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Значение обязательного параметра. </p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если параметр не задан. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac619192916c196220dc62d14cae9b543" name="ac619192916c196220dc62d14cae9b543"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac619192916c196220dc62d14cae9b543">&#9670;&#160;</a></span>MakeCovarianceEstimator()</h2>
 
@@ -365,6 +676,76 @@ covariance matrices"). Формулы совпадают с sklearn.covariance.l
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::invalid_argument</td><td>для неизвестного имени. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a95a679f23cdd7c772898d6744db3032e" name="a95a679f23cdd7c772898d6744db3032e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a679f23cdd7c772898d6744db3032e">&#9670;&#160;</a></span>ParseCommandLineOptions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#afbd7e5ee506b56abe96f5597b17ddc48">CommandLineOptions</a> quant::ParseCommandLineOptions </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>arguments</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Разбирает аргументы <span class="tt">--name value ...</span>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arguments</td><td>Аргументы после имени команды. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Параметры. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>для аргумента без "--" или параметра без значения. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2a41d83cac0b480ae6da6d0e66188a06" name="a2a41d83cac0b480ae6da6d0e66188a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a41d83cac0b480ae6da6d0e66188a06">&#9670;&#160;</a></span>ProjectOntoSimplex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::VectorXd quant::ProjectOntoSimplex </td>
+          <td>(</td>
+          <td class="paramtype">const Eigen::VectorXd &amp;</td>          <td class="paramname"><span class="paramname"><em>point</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>total</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Евклидова проекция точки на симплекс {x ≥ 0, x₁ + … + x_N = total}. </p>
+<p>Алгоритм Duchi et al. (2008), O(N log N).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>Проецируемая точка. </td></tr>
+    <tr><td class="paramname">total</td><td>Сумма координат на симплексе (&gt; 0). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Ближайшая точка симплекса. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если total ≤ 0 или точка пустая. </td></tr>
   </table>
   </dd>
 </dl>
@@ -430,6 +811,127 @@ covariance matrices"). Формулы совпадают с sklearn.covariance.l
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname">std::runtime_error</td><td>если файл не открывается или формат нарушен. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1a766ed412d91863bc59f041c0dba3ec" name="a1a766ed412d91863bc59f041c0dba3ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a766ed412d91863bc59f041c0dba3ec">&#9670;&#160;</a></span>ValidateMarketModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quant::ValidateMarketModel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structquant_1_1MarketModel.html">MarketModel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>model</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Проверяет согласованность размеров μ и Σ и симметричность Σ. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">model</td><td>Модель рынка. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::invalid_argument</td><td>если модель некорректна. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9bac72da660411ad646c11c5a9f3a190" name="a9bac72da660411ad646c11c5a9f3a190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bac72da660411ad646c11c5a9f3a190">&#9670;&#160;</a></span>WriteMatrixCsv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quant::WriteMatrixCsv </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tickers</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Eigen::MatrixXd &amp;</td>          <td class="paramname"><span class="paramname"><em>matrix</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записывает квадратную матрицу с подписями строк и столбцов. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Путь к файлу. </td></tr>
+    <tr><td class="paramname">tickers</td><td>Подписи (длина равна размеру матрицы). </td></tr>
+    <tr><td class="paramname">matrix</td><td>Матрица. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>если файл не открывается на запись. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5a3c84bd89469e2c247431e9588d0ada" name="a5a3c84bd89469e2c247431e9588d0ada"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a3c84bd89469e2c247431e9588d0ada">&#9670;&#160;</a></span>WritePortfoliosCsv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void quant::WritePortfoliosCsv </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>path</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>tickers</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structquant_1_1LabeledPortfolio.html">LabeledPortfolio</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>portfolios</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double</td>          <td class="paramname"><span class="paramname"><em>risk_free_rate</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Записывает портфели: <span class="tt">mode,name,expected_return,volatility,sharpe,TICKER1,...</span>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>Путь к файлу. </td></tr>
+    <tr><td class="paramname">tickers</td><td>Тикеры в порядке весов. </td></tr>
+    <tr><td class="paramname">portfolios</td><td>Портфели. </td></tr>
+    <tr><td class="paramname">risk_free_rate</td><td>Безрисковая ставка для коэффициента Шарпа. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>если файл не открывается на запись. </td></tr>
   </table>
   </dd>
 </dl>

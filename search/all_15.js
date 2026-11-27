@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['samplecovariance_0',['SampleCovariance',['../classquant_1_1SampleCovariance.html',1,'quant']]],
-  ['shrinkage_1',['shrinkage',['../structquant_1_1LedoitWolfResult.html#ae4258d0cade731108ad9039749c3b2b4',1,'quant::LedoitWolfResult']]],
-  ['split_2',['Split',['../structquant_1_1Split.html',1,'quant']]]
+  ['optimizer_2ecpp_0',['optimizer.cpp',['../optimizer_8cpp.html',1,'']]],
+  ['optimizer_2ehpp_1',['optimizer.hpp',['../optimizer_8hpp.html',1,'']]]
 ];

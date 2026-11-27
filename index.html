@@ -105,9 +105,9 @@ $(function(){initNavTree('index.html','',''); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">stats</span>  </td><td class="markdownTableBodyNone">Годовые средние доходности, волатильности и ковариационная матрица (выборочная или Ledoit–Wolf); корректировка на сплиты, поиск аномалий в данных  </td><td class="markdownTableBodyNone">✅ готово  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">optimize</span>  </td><td class="markdownTableBodyNone">Портфели минимальной дисперсии и максимального Шарпа, с короткими продажами и без  </td><td class="markdownTableBodyNone">🚧 в разработке  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">optimize</span>  </td><td class="markdownTableBodyNone">Портфели минимальной дисперсии и максимального Шарпа, с короткими продажами и без  </td><td class="markdownTableBodyNone">✅ готово  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><span class="tt">frontier</span>  </td><td class="markdownTableBodyNone">Эффективная граница  </td><td class="markdownTableBodyNone">🚧 в разработке  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">frontier</span>  </td><td class="markdownTableBodyNone">Эффективная граница из N точек, с короткими продажами и без  </td><td class="markdownTableBodyNone">✅ готово  </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><span class="tt">backtest</span>  </td><td class="markdownTableBodyNone">Скользящее окно, ежемесячная ребалансировка, сравнение с портфелем 1/N  </td><td class="markdownTableBodyNone">🚧 в разработке  </td></tr>
 </table>
@@ -125,8 +125,11 @@ $(function(){initNavTree('index.html','',''); });
 <h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
 Запуск</h1>
 <div class="fragment"><div class="line">./build/mpt stats --prices data/prices.csv --splits data/splits.csv --cov ledoit-wolf</div>
+<div class="line">./build/mpt optimize --prices data/prices.csv --splits data/splits.csv --risk-free 0.10 --out portfolios.csv</div>
+<div class="line">./build/mpt frontier --prices data/prices.csv --splits data/splits.csv --points 50 --out frontier.csv</div>
 <div class="line">./build/mpt --help</div>
-</div><!-- fragment --><p>Если в данных есть дневное изменение цены больше 50% (обычно неучтённый сплит), утилита выводит предупреждение с датой и тикером.</p>
+</div><!-- fragment --><p>Без коротких продаж оптимальные портфели ищет собственный метод активного множества (задача квадратичного программирования); с короткими продажами — точные формулы через множители Лагранжа. Безрисковая ставка по умолчанию — 10% годовых.</p>
+<p>Если в данных есть дневное изменение цены больше 50% (обычно неучтённый сплит), утилита выводит предупреждение с датой и тикером.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Запуск в Docker</h1>
 <p>Образ собирает проект, прогоняет тесты и содержит утилиту вместе с данными из <span class="tt">data/</span>:</p>
@@ -151,7 +154,7 @@ $(function(){initNavTree('index.html','',''); });
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Структура проекта</h1>
 <div class="fragment"><div class="line">.</div>
-<div class="line">├── include/quant/      # публичные заголовки: data/, stats/</div>
+<div class="line">├── include/quant/      # публичные заголовки: data/, stats/, optim/, io/</div>
 <div class="line">├── src/                # реализация библиотеки mpt_core и утилита mpt (main.cpp)</div>
 <div class="line">├── tests/              # unit-тесты (GoogleTest) и тестовые CSV</div>
 <div class="line">├── bench/              # бенчмарки (Google Benchmark)</div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['prices_0',['prices',['../structquant_1_1PriceTable.html#a1f9d36a887bb1ef3f6f3e45034a5647e',1,'quant::PriceTable']]]
+  ['iterations_0',['iterations',['../structquant_1_1QpResult.html#a5456665eabd96101932a23aea4e7ff43',1,'quant::QpResult']]]
 ];

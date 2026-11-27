@@ -97,15 +97,20 @@ $(function(){initNavTree('main_8cpp.html','',''); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;exception&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iomanip&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;map&gt;</code><br />
+<code>#include &lt;limits&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;stdexcept&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;<a class="el" href="price__table_8hpp_source.html">quant/data/price_table.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cli__options_8hpp_source.html">quant/io/cli_options.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="result__writer_8hpp_source.html">quant/io/result_writer.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="frontier_8hpp_source.html">quant/optim/frontier.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="optimizer_8hpp_source.html">quant/optim/optimizer.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="portfolio_8hpp_source.html">quant/optim/portfolio.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="qp__solver_8hpp_source.html">quant/optim/qp_solver.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="covariance_8hpp_source.html">quant/stats/covariance.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="returns_8hpp_source.html">quant/stats/returns.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
@@ -115,7 +120,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Консольная утилита mpt: портфельный анализ по Марковицу. </p>
-<p>Сейчас реализована команда <span class="tt">stats</span>; <span class="tt">optimize</span>, <span class="tt">frontier</span> и <span class="tt">backtest</span> в разработке (см. <a class="el" href="REQUIREMENTS_8md.html">docs/REQUIREMENTS.md</a>). </p>
+<p>Команды <span class="tt">stats</span>, <span class="tt">optimize</span> и <span class="tt">frontier</span>; <span class="tt">backtest</span> в разработке (см. <a class="el" href="REQUIREMENTS_8md.html">docs/REQUIREMENTS.md</a>). </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>

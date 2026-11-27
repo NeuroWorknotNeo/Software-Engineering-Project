@@ -1,7 +1,16 @@
 var searchData=
 [
-  ['daily_5freturn_0',['daily_return',['../structquant_1_1PriceAnomaly.html#a56b78622ae665dcac5a8981858b6ea97',1,'quant::PriceAnomaly']]],
-  ['date_1',['date',['../structquant_1_1Split.html#a5f80f13487e8029cb32fe6a3a175e043',1,'quant::Split::date'],['../structquant_1_1PriceAnomaly.html#af1e6b0b3b121877c8ca9f8079ca2f5bb',1,'quant::PriceAnomaly::date']]],
-  ['dates_2',['dates',['../structquant_1_1PriceTable.html#a33bef1e6ad50fa21a6ade7bfa229a56a',1,'quant::PriceTable::dates'],['../structquant_1_1ReturnMatrix.html#ac2bb8d2769d80b606ee5a529dc8fdf36',1,'quant::ReturnMatrix::dates']]],
-  ['docker_3',['Запуск в Docker',['../index.html#autotoc_md5',1,'']]]
+  ['c_0',['ADR-5. Параллельность бэктеста (C)',['../md_docs_2ARCHITECTURE.html#autotoc_md33',1,'']]],
+  ['cd_1',['CI/CD',['../index.html#autotoc_md10',1,'']]],
+  ['ci_20cd_2',['CI/CD',['../index.html#autotoc_md10',1,'']]],
+  ['cli_5foptions_2ecpp_3',['cli_options.cpp',['../cli__options_8cpp.html',1,'']]],
+  ['cli_5foptions_2ehpp_4',['cli_options.hpp',['../cli__options_8hpp.html',1,'']]],
+  ['commandlineoptions_5',['CommandLineOptions',['../namespacequant.html#afbd7e5ee506b56abe96f5597b17ddc48',1,'quant']]],
+  ['computemeanreturns_6',['ComputeMeanReturns',['../namespacequant.html#a4df45054ac901a7d82df7615930d728d',1,'quant']]],
+  ['computesharperatio_7',['ComputeSharpeRatio',['../namespacequant.html#a362b628cdd17ae271758acfcfedd07c1',1,'quant']]],
+  ['computesimplereturns_8',['ComputeSimpleReturns',['../namespacequant.html#a8c32a31be2e0d0bc5782ef4089621376',1,'quant']]],
+  ['covariance_9',['covariance',['../structquant_1_1MarketModel.html#a200b38605a0b691b8c559e014aaaa7aa',1,'quant::MarketModel::covariance'],['../structquant_1_1LedoitWolfResult.html#a11b051c2e190eaf8e864c12fdde5b62c',1,'quant::LedoitWolfResult::covariance']]],
+  ['covariance_2ecpp_10',['covariance.cpp',['../covariance_8cpp.html',1,'']]],
+  ['covariance_2ehpp_11',['covariance.hpp',['../covariance_8hpp.html',1,'']]],
+  ['covarianceestimator_12',['CovarianceEstimator',['../classquant_1_1CovarianceEstimator.html',1,'quant']]]
 ];

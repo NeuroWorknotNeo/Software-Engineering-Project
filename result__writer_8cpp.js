@@ -1,0 +1,5 @@
+var result__writer_8cpp =
+[
+    [ "quant::WriteMatrixCsv", "namespacequant.html#a9bac72da660411ad646c11c5a9f3a190", null ],
+    [ "quant::WritePortfoliosCsv", "namespacequant.html#a5a3c84bd89469e2c247431e9588d0ada", null ]
+];

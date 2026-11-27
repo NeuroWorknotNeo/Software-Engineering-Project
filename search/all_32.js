@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['≥_200_0',['Оптимизация без коротких продаж (веса ≥ 0)',['../md_docs_2REQUIREMENTS.html#autotoc_md18',1,'']]]
+];

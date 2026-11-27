@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7ecovarianceestimator_0',['~CovarianceEstimator',['../classquant_1_1CovarianceEstimator.html#a8029fa96752863ca81ca8720255e0e38',1,'quant::CovarianceEstimator']]]
+  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
+  ['makecovarianceestimator_1',['MakeCovarianceEstimator',['../namespacequant.html#ac619192916c196220dc62d14cae9b543',1,'quant']]]
 ];
