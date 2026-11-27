@@ -1,0 +1,26 @@
+Period: 2019-01-04 .. 2025-12-30 (1754 daily returns, 20 assets)
+Covariance: ledoit-wolf, shrinkage 0.0396
+
+ticker     mean, %/y    vol, %/y
+SBER           13.02       34.25
+GAZP            4.45       38.30
+LKOH            7.81       32.74
+ROSN            5.91       35.07
+NVTK            7.80       36.97
+TATN            3.68       36.91
+SNGS            4.54       38.49
+GMKN            7.05       31.89
+PLZL           27.72       34.52
+CHMF            6.19       33.64
+NLMK            0.13       33.62
+MAGN           -0.34       33.22
+ALRS           -7.06       33.32
+PHOR           17.23       28.83
+MTSS            2.92       30.64
+RTKM            2.56       29.71
+MGNT            3.30       33.57
+MOEX           14.49       28.95
+AFLT           -0.51       38.35
+IRAO            2.92       35.36
+
+Covariance matrix written to results/covariance_ledoit_wolf.csv

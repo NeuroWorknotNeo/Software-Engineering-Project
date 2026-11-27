@@ -222,6 +222,7 @@ src/main.cpp                                    консольная утили�
 tests/, tests/data/                             unit-тесты (GoogleTest) и тестовые CSV
 bench/                                          бенчмарки (Google Benchmark)
 data/prices.csv, data/splits.csv                данные для воспроизводимого запуска
+results/                                        результаты экспериментов (scripts/run_experiments.sh)
 scripts/                                        Python: загрузка данных, графики
 docs/                                           требования, архитектура, план, Doxyfile
 report/                                         отчёт LaTeX и PDF
@@ -253,7 +254,7 @@ Dockerfile
 | FR-18 ✅ | `backtest` | `Performance.ComputesMetricsFromEquityCurve` |
 | FR-19 ✅ | `backtest` | `Backtester.TransactionCostsReduceValue` |
 | FR-20, FR-21 ✅ | `io`/`app` | `CommandLineOptions.*`, `ResultWriter.*` в `test_io.cpp`; запуск `mpt` в CI |
-| FR-22 ✅ | `scripts/plot_frontier.py`, `scripts/plot_backtest.py` | проверены вручную на результатах `mpt` |
+| FR-22 ✅ | `scripts/plot_frontier.py`, `scripts/plot_backtest.py`, `scripts/summarize_results.py`, `scripts/run_experiments.sh` | все графики и таблицы в `results/` пересчитываются одной командой; повторный запуск даёт побайтово те же файлы |
 | NFR-1 ✅ | `optim` | `BM_LongOnlyFrontierWithEstimation/50` в `bench/bench_optim.cpp` |
 | NFR-2 ✅ | `optim` | `LongOnly.MatchesAnalyticSolutionWhenConstraintIsInactive`, проверки ККТ в `test_optim.cpp` |
 | NFR-8 | `io`/`app` | `ReadPriceCsv.RejectsMalformedInput`, `ShortSelling.RejectsNotPositiveDefiniteCovariance`, `LongOnly.RejectsUnreachableTargetsAndRates`, `QpSolvers.RejectInvalidProblems` |

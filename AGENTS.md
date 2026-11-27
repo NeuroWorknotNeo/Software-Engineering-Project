@@ -21,6 +21,8 @@
 - `scripts/` — Python-скрипты: загрузка данных с MOEX (только стандартная библиотека)
   и графики (`plot_*.py`, matplotlib).
 - `data/` — цены (`prices.csv`) и сплиты (`splits.csv`).
+- `results/` — результаты экспериментов для отчёта; генерируются `scripts/run_experiments.sh`,
+  вручную не редактируются. После изменений в расчётах их нужно пересчитать и закоммитить.
 - `docs/` — требования, архитектура, `Doxyfile`.
 - `.github/workflows/` — CI (`ci.yml`) и публикация документации (`docs.yml`).
 
@@ -39,6 +41,9 @@ ctest --test-dir build --output-on-failure
 ./build/mpt optimize --prices data/prices.csv --splits data/splits.csv
 ./build/mpt frontier --prices data/prices.csv --splits data/splits.csv --points 50
 ./build/mpt backtest --prices data/prices.csv --splits data/splits.csv --out equity.csv
+
+# Все результаты для отчёта (results/)
+scripts/run_experiments.sh
 
 # Бенчмарки
 ./build/bench/mpt_bench

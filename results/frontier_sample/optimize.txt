@@ -1,0 +1,35 @@
+Period: 2019-01-04 .. 2025-12-30 (1754 daily returns, 20 assets)
+Covariance: sample
+Risk-free rate: 10.00%
+
+portfolio     mode             return, %      vol, %      Sharpe
+min-variance  short                13.20       19.20      0.1668
+max-sharpe    short               176.97      138.65      1.2043
+min-variance  long-only            12.59       19.91      0.1299
+max-sharpe    long-only            25.10       28.57      0.5285
+
+Weights, %:
+ticker      minvar/S maxsharpe/S    minvar/L maxsharpe/L
+SBER           -0.35      236.62        0.00        0.00
+GAZP           -2.82      -30.14        0.00        0.00
+LKOH           15.50       57.71        3.57        0.00
+ROSN          -12.27      -43.73        0.00        0.00
+NVTK          -10.80       35.53        0.00        0.00
+TATN           -4.85      -48.74        0.00        0.00
+SNGS           -1.90      -23.58        0.00        0.00
+GMKN            5.10       -9.53        0.27        0.00
+PLZL           10.72      249.87       10.47       75.04
+CHMF            6.06      147.38        1.70        0.00
+NLMK           -5.36     -141.59        0.00        0.00
+MAGN            2.95     -106.29        0.55        0.00
+ALRS            0.15     -291.71        0.00        0.00
+PHOR           36.32      170.76       33.17       24.96
+MTSS           19.09      -30.48       19.50        0.00
+RTKM           15.23      -92.99       11.82        0.00
+MGNT            1.60      -69.90        0.00        0.00
+MOEX           20.04      165.05       18.51        0.00
+AFLT            0.30      -47.22        0.00        0.00
+IRAO            5.28      -27.02        0.45        0.00
+(S — short selling allowed, L — long only)
+
+Portfolios written to results/frontier_sample/portfolios.csv

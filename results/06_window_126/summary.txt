@@ -1,0 +1,15 @@
+Backtest: 2019-07-08 .. 2025-12-30 (1628 days, 78 monthly rebalancings)
+Estimation window: 126 days, covariance: sample
+Transaction cost: 0.00% of traded weight
+Risk-free rate: 10.00%
+
+strategy                     CAGR, %      vol, %      Sharpe   max DD, % turnover, %   fallbacks
+min-variance/short            -12.18       21.29     -0.9716       72.78       45.07           0
+min-variance/long-only          2.83       22.50     -0.2071       35.62       20.16           0
+max-sharpe/short             -100.00       57.38     -0.2537      100.00      443.81          51
+max-sharpe/long-only           25.76       31.10      0.5682       35.40       35.76           0
+equal-weight                    1.85       24.67     -0.2035       50.18        2.65           0
+(CAGR — compound annual return; turnover — average one-way per rebalancing; fallbacks — rebalancings where the max-Sharpe portfolio did not exist and the minimum-variance one was used)
+Equity curves written to results/06_window_126/equity.csv
+Rebalancing history written to results/06_window_126/weights.csv
+Metrics written to results/06_window_126/metrics.csv

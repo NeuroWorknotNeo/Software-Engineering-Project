@@ -82,6 +82,15 @@ docker run --rm mpt stats --prices data/prices.csv --cov sample
 docker run --rm -v "$PWD/my_data:/data" mpt stats --prices /data/prices.csv   # свои данные
 ```
 
+## Результаты экспериментов
+
+Все результаты для отчёта (бэктесты с разными параметрами, эффективные границы, графики,
+сводная таблица) лежат в [results/](results/README.md) и пересчитываются одной командой:
+
+```bash
+scripts/run_experiments.sh
+```
+
 ## Графики
 
 Скриптам нужен matplotlib (`pip install matplotlib`):
@@ -128,6 +137,7 @@ doxygen docs/Doxyfile   # результат в docs/html/index.html
 ├── bench/              # бенчмарки (Google Benchmark)
 ├── scripts/            # Python: загрузка данных с MOEX, графики
 ├── data/               # цены и сплиты
+├── results/            # результаты экспериментов (scripts/run_experiments.sh)
 ├── docs/               # требования, архитектура, Doxyfile
 ├── .github/workflows/  # CI/CD (GitHub Actions)
 ├── Dockerfile          # сборка и запуск в контейнере

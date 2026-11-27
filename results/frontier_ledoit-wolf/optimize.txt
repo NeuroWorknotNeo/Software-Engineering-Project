@@ -1,0 +1,35 @@
+Period: 2019-01-04 .. 2025-12-30 (1754 daily returns, 20 assets)
+Covariance: ledoit-wolf, shrinkage 0.0396
+Risk-free rate: 10.00%
+
+portfolio     mode             return, %      vol, %      Sharpe
+min-variance  short                12.84       19.16      0.1484
+max-sharpe    short               190.17      152.56      1.1810
+min-variance  long-only            12.40       19.74      0.1217
+max-sharpe    long-only            25.07       28.45      0.5298
+
+Weights, %:
+ticker      minvar/S maxsharpe/S    minvar/L maxsharpe/L
+SBER           -0.19      247.81        0.00        0.00
+GAZP           -2.46      -31.57        0.00        0.00
+LKOH           13.96       57.81        4.13        0.00
+ROSN          -10.63      -39.75        0.00        0.00
+NVTK           -9.64       39.10        0.00        0.00
+TATN           -4.55      -52.95        0.00        0.00
+SNGS           -1.78      -26.46        0.00        0.00
+GMKN            5.23       -9.11        1.15        0.00
+PLZL           10.99      277.03       10.69       74.77
+CHMF            5.30      140.31        1.96        0.00
+NLMK           -4.09     -141.64        0.00        0.00
+MAGN            3.15     -112.96        1.20        0.00
+ALRS            0.60     -312.14        0.00        0.00
+PHOR           34.53      180.07       31.85       25.23
+MTSS           18.16      -36.84       18.45        0.00
+RTKM           14.75      -98.77       11.87        0.00
+MGNT            2.14      -73.60        0.00        0.00
+MOEX           19.04      178.34       17.63        0.00
+AFLT            0.48      -53.59        0.00        0.00
+IRAO            5.04      -31.08        1.06        0.00
+(S — short selling allowed, L — long only)
+
+Portfolios written to results/frontier_ledoit-wolf/portfolios.csv
