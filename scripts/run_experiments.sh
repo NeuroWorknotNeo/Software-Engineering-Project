@@ -26,8 +26,9 @@ cmake --build "$build_dir" -j > /dev/null
 mpt="$build_dir/mpt"
 data_options=(--prices data/prices.csv --splits data/splits.csv)
 
-rm -rf "$output_dir"
+# Удаляем прежние результаты, но сохраняем описание каталога.
 mkdir -p "$output_dir"
+find "$output_dir" -mindepth 1 -maxdepth 1 ! -name README.md -exec rm -rf {} +
 
 # Бэктест одного варианта параметров: CSV, текстовая сводка и график.
 run_backtest() {

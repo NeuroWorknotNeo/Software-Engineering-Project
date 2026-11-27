@@ -85,7 +85,7 @@ docker run --rm -v "$PWD/my_data:/data" mpt stats --prices /data/prices.csv   # 
 ## Результаты экспериментов
 
 Все результаты для отчёта (бэктесты с разными параметрами, эффективные границы, графики,
-сводная таблица) лежат в [results/](results/README.md) и пересчитываются одной командой:
+сводная таблица) лежат в [results/](results/) и пересчитываются одной командой:
 
 ```bash
 scripts/run_experiments.sh
