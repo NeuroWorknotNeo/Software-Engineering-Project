@@ -1,6 +1,6 @@
 # Архитектура
 
-Статус: v0.2 (19.11.2026). Реализованы модули `data` и `stats`. Требования — в [REQUIREMENTS.md](REQUIREMENTS.md).
+Статус: v0.3 (27.11.2026). Реализованы модули `data`, `stats`, `optim` и `io`. Требования — в [REQUIREMENTS.md](REQUIREMENTS.md).
 
 ## 1. Общая схема
 
@@ -31,9 +31,9 @@ flowchart LR
 |---|---|---|---|
 | `data` | Чтение CSV, заполнение пропусков, сплиты, поиск аномалий | `PriceTable`, `Split`, `PriceAnomaly`; функции `ReadPriceCsv`, `FillMissingPrices`, `ReadSplitsCsv`, `ApplySplits`, `FindPriceAnomalies` | FR-2…FR-5 |
 | `stats` | Доходности, средние, оценки ковариации | `ReturnMatrix`, `CovarianceEstimator` (интерфейс), `SampleCovariance`, `LedoitWolfCovariance`; функции `ComputeSimpleReturns`, `ComputeMeanReturns`, `EstimateLedoitWolf`, `MakeCovarianceEstimator` | FR-6…FR-8 |
-| `optim` | Аналитические решения, QP-решатель, эффективная граница | `MarketModel` (μ, Σ), `Portfolio`, `AnalyticOptimizer`, `QpSolver` (интерфейс), `ActiveSetSolver`, `ProjectedGradientSolver`, `FrontierBuilder` | FR-9…FR-15 |
+| `optim` | Оптимальные портфели, QP-решатели, эффективная граница | `MarketModel` (μ, Σ), `Portfolio`, `PortfolioOptimizer` (интерфейс), `ShortSellingOptimizer`, `LongOnlyOptimizer`, `QpSolver` (интерфейс), `ActiveSetSolver`, `ProjectedGradientSolver`; функции `EvaluatePortfolio`, `ComputeSharpeRatio`, `BuildEfficientFrontier` | FR-9…FR-15 |
 | `backtest` | Скользящее окно, ребалансировка, метрики | `Backtester`, `AllocationStrategy` (интерфейс), `GmvStrategy`, `MaxSharpeStrategy`, `EqualWeightStrategy`, `PerformanceMetrics` | FR-16…FR-19 |
-| `io` / `app` | Разбор параметров, запись CSV, сводка в stdout, коды возврата | `CliOptions`, `ResultWriter`, утилита `mpt` (`src/main.cpp`) | FR-20, FR-21, NFR-8 |
+| `io` / `app` | Разбор параметров, запись CSV, сводка в stdout, коды возврата | `CommandLineOptions`, `LabeledPortfolio`; функции `ParseCommandLineOptions`, `WritePortfoliosCsv`, `WriteMatrixCsv`; утилита `mpt` (`src/main.cpp`) | FR-20, FR-21, NFR-8 |
 | `scripts/` (Python) | Загрузка данных с MOEX, графики | `download_prices.py`, `plot_frontier.py`, `plot_backtest.py` | FR-1, FR-22 |
 
 ## 3. Диаграмма классов (ядро)
@@ -48,9 +48,9 @@ classDiagram
     CovarianceEstimator <|.. LedoitWolfCovariance
 
     class MarketModel {
-        +Vector mu
-        +Matrix sigma
         +vector~string~ tickers
+        +Vector mean_returns
+        +Matrix covariance
     }
 
     class QpSolver {
@@ -60,18 +60,23 @@ classDiagram
     QpSolver <|.. ActiveSetSolver
     QpSolver <|.. ProjectedGradientSolver
 
-    class AnalyticOptimizer {
-        +MinVariance(MarketModel) Portfolio
-        +MaxSharpe(MarketModel, double rf) Portfolio
-        +Frontier(MarketModel, int n) Frontier
+    class PortfolioOptimizer {
+        <<interface>>
+        +FindMinimumVariance(MarketModel) Vector
+        +FindMinimumVarianceForReturn(MarketModel, double target) Vector
+        +FindMaxSharpe(MarketModel, double rf) Vector
     }
-    class FrontierBuilder {
-        -QpSolver& solver
-        +MinVariance(MarketModel) Portfolio
-        +MaxSharpe(MarketModel, double rf) Portfolio
-        +Frontier(MarketModel, int n) Frontier
+    PortfolioOptimizer <|.. ShortSellingOptimizer
+    PortfolioOptimizer <|.. LongOnlyOptimizer
+    class LongOnlyOptimizer {
+        -QpSolver& solver_
     }
-    FrontierBuilder --> QpSolver
+    LongOnlyOptimizer --> QpSolver
+    class BuildEfficientFrontier {
+        <<function>>
+        +(MarketModel, PortfolioOptimizer&, int points) vector~Portfolio~
+    }
+    BuildEfficientFrontier --> PortfolioOptimizer
 
     class AllocationStrategy {
         <<interface>>
@@ -139,6 +144,20 @@ sequenceDiagram
 поэтому годится для перекрёстной проверки, а сравнение скорости (а) и (б)
 войдёт в отчёт. Риск сложности (а) закрывается тем, что (б) уже будет работать.
 
+**Реализация и результаты (27.11.2026):**
+- (б) реализован только для симплекса {x ≥ 0, 1ᵀx = b}: проекция на него вычисляется
+  за O(N log N). Поэтому (б) решает задачу GMV и задачу min ½wᵀΣw − τ·μᵀw, а точки
+  границы с ограничением μᵀw = r и касательный портфель решает только (а).
+- Тесты сверяют (а) и (б) на 20 случайных моделях (расхождение ≤ 1e-7), (а) — с
+  аналитическим решением, когда ограничение неактивно (≤ 1e-8), и с условиями ККТ.
+  На реальных данных результаты (а) совпали со scipy (SLSQP) до 1e-8.
+- Бенчмарк GMV без коротких продаж: 20 бумаг — (а) 19 мкс, (б) 62 мкс; 50 бумаг —
+  (а) 0,26 мс, (б) 0,53 мс; 100 бумаг — (а) 5,6 мс, (б) 3,1 мс. Число итераций (а)
+  растёт с числом бумаг, а каждая итерация решает систему ККТ, поэтому на больших N
+  (б) быстрее, но даёт только приближённое решение.
+- NFR-1: граница из 50 точек без коротких продаж для 50 бумаг × 1000 дней вместе
+  с оценкой Ledoit–Wolf — около 24 мс (требование — ≤ 1 с).
+
 ### ADR-2. Линейная алгебра
 
 Варианты: Eigen 3 / собственные матрицы / BLAS+LAPACK.
@@ -201,11 +220,16 @@ Dockerfile
 | FR-6 ✅ | `stats` | `Returns.*`, `Covariance.SampleMatchesNumpy` в `test_stats.cpp` |
 | FR-7 ✅ | `stats` | `Covariance.LedoitWolfMatchesSklearn`, `Covariance.LedoitWolfIsWellConditioned…` |
 | FR-8 ✅ | `stats` | `Covariance.FactoryByName` |
-| FR-9…FR-11 | `optim` | `test_analytic.cpp` |
-| FR-12…FR-14 | `optim` | `test_qp.cpp` |
+| FR-9 ✅ | `optim` | `ShortSelling.TwoAssetMinimumVarianceMatchesFormula`, `ShortSelling.MinimumVarianceSatisfiesOptimalityConditions` в `test_optim.cpp` |
+| FR-10 ✅ | `optim` | `ShortSelling.MaxSharpe*` |
+| FR-11 ✅ | `optim` | `ShortSelling.FrontierPointHasTargetReturnAndMinimalVariance` |
+| FR-12 ✅ | `optim` | `LongOnly.MinimumVarianceDropsShortedAsset`, `LongOnly.ActiveSetAgreesWithProjectedGradientOnRandomModels` |
+| FR-13 ✅ | `optim` | `LongOnly.MaxSharpeBeatsFrontierAndIsBelowShortSelling` |
+| FR-14 ✅ | `optim` | `LongOnly.FrontierPointsAreFeasibleAndRiskier`, `LongOnly.MeanVarianceTradeOffAgreesWithReturnTarget` |
 | FR-16…FR-18 | `backtest` | `test_backtest.cpp` |
-| FR-20, FR-21, NFR-8 | `io`/`app` | `test_cli.cpp` |
-| NFR-1 | `optim` | `bench/bench_frontier.cpp` |
-| NFR-2 | `optim` | `test_qp.cpp` |
+| FR-20, FR-21 ✅ (кроме `backtest`) | `io`/`app` | `CommandLineOptions.*`, `ResultWriter.*` в `test_io.cpp`; запуск `mpt` в CI |
+| NFR-1 ✅ | `optim` | `BM_LongOnlyFrontierWithEstimation/50` в `bench/bench_optim.cpp` |
+| NFR-2 ✅ | `optim` | `LongOnly.MatchesAnalyticSolutionWhenConstraintIsInactive`, проверки ККТ в `test_optim.cpp` |
+| NFR-8 | `io`/`app` | `ReadPriceCsv.RejectsMalformedInput`, `ShortSelling.RejectsNotPositiveDefiniteCovariance`, `LongOnly.RejectsUnreachableTargetsAndRates`, `QpSolvers.RejectInvalidProblems` |
 | NFR-4 ✅ | `Dockerfile` | задача `docker` в CI: сборка образа с прогоном тестов и запуск контейнера |
 | NFR-5 ✅ | `.clang-format`, `.clang-tidy` | задача `style` в CI |

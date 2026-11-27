@@ -33,6 +33,12 @@ add_library(mpt_core
   src/data/price_table.cpp
   src/stats/returns.cpp
   src/stats/covariance.cpp
+  src/optim/portfolio.cpp
+  src/optim/qp_solver.cpp
+  src/optim/optimizer.cpp
+  src/optim/frontier.cpp
+  src/io/cli_options.cpp
+  src/io/result_writer.cpp
 )
 target_include_directories(mpt_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_link_libraries(mpt_core PUBLIC Eigen3::Eigen)

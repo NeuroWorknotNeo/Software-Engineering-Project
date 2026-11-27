@@ -11,5 +11,5 @@ if(NOT benchmark_FOUND)
   FetchContent_MakeAvailable(googlebenchmark)
 endif()
 
-add_executable(mpt_bench bench_covariance.cpp)
-target_link_libraries(mpt_bench PRIVATE mpt_core benchmark::benchmark)
+add_executable(mpt_bench bench_covariance.cpp bench_optim.cpp)
+target_link_libraries(mpt_bench PRIVATE mpt_core benchmark::benchmark benchmark::benchmark_main)

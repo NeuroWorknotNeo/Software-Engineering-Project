@@ -13,8 +13,8 @@
 
 ## Структура
 
-- `include/quant/<модуль>/` — публичные заголовки (`.hpp`); модули: `data`, `stats`,
-  далее `optim`, `backtest`, `io` (см. `docs/ARCHITECTURE.md`).
+- `include/quant/<модуль>/` — публичные заголовки (`.hpp`); модули: `data`, `stats`, `optim`,
+  `io`, далее `backtest` (см. `docs/ARCHITECTURE.md`).
 - `src/<модуль>/` — реализация библиотеки `mpt_core`; `src/main.cpp` — утилита `mpt`.
 - `tests/` — unit-тесты на GoogleTest, по файлу `test_<модуль>.cpp`; тестовые CSV — в `tests/data/`.
 - `bench/` — бенчмарки на Google Benchmark, по файлу `bench_<модуль>.cpp`.
@@ -36,6 +36,8 @@ ctest --test-dir build --output-on-failure
 
 # Запуск
 ./build/mpt stats --prices data/prices.csv --splits data/splits.csv
+./build/mpt optimize --prices data/prices.csv --splits data/splits.csv
+./build/mpt frontier --prices data/prices.csv --splits data/splits.csv --points 50
 
 # Бенчмарки
 ./build/bench/mpt_bench

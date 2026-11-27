@@ -30,5 +30,3 @@ void BM_LedoitWolf(benchmark::State& state) {
 BENCHMARK(BM_LedoitWolf)->Arg(20)->Arg(50)->Arg(200)->Unit(benchmark::kMicrosecond);
 
 }  // namespace
-
-BENCHMARK_MAIN();
