@@ -1,16 +1,20 @@
 var searchData=
 [
-  ['parsecommandlineoptions_0',['ParseCommandLineOptions',['../namespacequant.html#a95a679f23cdd7c772898d6744db3032e',1,'quant']]],
-  ['portfolio_1',['Portfolio',['../structquant_1_1Portfolio.html',1,'quant']]],
-  ['portfolio_2',['portfolio',['../structquant_1_1LabeledPortfolio.html#ae375cc88b0ab8e89589e31b7a907e983',1,'quant::LabeledPortfolio']]],
-  ['portfolio_2ecpp_3',['portfolio.cpp',['../portfolio_8cpp.html',1,'']]],
-  ['portfolio_2ehpp_4',['portfolio.hpp',['../portfolio_8hpp.html',1,'']]],
-  ['portfoliooptimizer_5',['PortfolioOptimizer',['../classquant_1_1PortfolioOptimizer.html',1,'quant']]],
-  ['price_5ftable_2ecpp_6',['price_table.cpp',['../price__table_8cpp.html',1,'']]],
-  ['price_5ftable_2ehpp_7',['price_table.hpp',['../price__table_8hpp.html',1,'']]],
-  ['priceanomaly_8',['PriceAnomaly',['../structquant_1_1PriceAnomaly.html',1,'quant']]],
-  ['prices_9',['prices',['../structquant_1_1PriceTable.html#a1f9d36a887bb1ef3f6f3e45034a5647e',1,'quant::PriceTable']]],
-  ['pricetable_10',['PriceTable',['../structquant_1_1PriceTable.html',1,'quant']]],
-  ['projectedgradientsolver_11',['ProjectedGradientSolver',['../classquant_1_1ProjectedGradientSolver.html',1,'quant::ProjectedGradientSolver'],['../classquant_1_1ProjectedGradientSolver.html#adef02608590faabb34ce4af95f132da7',1,'quant::ProjectedGradientSolver::ProjectedGradientSolver()']]],
-  ['projectontosimplex_12',['ProjectOntoSimplex',['../namespacequant.html#a2a41d83cac0b480ae6da6d0e66188a06',1,'quant']]]
+  ['parallel_0',['parallel',['../structquant_1_1BacktestConfig.html#a73a2b0b3f5be1040c97f1450cf6245c7',1,'quant::BacktestConfig']]],
+  ['parsecommandlineoptions_1',['ParseCommandLineOptions',['../namespacequant.html#a95a679f23cdd7c772898d6744db3032e',1,'quant']]],
+  ['performance_2ecpp_2',['performance.cpp',['../performance_8cpp.html',1,'']]],
+  ['performance_2ehpp_3',['performance.hpp',['../performance_8hpp.html',1,'']]],
+  ['performancemetrics_4',['PerformanceMetrics',['../structquant_1_1PerformanceMetrics.html',1,'quant']]],
+  ['portfolio_5',['Portfolio',['../structquant_1_1Portfolio.html',1,'quant']]],
+  ['portfolio_6',['portfolio',['../structquant_1_1LabeledPortfolio.html#ae375cc88b0ab8e89589e31b7a907e983',1,'quant::LabeledPortfolio']]],
+  ['portfolio_2ecpp_7',['portfolio.cpp',['../portfolio_8cpp.html',1,'']]],
+  ['portfolio_2ehpp_8',['portfolio.hpp',['../portfolio_8hpp.html',1,'']]],
+  ['portfoliooptimizer_9',['PortfolioOptimizer',['../classquant_1_1PortfolioOptimizer.html',1,'quant']]],
+  ['price_5ftable_2ecpp_10',['price_table.cpp',['../price__table_8cpp.html',1,'']]],
+  ['price_5ftable_2ehpp_11',['price_table.hpp',['../price__table_8hpp.html',1,'']]],
+  ['priceanomaly_12',['PriceAnomaly',['../structquant_1_1PriceAnomaly.html',1,'quant']]],
+  ['prices_13',['prices',['../structquant_1_1PriceTable.html#a1f9d36a887bb1ef3f6f3e45034a5647e',1,'quant::PriceTable']]],
+  ['pricetable_14',['PriceTable',['../structquant_1_1PriceTable.html',1,'quant']]],
+  ['projectedgradientsolver_15',['ProjectedGradientSolver',['../classquant_1_1ProjectedGradientSolver.html',1,'quant::ProjectedGradientSolver'],['../classquant_1_1ProjectedGradientSolver.html#adef02608590faabb34ce4af95f132da7',1,'quant::ProjectedGradientSolver::ProjectedGradientSolver()']]],
+  ['projectontosimplex_16',['ProjectOntoSimplex',['../namespacequant.html#a2a41d83cac0b480ae6da6d0e66188a06',1,'quant']]]
 ];

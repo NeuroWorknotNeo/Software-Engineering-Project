@@ -99,8 +99,7 @@ $(function(){initNavTree('price__table_8hpp_source.html','',''); });
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="namespacequant.html">   11</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacequant.html">quant</a> {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacequant.html">quant</a> {</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span></div>
 <div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structquant_1_1PriceTable.html">   19</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structquant_1_1PriceTable.html">PriceTable</a> {</div>
@@ -143,8 +142,7 @@ $(function(){initNavTree('price__table_8hpp_source.html','',''); });
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>std::vector&lt;PriceAnomaly&gt; <a class="code hl_function" href="namespacequant.html#aa34e98ece951956ffb1417626bf7452a">FindPriceAnomalies</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structquant_1_1PriceTable.html">PriceTable</a>&amp; table, <span class="keywordtype">double</span> threshold);</div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
 <div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}  <span class="comment">// namespace quant</span></div>
-</div>
-<div class="ttc" id="anamespacequant_html"><div class="ttname"><a href="namespacequant.html">quant</a></div><div class="ttdef"><b>Definition</b> price_table.hpp:11</div></div>
+<div class="ttc" id="anamespacequant_html"><div class="ttname"><a href="namespacequant.html">quant</a></div><div class="ttdef"><b>Definition</b> allocation_strategy.hpp:13</div></div>
 <div class="ttc" id="anamespacequant_html_a0ef1c4167097f5fb615b1c40422c1a8f"><div class="ttname"><a href="namespacequant.html#a0ef1c4167097f5fb615b1c40422c1a8f">quant::ReadSplitsCsv</a></div><div class="ttdeci">std::vector&lt; Split &gt; ReadSplitsCsv(const std::string &amp;path)</div><div class="ttdoc">Читает список сплитов из CSV date,ticker,ratio.</div><div class="ttdef"><b>Definition</b> price_table.cpp:180</div></div>
 <div class="ttc" id="anamespacequant_html_a2d79f976faaa8617aeef582e3eab9e3c"><div class="ttname"><a href="namespacequant.html#a2d79f976faaa8617aeef582e3eab9e3c">quant::ApplySplits</a></div><div class="ttdeci">PriceTable ApplySplits(PriceTable table, const std::vector&lt; Split &gt; &amp;splits)</div><div class="ttdoc">Пересчитывает цены до даты сплита: делит их на ratio.</div><div class="ttdef"><b>Definition</b> price_table.cpp:206</div></div>
 <div class="ttc" id="anamespacequant_html_a3366daf0f71cda5dfc5e8aec4f10c01f"><div class="ttname"><a href="namespacequant.html#a3366daf0f71cda5dfc5e8aec4f10c01f">quant::FillMissingPrices</a></div><div class="ttdeci">PriceTable FillMissingPrices(PriceTable table)</div><div class="ttdoc">Заполняет пропуски последней известной ценой (forward fill).</div><div class="ttdef"><b>Definition</b> price_table.cpp:162</div></div>

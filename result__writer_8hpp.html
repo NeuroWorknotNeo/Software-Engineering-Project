@@ -98,6 +98,8 @@ $(function(){initNavTree('result__writer_8hpp.html','',''); });
 <div class="textblock"><code>#include &lt;Eigen/Dense&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &quot;<a class="el" href="backtester_8hpp_source.html">quant/backtest/backtester.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="performance_8hpp_source.html">quant/backtest/performance.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="portfolio_8hpp_source.html">quant/optim/portfolio.hpp</a>&quot;</code><br />
 </div>
 <p><a href="result__writer_8hpp_source.html">Go to the source code of this file.</a></p>
@@ -117,6 +119,12 @@ Functions</h2></td></tr>
 <tr class="memdesc:a9bac72da660411ad646c11c5a9f3a190"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает квадратную матрицу с подписями строк и столбцов.  <br /></td></tr>
 <tr class="memitem:a5a3c84bd89469e2c247431e9588d0ada" id="r_a5a3c84bd89469e2c247431e9588d0ada"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#a5a3c84bd89469e2c247431e9588d0ada">quant::WritePortfoliosCsv</a> (const std::string &amp;path, const std::vector&lt; std::string &gt; &amp;tickers, const std::vector&lt; <a class="el" href="structquant_1_1LabeledPortfolio.html">LabeledPortfolio</a> &gt; &amp;portfolios, double risk_free_rate)</td></tr>
 <tr class="memdesc:a5a3c84bd89469e2c247431e9588d0ada"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает портфели: <span class="tt">mode,name,expected_return,volatility,sharpe,TICKER1,...</span>.  <br /></td></tr>
+<tr class="memitem:a0242d4e7422da13035956a958e579929" id="r_a0242d4e7422da13035956a958e579929"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#a0242d4e7422da13035956a958e579929">quant::WriteEquityCsv</a> (const std::string &amp;path, const std::vector&lt; <a class="el" href="structquant_1_1BacktestResult.html">BacktestResult</a> &gt; &amp;results)</td></tr>
+<tr class="memdesc:a0242d4e7422da13035956a958e579929"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает кривые капитала: <span class="tt">date,STRATEGY1,STRATEGY2,...</span>.  <br /></td></tr>
+<tr class="memitem:a2b0464372370c7c518a3e389bcfafed0" id="r_a2b0464372370c7c518a3e389bcfafed0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#a2b0464372370c7c518a3e389bcfafed0">quant::WriteRebalancesCsv</a> (const std::string &amp;path, const std::vector&lt; std::string &gt; &amp;tickers, const std::vector&lt; <a class="el" href="structquant_1_1BacktestResult.html">BacktestResult</a> &gt; &amp;results)</td></tr>
+<tr class="memdesc:a2b0464372370c7c518a3e389bcfafed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает историю ребалансировок: <span class="tt">strategy,date,turnover,is_fallback,TICKER1,...</span>.  <br /></td></tr>
+<tr class="memitem:ace3ee314a3a22b19c00556291ea8ab5f" id="r_ace3ee314a3a22b19c00556291ea8ab5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacequant.html#ace3ee314a3a22b19c00556291ea8ab5f">quant::WriteMetricsCsv</a> (const std::string &amp;path, const std::vector&lt; std::string &gt; &amp;strategy_names, const std::vector&lt; <a class="el" href="structquant_1_1PerformanceMetrics.html">PerformanceMetrics</a> &gt; &amp;metrics)</td></tr>
+<tr class="memdesc:ace3ee314a3a22b19c00556291ea8ab5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Записывает метрики стратегий: <span class="tt">strategy,total_return,annual_return,...</span>.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Запись результатов в CSV. </p>

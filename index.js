@@ -5,9 +5,10 @@ var index =
     [ "Данные", "index.html#autotoc_md3", null ],
     [ "Запуск", "index.html#autotoc_md4", null ],
     [ "Запуск в Docker", "index.html#autotoc_md5", null ],
-    [ "Тесты и бенчмарки", "index.html#autotoc_md6", null ],
-    [ "Стиль кода", "index.html#autotoc_md7", null ],
-    [ "Документация", "index.html#autotoc_md8", null ],
-    [ "Структура проекта", "index.html#autotoc_md9", null ],
-    [ "CI/CD", "index.html#autotoc_md10", null ]
+    [ "Графики", "index.html#autotoc_md6", null ],
+    [ "Тесты и бенчмарки", "index.html#autotoc_md7", null ],
+    [ "Стиль кода", "index.html#autotoc_md8", null ],
+    [ "Документация", "index.html#autotoc_md9", null ],
+    [ "Структура проекта", "index.html#autotoc_md10", null ],
+    [ "CI/CD", "index.html#autotoc_md11", null ]
 ];

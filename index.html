@@ -109,7 +109,7 @@ $(function(){initNavTree('index.html','',''); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><span class="tt">frontier</span>  </td><td class="markdownTableBodyNone">Эффективная граница из N точек, с короткими продажами и без  </td><td class="markdownTableBodyNone">✅ готово  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><span class="tt">backtest</span>  </td><td class="markdownTableBodyNone">Скользящее окно, ежемесячная ребалансировка, сравнение с портфелем 1/N  </td><td class="markdownTableBodyNone">🚧 в разработке  </td></tr>
+<td class="markdownTableBodyNone"><span class="tt">backtest</span>  </td><td class="markdownTableBodyNone">Скользящее окно, ежемесячная ребалансировка, сравнение с портфелем 1/N  </td><td class="markdownTableBodyNone">✅ готово  </td></tr>
 </table>
 <p>Данные: 20 ликвидных акций из индекса IMOEX за 2019–2025 годы (список — в <a class="el" href="md_docs_2REQUIREMENTS.html">docs/REQUIREMENTS.md</a>).</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
@@ -127,8 +127,11 @@ $(function(){initNavTree('index.html','',''); });
 <div class="fragment"><div class="line">./build/mpt stats --prices data/prices.csv --splits data/splits.csv --cov ledoit-wolf</div>
 <div class="line">./build/mpt optimize --prices data/prices.csv --splits data/splits.csv --risk-free 0.10 --out portfolios.csv</div>
 <div class="line">./build/mpt frontier --prices data/prices.csv --splits data/splits.csv --points 50 --out frontier.csv</div>
+<div class="line">./build/mpt backtest --prices data/prices.csv --splits data/splits.csv --window 252 --cost 0.001 \</div>
+<div class="line">    --out equity.csv --weights-out weights.csv --metrics-out metrics.csv</div>
 <div class="line">./build/mpt --help</div>
 </div><!-- fragment --><p>Без коротких продаж оптимальные портфели ищет собственный метод активного множества (задача квадратичного программирования); с короткими продажами — точные формулы через множители Лагранжа. Безрисковая ставка по умолчанию — 10% годовых.</p>
+<p>Бэктест каждый месяц оценивает μ и Σ по последним 252 дням (только прошлые данные) и сравнивает пять стратегий: минимальная дисперсия и максимальный Шарп с короткими продажами и без них, а также равновзвешенный портфель 1/N. Метрики: среднегодовая доходность, волатильность, коэффициент Шарпа, максимальная просадка, оборот.</p>
 <p>Если в данных есть дневное изменение цены больше 50% (обычно неучтённый сплит), утилита выводит предупреждение с датой и тикером.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
 Запуск в Docker</h1>
@@ -138,27 +141,32 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">docker run --rm mpt stats --prices data/prices.csv --cov sample</div>
 <div class="line">docker run --rm -v &quot;$PWD/my_data:/data&quot; mpt stats --prices /data/prices.csv   # свои данные</div>
 </div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Графики</h1>
+<p>Скриптам нужен matplotlib (<span class="tt">pip install matplotlib</span>):</p>
+<div class="fragment"><div class="line">python3 scripts/plot_frontier.py frontier.csv --portfolios portfolios.csv --out frontier.png</div>
+<div class="line">python3 scripts/plot_backtest.py equity.csv --exclude max-sharpe/short --log --out backtest.png</div>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
 Тесты и бенчмарки</h1>
 <div class="fragment"><div class="line">ctest --test-dir build --output-on-failure</div>
 <div class="line">./build/bench/mpt_bench</div>
 </div><!-- fragment --><p>Тесты сверяют результаты с эталонами из numpy и scikit-learn и проверяют обработку некорректных данных. Бенчмарки измеряют скорость оценки ковариации.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
 Стиль кода</h1>
 <p>Код следует <a href="https://github.com/yandexdataschool/algorithms/blob/master/src/styleguide.md">стайлгайду курса</a> (Google C++ Style Guide с отступом 4 пробела и строками до 100 символов). Проверка:</p>
 <div class="fragment"><div class="line">clang-format --dry-run --Werror src/*.cpp src/*/*.cpp include/quant/*/*.hpp tests/*.cpp bench/*.cpp</div>
 <div class="line">cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON</div>
 <div class="line">clang-tidy -p build src/*.cpp src/*/*.cpp</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Документация</h1>
 <div class="fragment"><div class="line">doxygen docs/Doxyfile   # результат в docs/html/index.html</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
 Структура проекта</h1>
 <div class="fragment"><div class="line">.</div>
-<div class="line">├── include/quant/      # публичные заголовки: data/, stats/, optim/, io/</div>
+<div class="line">├── include/quant/      # публичные заголовки: data/, stats/, optim/, backtest/, io/</div>
 <div class="line">├── src/                # реализация библиотеки mpt_core и утилита mpt (main.cpp)</div>
 <div class="line">├── tests/              # unit-тесты (GoogleTest) и тестовые CSV</div>
 <div class="line">├── bench/              # бенчмарки (Google Benchmark)</div>
-<div class="line">├── scripts/            # Python: загрузка данных с MOEX</div>
+<div class="line">├── scripts/            # Python: загрузка данных с MOEX, графики</div>
 <div class="line">├── data/               # цены и сплиты</div>
 <div class="line">├── docs/               # требования, архитектура, Doxyfile</div>
 <div class="line">├── .github/workflows/  # CI/CD (GitHub Actions)</div>
@@ -167,7 +175,7 @@ $(function(){initNavTree('index.html','',''); });
 <div class="line">├── .clang-tidy         # статический анализ и проверка имён</div>
 <div class="line">├── AGENTS.md           # инструкции для ИИ-агентов</div>
 <div class="line">└── CLAUDE.md           # подключает AGENTS.md для Claude Code</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
 CI/CD</h1>
 <ul>
 <li><b>CI</b> (<span class="tt">.github/workflows/ci.yml</span>) — на каждый push и pull request три задачи: <span class="tt">style</span> — проверка форматирования (clang-format) и статический анализ (clang-tidy); <span class="tt">build-test-bench</span> — сборка, запуск утилиты, тесты, бенчмарки (результаты — в логе и в summary запуска); <span class="tt">docker</span> — сборка Docker-образа (с прогоном тестов) и запуск контейнера.</li>

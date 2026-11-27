@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['samplecovariance_0',['SampleCovariance',['../classquant_1_1SampleCovariance.html',1,'quant']]],
-  ['shortsellingoptimizer_1',['ShortSellingOptimizer',['../classquant_1_1ShortSellingOptimizer.html',1,'quant']]],
-  ['split_2',['Split',['../structquant_1_1Split.html',1,'quant']]]
+  ['qpproblem_0',['QpProblem',['../structquant_1_1QpProblem.html',1,'quant']]],
+  ['qpresult_1',['QpResult',['../structquant_1_1QpResult.html',1,'quant']]],
+  ['qpsolver_2',['QpSolver',['../classquant_1_1QpSolver.html',1,'quant']]]
 ];

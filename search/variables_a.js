@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['ratio_0',['ratio',['../structquant_1_1Split.html#a249297cbe04fa6bae83e09533192d7e9',1,'quant::Split']]],
-  ['returns_1',['returns',['../structquant_1_1ReturnMatrix.html#a288d2e6210eddd905865086ad1523124',1,'quant::ReturnMatrix']]]
+  ['parallel_0',['parallel',['../structquant_1_1BacktestConfig.html#a73a2b0b3f5be1040c97f1450cf6245c7',1,'quant::BacktestConfig']]],
+  ['portfolio_1',['portfolio',['../structquant_1_1LabeledPortfolio.html#ae375cc88b0ab8e89589e31b7a907e983',1,'quant::LabeledPortfolio']]],
+  ['prices_2',['prices',['../structquant_1_1PriceTable.html#a1f9d36a887bb1ef3f6f3e45034a5647e',1,'quant::PriceTable']]]
 ];

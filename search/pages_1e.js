@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['целевая_20структура_20репозитория_0',['6. Целевая структура репозитория',['../md_docs_2ARCHITECTURE.html#autotoc_md35',1,'']]],
-  ['цель_1',['1. Цель',['../md_docs_2REQUIREMENTS.html#autotoc_md12',1,'']]]
+  ['функциональные_20требования_0',['3. Функциональные требования',['../md_docs_2REQUIREMENTS.html#autotoc_md15',1,'']]]
 ];

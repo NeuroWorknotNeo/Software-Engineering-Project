@@ -1,6 +1,15 @@
 var annotated_dup =
 [
     [ "quant", "namespacequant.html", [
+      [ "Allocation", "structquant_1_1Allocation.html", "structquant_1_1Allocation" ],
+      [ "AllocationStrategy", "classquant_1_1AllocationStrategy.html", "classquant_1_1AllocationStrategy" ],
+      [ "MinimumVarianceStrategy", "classquant_1_1MinimumVarianceStrategy.html", "classquant_1_1MinimumVarianceStrategy" ],
+      [ "MaxSharpeStrategy", "classquant_1_1MaxSharpeStrategy.html", "classquant_1_1MaxSharpeStrategy" ],
+      [ "EqualWeightStrategy", "classquant_1_1EqualWeightStrategy.html", "classquant_1_1EqualWeightStrategy" ],
+      [ "BacktestConfig", "structquant_1_1BacktestConfig.html", "structquant_1_1BacktestConfig" ],
+      [ "Rebalance", "structquant_1_1Rebalance.html", "structquant_1_1Rebalance" ],
+      [ "BacktestResult", "structquant_1_1BacktestResult.html", "structquant_1_1BacktestResult" ],
+      [ "PerformanceMetrics", "structquant_1_1PerformanceMetrics.html", "structquant_1_1PerformanceMetrics" ],
       [ "PriceTable", "structquant_1_1PriceTable.html", "structquant_1_1PriceTable" ],
       [ "Split", "structquant_1_1Split.html", "structquant_1_1Split" ],
       [ "PriceAnomaly", "structquant_1_1PriceAnomaly.html", "structquant_1_1PriceAnomaly" ],

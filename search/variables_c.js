@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['ticker_0',['ticker',['../structquant_1_1Split.html#a1328a21da4c404db7f93f1e45c1989c7',1,'quant::Split::ticker'],['../structquant_1_1PriceAnomaly.html#a7ee056a152280195caf10ccd5b36f49c',1,'quant::PriceAnomaly::ticker']]],
-  ['tickers_1',['tickers',['../structquant_1_1PriceTable.html#ab134d0a21ca9f8b2bd7d1857a122fef6',1,'quant::PriceTable::tickers'],['../structquant_1_1MarketModel.html#a691f2887c164e64de46001fdc01bb667',1,'quant::MarketModel::tickers'],['../structquant_1_1ReturnMatrix.html#a29cea2b99000fee59a9a9235061fd7e1',1,'quant::ReturnMatrix::tickers']]]
+  ['ratio_0',['ratio',['../structquant_1_1Split.html#a249297cbe04fa6bae83e09533192d7e9',1,'quant::Split']]],
+  ['rebalance_5fcount_1',['rebalance_count',['../structquant_1_1PerformanceMetrics.html#acf72878d4e8d93d8c72f881905e25c4e',1,'quant::PerformanceMetrics']]],
+  ['rebalances_2',['rebalances',['../structquant_1_1BacktestResult.html#a61b606d82f62a9e2e602dcbc30331f22',1,'quant::BacktestResult']]],
+  ['returns_3',['returns',['../structquant_1_1ReturnMatrix.html#a288d2e6210eddd905865086ad1523124',1,'quant::ReturnMatrix']]]
 ];

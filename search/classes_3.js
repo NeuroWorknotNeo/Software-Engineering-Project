@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['marketmodel_0',['MarketModel',['../structquant_1_1MarketModel.html',1,'quant']]]
+  ['equalweightstrategy_0',['EqualWeightStrategy',['../classquant_1_1EqualWeightStrategy.html',1,'quant']]]
 ];

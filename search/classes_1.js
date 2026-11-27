@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['covarianceestimator_0',['CovarianceEstimator',['../classquant_1_1CovarianceEstimator.html',1,'quant']]]
+  ['backtestconfig_0',['BacktestConfig',['../structquant_1_1BacktestConfig.html',1,'quant']]],
+  ['backtestresult_1',['BacktestResult',['../structquant_1_1BacktestResult.html',1,'quant']]]
 ];

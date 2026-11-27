@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quadratic_0',['quadratic',['../structquant_1_1QpProblem.html#a4157890d84fe94a2fb3550cd867f88b3',1,'quant::QpProblem']]]
+  ['name_0',['name',['../structquant_1_1LabeledPortfolio.html#ab6f115b30f4fc35db5b91e6831e62088',1,'quant::LabeledPortfolio']]]
 ];

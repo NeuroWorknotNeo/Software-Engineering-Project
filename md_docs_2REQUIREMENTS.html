@@ -92,13 +92,13 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
   <div class="headertitle"><div class="title">Требования </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md11"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md12"></a></p>
 <p>Проект: <b>«Оптимизатор портфеля по Марковицу: эффективная граница и бэктест с ребалансировкой»</b>.</p>
 <p>Статус: v0.2 (19.11.2026) — решения по данным, ставке и методу оптимизации приняты. Статус реализации — в матрице трассировки, <a href="ARCHITECTURE.md#7-трассировка-требований">ARCHITECTURE.md</a>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 1. Цель</h1>
 <p>Консольное приложение на C++ строит оптимальные портфели по теории Марковица на исторических ценах российских акций и проверяет, насколько эти портфели работают на новых данных (бэктест) по сравнению с простым равновзвешенным портфелем 1/N.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 2. Исходные данные и допущения</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -122,10 +122,10 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <li>у части бумаг были сплиты (например, GMKN 1:100 в 2024 году) — цены до сплита нужно пересчитать, иначе получится ложная доходность −99%;</li>
 <li>цены закрытия не учитывают дивиденды — это ограничение модели (см. раздел 5).</li>
 </ul>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 3. Функциональные требования</h1>
 <p>Приоритеты (MoSCoW): <b>M</b> — обязательно, <b>S</b> — желательно, <b>C</b> — если хватит времени.</p>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Данные</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -141,7 +141,7 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FR-5  </td><td class="markdownTableBodyNone">Аномальные дневные доходности (по модулю больше заданного порога, по умолчанию 50%) выводятся как предупреждение с датой и тикером  </td><td class="markdownTableBodyNone">S  </td></tr>
 </table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 Статистика</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -153,7 +153,7 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FR-8  </td><td class="markdownTableBodyNone">Выбор метода оценки ковариации параметром запуска  </td><td class="markdownTableBodyNone">S  </td></tr>
 </table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 Оптимизация с разрешёнными короткими продажами (аналитически)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -165,7 +165,7 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FR-11  </td><td class="markdownTableBodyNone">Эффективная граница из N точек (N — параметр, по умолчанию 50)  </td><td class="markdownTableBodyNone">M  </td></tr>
 </table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 Оптимизация без коротких продаж (веса ≥ 0)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -179,7 +179,7 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">FR-15  </td><td class="markdownTableBodyNone">Ограничение сверху на вес одного актива (например, не больше 20%)  </td><td class="markdownTableBodyNone">C  </td></tr>
 </table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
 Бэктест</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -193,7 +193,7 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">FR-19  </td><td class="markdownTableBodyNone">Пропорциональные транзакционные издержки при ребалансировке (параметр, по умолчанию 0)  </td><td class="markdownTableBodyNone">C  </td></tr>
 </table>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 Интерфейс и вывод</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -205,7 +205,7 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">FR-22  </td><td class="markdownTableBodyNone">Скрипты на Python строят графики для отчёта из CSV-результатов: эффективная граница, веса, кривая капитала  </td><td class="markdownTableBodyNone">S  </td></tr>
 </table>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
 4. Нефункциональные требования</h1>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -229,7 +229,7 @@ $(function(){initNavTree('md_docs_2REQUIREMENTS.html','',''); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">NFR-9  </td><td class="markdownTableBodyNone"><b>Документация:</b> API в Doxygen на GitHub Pages; итоговый отчёт в PDF (LaTeX) в репозитории  </td><td class="markdownTableBodyNone">CI  </td></tr>
 </table>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
 5. Ограничения модели (сознательно не делаем)</h1>
 <ul>
 <li>Дивиденды не учитываются: доходности считаются по ценам закрытия. Для российских акций это заметно занижает доходность — отмечается в отчёте.</li>

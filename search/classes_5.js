@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['qpproblem_0',['QpProblem',['../structquant_1_1QpProblem.html',1,'quant']]],
-  ['qpresult_1',['QpResult',['../structquant_1_1QpResult.html',1,'quant']]],
-  ['qpsolver_2',['QpSolver',['../classquant_1_1QpSolver.html',1,'quant']]]
+  ['marketmodel_0',['MarketModel',['../structquant_1_1MarketModel.html',1,'quant']]],
+  ['maxsharpestrategy_1',['MaxSharpeStrategy',['../classquant_1_1MaxSharpeStrategy.html',1,'quant']]],
+  ['minimumvariancestrategy_2',['MinimumVarianceStrategy',['../classquant_1_1MinimumVarianceStrategy.html',1,'quant']]]
 ];
